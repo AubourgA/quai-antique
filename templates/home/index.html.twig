@@ -3,12 +3,192 @@
 {% block title %}Le Quai Antique{% endblock %}
 
 {% block body %}
+<header>
+        <nav class="header__navbar">
+            <div class="navbar__logo">
+                <img src="" alt="logo du site">
+            </div>
+
+            <ul class="navbar__list">
+                <li class="list__item"><a href="#">Nos Menu</a></li>
+                <li class="list__item"><a href="#">La Carte</a></li>
+                <li class="list__item"><a href="#">Réserver</a></li>
+                <li class="list__item"><a href="#">S'inscricre</a></li>
+                <li class="list__item btn__connect"><a href="#">Se Connecter</a></li>
+            </ul>
+
+            <div class="navbar__hamburger">
+                <div class="hamburger__bar bar1"></div>
+                <div class="hamburger__bar bar2"></div>
+                <div class="hamburger__bar bar3"></div>
+            </div>
+        </nav>
+
+        <section class="header__img">
+        </section>
+
+        <section class="header__content">
+            <h1 class="main__title">Le Quai Antique</h1>
+            <p class="main__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, pariatur.</p>
+        </section>
+
+    </header>
+
+    <main class="container">
+
+        <section class="box__wrapper">
+            <article class="box__img">
+                <img src="/img/pres_section.jpg" alt="chef etoilé">
+            </article>
+            <article class="box__content">
+                <div class="box__desc">
+                    <h2 class="second__title">Arnaud Michan, Chef étoilé</h2>
+                    <p class="regular__text">Pour son 3éme réstaurant, le chef triplement étoilé a décidé d'ouvrir un
+                        restaurant dans sa région de coeur en Savoie à Chambéry</p>
+                    <p class="regular__text space">Epaulé par une équipe hors pair, il vous propose une cuisine savoureuse et
+                        distingué.</p>
+                    <p class="regular__text">Il a su marié les saveurs d'autrefois et d'aujourd'hui pour vous proposer des plats originaux et vous transporter dans un univers haut en émotions..</p>
+                </div>
+            </article>
+
+        </section>
+
+        <section class="box__wrapper">
+            <article class="box__img">
+                <img src="/img/resto.jpg" alt="interieur restaurant">
+            </article>
+            <article class="box__content">
+                <div class="box__desc">
+                    <h2 class="second__title">Le restaurant, un lieu d'exception</h2>
+                    <p class="regular__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, maxime
+                        magni quae voluptatibus fugiat et sed doloremque molestias hic. Odio quisquam et culpa fugiat
+                        vitae?</p>
+                    <p class="regular__text space">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo at alias aut
+                        reprehenderit nihil voluptate illum quos labore doloremque a, ducimus, atque adipisci officia
+                        commodi consequuntur nulla. Illum iure alias, facilis dignissimos facere repudiandae in
+                        exercitationem maxime blanditiis adipisci assumenda dolor dolore consequatur quibusdam aliquam
+                        perspiciatis minus quis aperiam soluta.</p>
+                </div>
+            </article>
+
+        </section>
+
+        <section class="box__carrousel">
+            <h2 class="second__title">Une sélection de nos plats du moment</h2>
+            <div class="carousel">
+
+                <div class="carrousel__wrapper">
+                        <div class="carrousel__pics">
+                            <div class="pic">
+                                <img src="/img/plats/burger.jpg" alt="">
+                            </div>
+                            <p class="regular__text">burger en folie</p>
+                        </div>
+                        <div class="carrousel__pics">
+                            <div class="pic">
+                                <img src="/img/plats/roule.jpg" alt="">
+                            </div>
+                            <p class="regular__text">roule avec sa puree</p>
+                        </div> 
+                        <div class="carrousel__pics">
+                            <div class="pic">
+                                <img src="/img/plats/salad.jpg" alt="">
+                            </div>
+                            <p class="regular__text">salde vege</p>
+                        </div> 
+                    
+                        
+                </div>
+                <!--arrows-->
+               <span id="arrow-right" class="slide-right"><i class="fa-solid fa-circle-chevron-right "></i></span> 
+                <span id="arrow-left" class="slide-left"><i class="fa-solid fa-circle-chevron-left"></i></span>
+
+            </div>
+
+            <a href="#" class="btn__link">RESERVER UNE TABLE</a>
+
+        </section>
+
+    </main>
 
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <footer class="container">
+        <div class="footer__wrapper">
+                <article class="footer__item footer__info">
+                    <h3>Le Quai Antique</h3>
+                    <p>chemin des Curtillets</p>
+                    <p>73000 CHAMBERY</p>
+                    <p><i class="fa-solid fa-phone-flip"></i> 04.24.95.45.34</p>
+                    <p>contact@lequaiantique.fr</p>
+                    <ul class="social-icon">
+                        <li class="item__social facebook"><a href="https://wwww.facebook.com"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li class="item__social instagram"><a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li class="item__social twitter"><a href="https://www.twitter.com"><i class="fa-brands fa-twitter"></i></a></li>
+                    </ul>
+                </article>
+                <article class="footer__item footer__schedule">
+                    <h3>Nos Horaires</h3>
+                    <div class="grid__schedule">
+                      <table>
+                        <tbody>
+                            <tr>
+                                <td>Lundi</td>
+                                <td>Ferme</td>
+                                <td>19:00 a 22h00</td>
+                            </tr>
+                            <tr>
+                                <td>Mardi</td>
+                                <td>11:00 à 13:00</td>
+                                <td>19:00 a 22h00</td>
+                            </tr>
+                            <tr>
+                                <td>Mercredi</td>
+                                <td>11:00 à 13:00</td>
+                                <td>19:00 a 22h00</td>
+                            </tr>
+                            <tr>
+                                <td>Jeudi</td>
+                                <td>11:00 à 13:00</td>
+                                <td>19:00 a 22h00</td>
+                            </tr>
+                            <tr>
+                                <td>Vendredi</td>
+                                <td>11:00 à 13:00</td>
+                                <td>19:00 a 22h00</td>
+                            </tr>
+                            <tr>
+                                <td>Samedi</td>
+                                <td>11:00 à 13:00</td>
+                                <td>19:00 a 22h00</td>
+                            </tr>
+                            <tr>
+                                <td>Dimanche</td>
+                                <td>Ferme</td>
+                                <td>Ferme</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </article>
+                <article class="footer__item footer__newsletter">
+                    <h3>NewsLetter</h3>
+                    <p>Pour être informé des nouveauté :</p>
+                    <form method="POST">
+                        <input type="text" name="email" placeholder="entrer votre email">
+                        <button class="btn__form">Inscription</button>
+                    </form>
+                </article>
 
-    This friendly message is coming from:
-  
-</div>
+        </div>
+        <div class="barre"></div>
+        <div class="legal">
+            <ul class="legal__list">
+                <li>Le Quai Antique <i class="fa-regular fa-copyright"></i> 2023 |</li>
+                <li><a href="#">Mentions Légales</a> |</li>
+                <li><a href="#">Politique de confidentialite</a></li>
+            </ul>
+        </div>
+    </footer>
+
+
 {% endblock %}
