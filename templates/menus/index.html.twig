@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Menus{% endblock %}
+
+{% block body %}
+
+    <header>
+            {% include '/partials/_navbar.html.twig' %}
+
+            <section class="header__img menus_bg">
+            </section>
+
+            <section class="header__content">
+                <h1 class="main__title">Nos Menus</h1>
+                <p class="main__text">Le chef vous propose de partager une agréable moment gustative dans un cadre idélique...</p>
+            </section>
+    </header>
+
+    <main class="container">
+    
+        <section class="box__wrapper center">
+            <article class="box__img">
+                <img src="/img/pres_section.jpg" alt="chef etoilé">
+            </article>
+            <article class="box__content">
+                <div class="box__desc">
+                    <h2 class="second__title ">MENU DE LA MONTAGE</h2>
+    
+                    <h3 class="title__menu space">ENTREE</h3>
+                    <ul class="txt__menu">
+                        <li>Salade sur un coulis de tomate</li>
+                        <li>Paim sézame accompagné de son lit de salade</li>
+                    </ul>
+                    
+                    <h3 class="title__menu space">PLATS</h3>
+                    <ul class="txt__menu">
+                        <li>Gratin de tomme de terres et son accompagnement végé</li>
+                        <li>Paim fourée d'une viande haché accompagné des légume de saisons</li>
+                    </ul>
+                    
+                    <h3 class="title__menu space">DESSERTS</h3>
+                    <ul class="txt__menu">
+                        <li>Tarte citron du chef</li>
+                        <li>Mousseux au chacolat sur un biscuit croustillant</li>
+                    </ul>
+                 
+                    <p class="regular__text space">75,00 €</p>
+
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+         {% include '/partials/_footer.html.twig' %}
+    </footer>
+
+{% endblock %}
