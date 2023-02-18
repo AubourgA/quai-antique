@@ -14,7 +14,6 @@
     --font-text--regular : "Montserrat Regular";
     --font-text--bold : "Montserrat Bold";
     --font-menu--regular : "Tangerine Regular";
-    --font-extra : "mmontserra";
     
 }
 
@@ -126,14 +125,26 @@ a {
     font-size: calc(10 * var(--res));
   }
 
-  .title__menu {
+  /* .title__menu {
     font-family: var(--font-text--bold);
     font-size: calc(10 * var(--res));
-  }
+  } */
   .txt__menu {
     font-family: var(--font-menu--regular);
-    font-size: 2rem;
+    font-size: calc(25 * var(--res));
   }
+
+  .item__text--italic{
+    font-family: var(--font-text--light);
+    font-style: italic;
+    font-size: calc(7 * var(--res));
+  }
+
+ .item__price {
+  font-family: var(--font-text--regular);
+  font-size: calc(10 * var(--res));
+
+ }
 
   .space{
     padding:1rem 0;
@@ -314,9 +325,13 @@ height:3px;
 
 .box__desc p{
   line-height: 1.8rem;
-  /* text-align: justify; */
 }
 
+.item__wrapper{
+  display: flex;
+  justify-content: space-between;
+ 
+}
 
 /* setion Carrousel */
 
