@@ -23,20 +23,17 @@
                     <h2 class="second__title ">ENTREE</h2>
     
                     <ul class="pad-y--small">
-                        <li class="item__wrapper pad-y--small">
-                            <div class="item__content">
-                                <p class="txt__menu">Salade de Chevre et sonaccompagnement de crudite</p>
-                                <p class="item__text--italic">Croustillan au chevre laitue, confis d'ognon</p>
-                            </div>
-                            <p class="item__price">15,00 €</p>
+
+                       {% for entree in entrees %}
+                            <li class="item__wrapper pad-y--small">
+                                <div class="item__content">
+                                    <p class="txt__menu">{{entree.title}}</p>
+                                    <p class="item__text--italic">{{entree.description}}</p>
+                                </div>
+                                <p class="item__price">{{entree.price}} €</p>
                         </li>
-                        <li class="item__wrapper pad-y--small">
-                             <div class="item__content">
-                                 <p class="txt__menu">Salade de Chevre et sonaccompagnement de crudite</p>
-                                 <p class="item__text--italic">Croustillan au chevre laitue, confis d'ognon</p>
-                             </div>
-                             <p class="item__price">15,00 €</p>
-                        </li>
+                       {% endfor %} 
+
                     </ul>
                 </div>
             </article>
