@@ -1,9 +1,10 @@
 <nav class="header__navbar">
             <div class="navbar__logo">
-                <img src="" alt="logo du site">
+            <a href="{{ path('app_home') }}"><img src="" alt="logo du site"></a>
+                
             </div>
 
-            <ul class="navbar__list">
+            <ul class="navbar__list ">
                 <li class="list__item"><a href=" {{ path('app_menus') }}">Nos Menu</a></li>
                 <li class="list__item"><a href=" {{ path('app_meals') }}">La Carte</a></li>
                 <li class="list__item"><a href="#">Réserver</a></li>
@@ -12,8 +13,8 @@
             </ul>
 
             <div class="navbar__hamburger">
-                <div class="hamburger__bar bar1"></div>
-                <div class="hamburger__bar bar2"></div>
-                <div class="hamburger__bar bar3"></div>
+                <div class="hamburger__bar"></div>
             </div>
+
+
 </nav>

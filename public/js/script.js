@@ -2,7 +2,19 @@ window.addEventListener('DOMContentLoaded', () => {
   
     
     // MENU TOGGLE
-    
+    const hamburger = document.querySelector('.navbar__hamburger');
+    const navbar = document.querySelector('.navbar__list');
+
+    function openMenu(){
+        hamburger.classList.toggle('active');
+        navbar.classList.toggle('show');
+
+    }
+
+    hamburger.addEventListener("click", openMenu);
+
+
+
     
     // Gestion Carrousel
     const carrousel = document.querySelector('.carrousel__wrapper');
