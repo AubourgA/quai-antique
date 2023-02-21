@@ -19,7 +19,7 @@ class MealsController extends AbstractController
                             ): Response
     {
 
-        $entrees = $entreeRepository->findBy(['isActice' => 1]);
+        $entrees = $entreeRepository->findBy(['isActive' => 1]);
         $meals = $mealsRepository->findBy(['isActive' => 1]);
         $desserts = $dessertRepository->findBy(['isActive' => 1]);
         
