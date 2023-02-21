@@ -48,20 +48,15 @@
                     <h2 class="second__title ">PLATS</h2>
     
                     <ul class="pad-y--small">
-                        <li class="item__wrapper pad-y--small">
-                            <div class="item__content">
-                                <p class="txt__menu ">Salade de Chevre et sonaccompagnement de crudite</p>
-                                <p class="item__text--italic">Croustillan au chevre laitue, confis d'ognon</p>
-                            </div>
-                            <p class="item__price">15,00 €</p>
+                      {% for meal in meals %}
+                            <li class="item__wrapper pad-y--small">
+                                <div class="item__content">
+                                    <p class="txt__menu">{{meal.title}}</p>
+                                    <p class="item__text--italic">{{meal.description}}</p>
+                                </div>
+                                <p class="item__price">{{meal.price}} €</p>
                         </li>
-                        <li class="item__wrapper pad-y--small">
-                             <div class="item__content">
-                                 <p class="txt__menu">Salade de Chevre et sonaccompagnement de crudite</p>
-                                <p class="item__text--italic">Croustillan au chevre laitue, confis d'ognon</p>
-                             </div>
-                             <p class="item__price">15,00 €</p>
-                        </li>
+                       {% endfor %} 
                     </ul>
                 </div>
             </article>
@@ -75,19 +70,14 @@
                     <h2 class="second__title ">DESSERTS</h2>
     
                     <ul class="pad-y--small">
-                        <li class="item__wrapper ">
-                           
-                                <p class="txt__menu">Creme au chocolat</p>
+                        {% for dessert in desserts %}
+                            <li class="item__wrapper">
+                                  <p class="txt__menu">{{dessert.title}}</p>
             
                            
-                            <p class="item__price">15,00 €</p>
-                        </li>
-                        <li class="item__wrapper pad-y--small">
-                            
-                            <p class="txt__menu">Tiramisu au chocolat</p>
-                               
-                            <p class="item__price">15,00 €</p>
-                        </li>
+                                 <p class="item__price">{{dessert.price}}</p>
+                             </li>
+                       {% endfor %} 
                     </ul>
                 </div>
             </article>
