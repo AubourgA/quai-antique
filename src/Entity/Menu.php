@@ -45,6 +45,7 @@ class Menu
         $this->dessert = new ArrayCollection();
         $this->meals = new ArrayCollection();
         $this->entree = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable( 'now', new \DateTimeZone('+0100'));
         $this->isActive = 1;
        
     }
