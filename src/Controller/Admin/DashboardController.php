@@ -19,7 +19,6 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         
-        
         //
          return $this->render('admin/dashboard.html.twig');
     }
@@ -34,13 +33,13 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::section('Restauration');
-        yield MenuItem::linkToCrud('Entrees', 'fa fa-bacon', Entree::class);
-        yield MenuItem::linkToCrud('Plats', 'fas fa-burger', Meals::class);
-        yield MenuItem::linkToCrud('Desserts', 'fa-solid fa-ice-cream', Dessert::class);
-        yield MenuItem::linkToCrud('Menu', 'fa-solid fa-list-ul', Menu::class);
+        yield MenuItem::linkToCrud('Les Entrees', 'fa fa-bacon', Entree::class);
+        yield MenuItem::linkToCrud('Les Plats', 'fas fa-burger', Meals::class);
+        yield MenuItem::linkToCrud('Les Desserts', 'fa-solid fa-ice-cream', Dessert::class);
+        yield MenuItem::linkToCrud('Les Menus', 'fa-solid fa-list-ul', Menu::class);
 
         yield MenuItem::section('Reservation');
-        yield MenuItem::section('Gestion HomePage');
+        yield MenuItem::section('Presentation Plats');
 
     }
 }

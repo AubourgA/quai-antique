@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\EntreeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeZone;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EntreeRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: EntreeRepository::class)]
 class Entree
@@ -37,6 +38,8 @@ class Entree
     public function __construct()
     {
         $this->menus = new ArrayCollection();
+        $this->CreatedAt = new \DateTimeImmutable('now', new DateTimeZone('+0100'));
+        $this->isActive = 1;
     }
 
     public function getId(): ?int

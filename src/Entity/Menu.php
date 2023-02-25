@@ -45,6 +45,8 @@ class Menu
         $this->dessert = new ArrayCollection();
         $this->meals = new ArrayCollection();
         $this->entree = new ArrayCollection();
+        $this->isActive = 1;
+       
     }
 
     public function getId(): ?int

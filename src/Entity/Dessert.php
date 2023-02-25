@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\DessertRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTimeZone;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\DessertRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: DessertRepository::class)]
 class Dessert
@@ -18,8 +19,9 @@ class Dessert
 
     #[ORM\Column(length: 255)]
     private ?string $Title = null;
-
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 2)]
+    
+    // #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 2)]
+    #[ORM\Column(type: "float")]
     private ?string $Price = null;
 
     #[ORM\Column]
@@ -34,6 +36,8 @@ class Dessert
     public function __construct()
     {
         $this->menus = new ArrayCollection();
+        $this->CreatedAt = new \DateTimeImmutable('now', new DateTimeZone('+0100'));
+        $this->isActive = 1;
     }
 
     public function getId(): ?int
