@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Meals;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class MealsCrudController extends AbstractCrudController
@@ -12,6 +13,11 @@ class MealsCrudController extends AbstractCrudController
         return Meals::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+                ->showEntityActionsInlined();
+    }
     /*
     public function configureFields(string $pageName): iterable
     {

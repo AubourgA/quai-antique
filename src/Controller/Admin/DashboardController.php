@@ -37,9 +37,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Les Plats', 'fas fa-burger', Meals::class);
         yield MenuItem::linkToCrud('Les Desserts', 'fa-solid fa-ice-cream', Dessert::class);
         yield MenuItem::linkToCrud('Les Menus', 'fa-solid fa-list-ul', Menu::class);
-
         yield MenuItem::section('Reservation');
         yield MenuItem::section('Presentation Plats');
+        yield MenuItem::section('horaires ouverture');
 
     }
 }

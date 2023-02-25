@@ -1,6 +1,59 @@
-{# {% extends "@EasyAdmin/page/content.html.twig" %} #}
 {% extends '@!EasyAdmin/layout.html.twig' %}
 
  {% block content %}
-      
+     <article class="content">
+            {% block content_header_wrapper %}
+                {% set has_help_message = (ea.crud.helpMessage ?? '') is not empty %}
+                <section class="content-header">
+                    {% block content_header %}
+                        <div class="content-header-title">
+                            <h1 class="title">
+                                {% block content_title %}Bienvenue Administrateur : {{app.user}}{% endblock %}         
+                            </h1>
+                        </div>
+
+                        {% block page_actions_wrapper %}
+                            <div class="page-actions">{% block page_actions %}{% endblock %}</div>
+                        {% endblock %}
+                    {% endblock content_header %}
+                </section>
+            {% endblock content_header_wrapper %}
+
+            <section id="main" class="content-body">
+            {% block main %}
+                <div class="row">
+                    <h2>Les Reservations</h2>
+                    <article class="col-6" >
+                        <h4>Aujourd hui</h4>
+                        <div class="content row">
+                            <article class="content__left col-6">
+                                <h4 class="midi">Midi</h4>
+                                <p></p>
+                            </article>
+                            <article class="content__right col-6">
+                                <h4 class="midi">Soir</h4>
+                                <p></p>
+                            </article>
+
+                        </div>
+                    </article>
+                    <article class="col-6" >
+                        <h4>A venir</h4>
+                    </article>
+                
+                </div>
+
+                 <div class="row">
+                    <h2>Evolution des reservations sur les 30 derniers jours</h2>
+                    
+                
+                </div>
+                   
+                
+             {% endblock %}
+            </section>
+
+         
+        </article>
+     
 {% endblock content %}

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Menu;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -26,15 +27,25 @@ class MenuCrudController extends AbstractCrudController
             TextField::new('Title'),
             TextField::new('Price'),
             ImageField::new('url_image')
-                    ->setBasePath('public/img')
                     ->setUploadDir('public/img/plats')
                     ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
                     ->hideOnIndex(),
             DateTimeField::new('createdAt')
                 ->hideOnForm(),
-            AssociationField::new('entree'),
+            AssociationField::new('entree')
+                    ->setFormTypeOptions( [
+                        'multiple'=> true,
+                        'by_reference' => false
+                        ])
+                    ->hideOnIndex(),
             BooleanField::new('isActive', 'Afficher le Menu ?'),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+                ->showEntityActionsInlined();
     }
     
 }
