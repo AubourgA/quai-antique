@@ -9,13 +9,13 @@ use Twig\Extension\AbstractExtension;
 
 class ScheduleExtension extends AbstractExtension
 {
-    private $schedleRepository;
+    private $scheduleRepository;
 
     private $twig;
 
     public function __construct(ScheduleRepository $scheduleRepository, Environment $twig)
     {
-        $this->schedleRepository = $scheduleRepository;
+        $this->scheduleRepository = $scheduleRepository;
         $this->twig = $twig;
     }
     public function getFunctions():array
@@ -27,7 +27,7 @@ class ScheduleExtension extends AbstractExtension
 
     public function getSchedule():string
     {
-       $schedule =  $this->schedleRepository->findAll();
+       $schedule =  $this->scheduleRepository->findAll();
 
        return $this->twig->render('partials/_schedule.html.twig', [
             'schedule' => $schedule
