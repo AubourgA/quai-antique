@@ -40,6 +40,10 @@ class Menu
     #[ORM\ManyToMany(targetEntity: Entree::class, inversedBy: 'menus')]
     private Collection $entree;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->dessert = new ArrayCollection();
@@ -183,6 +187,18 @@ class Menu
     public function removeEntree(Entree $entree): self
     {
         $this->entree->removeElement($entree);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

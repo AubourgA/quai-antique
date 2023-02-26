@@ -53,6 +53,7 @@ class MenuCrudController extends AbstractCrudController
                 ])
             ->hideOnIndex(),
             BooleanField::new('isActive', 'Afficher le Menu ?'),
+            
         ];
     }
 

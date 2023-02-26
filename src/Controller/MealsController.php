@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\DessertRepository;
-use Entity\Entree;
 use App\Repository\EntreeRepository;
 use App\Repository\MealsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

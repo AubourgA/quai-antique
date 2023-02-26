@@ -1,0 +1,43 @@
+
+ 
+ <table>
+        <tbody>
+        {% for open in schedule %}
+            <tr>
+                <td>{{ open.day}}</td>
+                <td>{{open.lunchstart|format_datetime('none', 'short', locale='fr')}} à {{open.lunchend|format_datetime('none', 'short', locale='fr')}}</td>
+                <td>{{open.dinnerstart|format_datetime('none', 'short', locale='fr')}} à {{open.dinnerend|format_datetime('none', 'short', locale='fr')}}</td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td>Mardi</td>
+                <td>11:00 à 13:00</td>
+                <td>19:00 a 22h00</td>
+            </tr>
+            <tr>
+                <td>Mercredi</td>
+                <td>11:00 à 13:00</td>
+                <td>19:00 a 22h00</td>
+            </tr>
+            <tr>
+                <td>Jeudi</td>
+                <td>11:00 à 13:00</td>
+                <td>19:00 a 22h00</td>
+            </tr>
+            <tr>
+                <td>Vendredi</td>
+                <td>11:00 à 13:00</td>
+                <td>19:00 a 22h00</td>
+            </tr>
+            <tr>
+                <td>Samedi</td>
+                <td>11:00 à 13:00</td>
+                <td>19:00 a 22h00</td>
+            </tr>
+            <tr>
+                <td>Dimanche</td>
+                <td>Ferme</td>
+                <td>Ferme</td>
+            </tr>
+        </tbody>
+ </table>
