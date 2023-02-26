@@ -18,38 +18,45 @@
 
     <main class="container">
     
+        {% for menu in menus %}
         <section class="box__wrapper center">
+
             <article class="box__img img__border img__border--left">
-                <img src="/img/pres_section.jpg" alt="chef etoilé">
+                <img src="{{ asset('img/menus/'~ menu.urlimage) }}" alt="chef etoilé">
             </article>
             <article class="box__content">
                 <div class="box__desc">
-                    <h2 class="second__title">MENU DE LA MONTAGE</h2>
+                    <h2 class="second__title">{{menu.title}}</h2>
     
                     <h3 class="title__menu pad-y--small">ENTREE</h3>
                     <ul class="txt__menu">
-                        <li>Salade sur un coulis de tomate</li>
-                        <li>Paim sézame accompagné de son lit de salade</li>
+                        {% for entree in menu.entree %}
+                          <li>{{entree.title}}</li>
+                        {% endfor %}
                     </ul>
                     
                     <h3 class="title__menu pad-y--small">PLATS</h3>
                     <ul class="txt__menu">
-                        <li>Gratin de tomme de terres et son accompagnement végé</li>
-                        <li>Paim fourée d'une viande haché accompagné des légume de saisons</li>
+                        {% for meals in menu.meals %}
+                          <li>{{meals.title}}</li>
+                        {% endfor %}
                     </ul>
                     
                     <h3 class="title__menu pad-y--small">DESSERTS</h3>
-                    <ul>
-                        <li class="txt__menu">Tarte citron du chef</li>
-                        <li class="txt__menu">Mousseux au chacolat sur un biscuit croustillant</li>
+                    <ul class="txt__menu">
+                         {% for dessert in menu.dessert %}
+                          <li>{{dessert.title}}</li>
+                        {% endfor %}
                     </ul>
                  
-                    <p class="regular__text pad-y--small">-- 75,00 €</p>
+                    <p class="regular__text pad-y--small">-- {{ menu.price}} €</p>
 
                 </div>
             </article>
 
+
         </section>
+        {% endfor %}
 
     </main>
 

@@ -27,9 +27,11 @@ class MenuCrudController extends AbstractCrudController
             TextField::new('Title'),
             TextField::new('Price'),
             ImageField::new('url_image')
-                    ->setUploadDir('public/img/plats')
+                    ->setUploadDir('public/img/menus')
                     ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
-                    ->hideOnIndex(),
+                    ->hideOnIndex()
+                    ->setHelp('.jpg or .png only')
+                    ->setFormTypeOptions([]),
             DateTimeField::new('createdAt')
                 ->hideOnForm(),
             AssociationField::new('entree')
@@ -38,6 +40,18 @@ class MenuCrudController extends AbstractCrudController
                         'by_reference' => false
                         ])
                     ->hideOnIndex(),
+            AssociationField::new('meals')
+            ->setFormTypeOptions( [
+                'multiple'=> true,
+                'by_reference' => false
+                ])
+            ->hideOnIndex(),
+            AssociationField::new('dessert')
+            ->setFormTypeOptions( [
+                'multiple'=> true,
+                'by_reference' => false
+                ])
+            ->hideOnIndex(),
             BooleanField::new('isActive', 'Afficher le Menu ?'),
         ];
     }
