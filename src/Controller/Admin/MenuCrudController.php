@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Menu;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -19,6 +20,21 @@ class MenuCrudController extends AbstractCrudController
         return Menu::class;
     }
 
+      /**
+     * set the user_id to put in database
+     *
+     * @param EntityManagerInterface $em
+     * @param [type] $entityInstance
+     * @return void
+     */
+    public function persistEntity(EntityManagerInterface $em, $entityInstance): void
+    {
+        if (!$entityInstance instanceof Menu) return;
+
+        $entityInstance->setUser($this->getUser());
+
+        parent::persistEntity($em, $entityInstance);
+    }
     
     public function configureFields(string $pageName): iterable
     {

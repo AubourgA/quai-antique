@@ -29,7 +29,7 @@ class Schedule
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $DinnerEnd = null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: User::class, cascade:['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $User = null;
 

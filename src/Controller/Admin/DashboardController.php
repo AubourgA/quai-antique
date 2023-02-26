@@ -7,6 +7,7 @@ use App\Entity\Menu;
 use App\Entity\Meals;
 use App\Entity\Entree;
 use App\Entity\Dessert;
+use App\Entity\Schedule;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -19,7 +20,7 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         
-        //
+        
          return $this->render('admin/dashboard.html.twig');
     }
 
@@ -40,6 +41,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Reservation');
         yield MenuItem::section('Presentation Plats');
         yield MenuItem::section('horaires ouverture');
+        yield MenuItem::linkToCrud('Les Horaires', 'fa-solid fa-clock', Schedule::class);
 
     }
 }
