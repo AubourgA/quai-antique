@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
 class Menu
@@ -23,6 +24,11 @@ class Menu
     private ?string $Price = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex(
+        pattern :' /(\.|\/)(jpe?g|png)$/i' ,
+        match:true,
+        message :'Your file extension is not supported',
+    )]
     private ?string $url_image = null;
 
     #[ORM\Column]
