@@ -17,7 +17,7 @@ class Schedule
     #[ORM\Column(length: 50)]
     private ?string $Day = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $LunchStart = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]

@@ -5,10 +5,36 @@
         {% for open in schedule %}
             <tr>
                 <td>{{ open.day}}</td>
-                <td>{{open.lunchstart|format_datetime('none', 'short', locale='fr')}} à {{open.lunchend|format_datetime('none', 'short', locale='fr')}}</td>
-                <td>{{open.dinnerstart|format_datetime('none', 'short', locale='fr')}} à {{open.dinnerend|format_datetime('none', 'short', locale='fr')}}</td>
+
+                {% if open.lunchstart|date('H:i') is same as('00:00') and open.dinnerstart|date('H:i') is same as('00:00') %}
+                    <td>Fermé</td>
+
+                {% elseif open.lunchstart|date('H:i') is same as('00:00') %}
+                    <td>Fermé</td>
+                    <td>{{open.dinnerstart|format_datetime('none', 'short', locale='fr')}} à 
+                        {{open.dinnerend|format_datetime('none', 'short', locale='fr')}}
+                    </td>
+              
+                {% elseif  open.dinnerstart|date('H:i') is same as('00:00') %}
+              
+                    <td>{{open.lunchstart|format_datetime('none', 'short', locale='fr')}} à 
+                        {{open.lunchend|format_datetime('none', 'short', locale='fr')}}
+                    </td>
+                    <td>Fermé</td>
+
+                {% else %}
+                    <td>{{open.dinnerstart|format_datetime('none', 'short', locale='fr')}} à 
+                        {{open.dinnerend|format_datetime('none', 'short', locale='fr')}}
+                    </td>
+                    <td>{{open.dinnerstart|format_datetime('none', 'short', locale='fr')}} à 
+                        {{open.dinnerend|format_datetime('none', 'short', locale='fr')}}
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
        
+
+
+
         </tbody>
  </table>
