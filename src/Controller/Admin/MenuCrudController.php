@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Menu;
-use Symfony\Component\Mime\Part\File;
 use Doctrine\ORM\EntityManagerInterface;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -33,7 +32,7 @@ class MenuCrudController extends AbstractCrudController
     {
         if (!$entityInstance instanceof Menu) return;
 
-        $entityInstance->setUser($this->getUser());
+        $entityInstance->setAdmin($this->getUser());
 
         parent::persistEntity($em, $entityInstance);
     }

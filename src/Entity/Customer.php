@@ -27,6 +27,7 @@ class Customer extends User
     #[ORM\Column(nullable: true)]
     private ?int $DefaultPerson = null;
 
+    
     public function getId(): ?int
     {
         return $this->id;

@@ -25,7 +25,7 @@ class ScheduleCrudController extends AbstractCrudController
     {
         if (!$entityInstance instanceof Schedule) return;
 
-        $entityInstance->setUser($this->getUser());
+        $entityInstance->setAdmin($this->getUser());
 
         parent::persistEntity($em, $entityInstance);
     }
