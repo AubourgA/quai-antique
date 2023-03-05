@@ -8,6 +8,11 @@ window.addEventListener('DOMContentLoaded', () => {
     function openMenu(){
         hamburger.classList.toggle('active');
         navbar.classList.toggle('show');
+        if(hamburger.classList.contains('active')) {
+            document.querySelector('html').style.overflow = 'hidden';
+        } else {
+            document.querySelector('html').style.overflow = 'visible';
+        }
 
     }
 

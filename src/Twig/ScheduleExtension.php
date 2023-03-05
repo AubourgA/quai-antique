@@ -9,15 +9,20 @@ use Twig\Extension\AbstractExtension;
 
 class ScheduleExtension extends AbstractExtension
 {
+    
     private $scheduleRepository;
-
     private $twig;
 
-    public function __construct(ScheduleRepository $scheduleRepository, Environment $twig)
+    public function __construct(ScheduleRepository  $scheduleRepository, Environment $twig)
     {
-        $this->scheduleRepository = $scheduleRepository;
-        $this->twig = $twig;
-    }
+            $this->scheduleRepository = $scheduleRepository;
+            $this->twig = $twig;
+        }
+    /**
+     * create fcn for Twig environment
+     *
+     * @return array
+     */    
     public function getFunctions():array
     {
         return [
@@ -25,6 +30,11 @@ class ScheduleExtension extends AbstractExtension
         ];
     }
 
+    /**
+     * define fcn : get data from DB and render to view
+     *
+     * @return string
+     */
     public function getSchedule():string
     {
        $schedule =  $this->scheduleRepository->findAll();
