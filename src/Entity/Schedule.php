@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ScheduleRepository;
+use App\Entity\Admin;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ScheduleRepository;
 
 #[ORM\Entity(repositoryClass: ScheduleRepository::class)]
 class Schedule
@@ -29,9 +30,9 @@ class Schedule
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $DinnerEnd = null;
 
-    #[ORM\ManyToOne(targetEntity: User::class, cascade:['persist'])]
+    #[ORM\ManyToOne(targetEntity: Admin::class, cascade:['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $User = null;
+    private ?Admin $Admin = null;
 
     public function getId(): ?int
     {
@@ -98,14 +99,14 @@ class Schedule
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getAdmin(): ?Admin
     {
-        return $this->User;
+        return $this->Admin;
     }
 
-    public function setUser(?User $User): self
+    public function setAdmin(?Admin $Admin): self
     {
-        $this->User = $User;
+        $this->Admin = $Admin;
 
         return $this;
     }

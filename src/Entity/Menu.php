@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\MenuRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Admin;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MenuRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
@@ -48,7 +49,7 @@ class Menu
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
-    private ?User $user = null;
+    private ?Admin $Admin = null;
 
     public function __construct()
     {
@@ -197,14 +198,14 @@ class Menu
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getAdmin(): ?Admin
     {
-        return $this->user;
+        return $this->Admin;
     }
 
-    public function setUser(?User $user): self
+    public function setAdmin(?Admin $Admin): self
     {
-        $this->user = $user;
+        $this->Admin = $Admin;
 
         return $this;
     }
