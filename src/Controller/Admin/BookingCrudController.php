@@ -11,6 +11,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -43,12 +45,20 @@ class BookingCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id'),
+            DateTimeField::new('CreatedAt', 'Généré le')
+                    ->setFormat('dd/MM/yyyy à HH:mm'),
             DateField::new('date','Jour')
                     ->setFormat('dd/MM/yyyy'),
             DateField::new('time', 'Heure')
                     ->setFormat('HH:mm'),
             NumberField::new('NumberPerson', 'Nombre Couverts'),
-            TextField::new('Customer', 'Email')
+            TextField::new('Customer.firstname', 'Prenom')
+                    ->onlyOnDetail(),
+            TextField::new('Customer.lastname', 'Nom'),
+            TextField::new('Customer.allergy', 'Allergies')
+                    ->onlyOnDetail(),
+            EmailField::new('Customer.email', 'Email')
+                    ->onlyOnDetail()
         ];
     }
     
