@@ -2,7 +2,34 @@
 
 {% block title %}Hello SubscribeController!{% endblock %}
 
+  {% block stylesheets %}          
+       <link rel="stylesheet" href="/css/form.css">
+    {% endblock %}
+
 {% block body %}
- {{ form(form) }}
- 
+    <div class="grid__form">
+
+            <header>
+                {% include '/partials/_navbar.html.twig' %}
+            </header>
+
+            <main  class="form__container">
+
+                <section class="form__wrapper">
+                    <div class="block__text">
+                         <p>Le Quai Antique</p>
+                    </div>
+                     <div class="block__form">
+                        <h1 class="title__menu pad-y--small center" >Créer son compte</h1>
+                        {{ form(form, { 'attr' : { 'class' : 'form__content'}}) }}
+                     </div>
+
+                </section>
+            </main>
+
+            <footer>
+                 {% include '/partials/_footer.html.twig' %}
+            </footer>
+    </div>
+    
 {% endblock %}

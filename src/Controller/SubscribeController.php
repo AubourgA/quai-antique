@@ -9,11 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class SubscribeController extends AbstractController
 {
     #[Route('/subscribe', name: 'app_subscribe')]
-    public function index(Request $request, EntityManagerInterface $em): Response
+    public function index(Request $request, 
+                         EntityManagerInterface $em,
+                         UserPasswordHasherInterface $passwordHasher): Response
     {
 
       
@@ -24,7 +27,7 @@ class SubscribeController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $customer = $form->getData();
-            $customer->setPassword(password_hash($form->getData()->getPlainPassword(), PASSWORD_DEFAULT));
+            $customer->setPassword($passwordHasher->hashPassword($customer, $form->getData()->getPlainPassword() ));
             $customer->setRoles(["ROLE_CUSTOMER"]);
             $em->persist($customer);
             $em->flush();

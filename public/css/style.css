@@ -104,6 +104,7 @@ a {
     src: url("/fonts/greatvibes/GreatVibes.ttf")   format("truetype");
   }
 
+
   .center {
     text-align: center;
   }
@@ -147,10 +148,20 @@ a {
     font-size: calc(7 * var(--res));
   }
 
+  .item__text--light{
+    font-family: var(--font-text--light);
+  }
+
+  .item__text--regular{
+    font-family: var(--font-text--regular);
+  }
+
  .item__price {
   font-family: var(--font-text--regular);
   font-size: calc(10 * var(--res));
  }
+
+ /* SPACE */
 
 
   .pad-y--small {
@@ -162,6 +173,7 @@ a {
   }
 
   /* BTN */
+
 
   .btn__link{
     font-family: var(--font-text--light);
@@ -217,6 +229,7 @@ a {
     background-color: var(--color-primary);
     padding:0 4px;
     color:var(--color-light);
+    cursor:pointer;
   
 }
 
