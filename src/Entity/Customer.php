@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CustomerRepository;
@@ -26,6 +28,15 @@ class Customer extends User
 
     #[ORM\Column(nullable: true)]
     private ?int $DefaultPerson = null;
+
+    #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Booking::class, orphanRemoval: true)]
+    private Collection $bookings;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->bookings = new ArrayCollection();
+    }
 
     
     public function getId(): ?int
@@ -77,6 +88,36 @@ class Customer extends User
     public function setDefaultPerson(?int $DefaultPerson): self
     {
         $this->DefaultPerson = $DefaultPerson;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Booking>
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings->add($booking);
+            $booking->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): self
+    {
+        if ($this->bookings->removeElement($booking)) {
+            // set the owning side to null (unless already changed)
+            if ($booking->getCustomer() === $this) {
+                $booking->setCustomer(null);
+            }
+        }
 
         return $this;
     }
