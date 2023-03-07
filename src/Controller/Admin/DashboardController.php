@@ -8,6 +8,7 @@ use App\Entity\Meals;
 use App\Entity\Entree;
 use App\Entity\Dessert;
 use App\Entity\Capacity;
+use App\Entity\Gallery;
 use App\Entity\Schedule;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,6 +42,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Les Menus', 'fa-solid fa-list-ul', Menu::class);
         yield MenuItem::section('Reservation');
         yield MenuItem::section('Presentation Plats');
+        yield MenuItem::linkToCrud('Carrousel', 'fa-regular fa-image', Gallery::class);
         yield MenuItem::section('Parametres');
         yield MenuItem::linkToCrud('Limit Places Services', 'fa-solid fa-chair', Capacity::class);
         yield MenuItem::linkToCrud('Les Horaires', 'fa-solid fa-clock', Schedule::class);
