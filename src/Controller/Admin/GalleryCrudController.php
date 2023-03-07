@@ -45,7 +45,8 @@ class GalleryCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('title'),
-            ImageField::new('URLimage')
+            ImageField::new('URLimage', 'URL Image')
+            ->setBasePath('/img/slideshow')
             ->setUploadDir('public/img/slideshow')
             ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
             ->setHelp('.jpg or .png only')

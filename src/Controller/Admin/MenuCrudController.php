@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 
 class MenuCrudController extends AbstractCrudController
 {
@@ -41,35 +42,38 @@ class MenuCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
+
+          
+            FormField::addPanel('Menu Info :'),
             TextField::new('Title'),
             TextField::new('Price'),
 
-
             ImageField::new('url_image')
-                    ->setUploadDir('public/img/menus')
-                    ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
-                    ->hideOnIndex()
-                    ->setHelp('.jpg or .png only'),
+            ->setUploadDir('public/img/menus')
+            ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]')
+            ->hideOnIndex()
+            ->setHelp('.jpg or .png only'),
+            FormField::addPanel('Menu Composition :'),
             DateTimeField::new('createdAt')
                 ->hideOnForm(),
+
+             
             AssociationField::new('entree')
                     ->setFormTypeOptions( [
                         'multiple'=> true,
                         'by_reference' => false
-                        ])
-                    ->hideOnIndex(),
+                    ]),
+                   
             AssociationField::new('meals')
             ->setFormTypeOptions( [
                 'multiple'=> true,
                 'by_reference' => false
-                ])
-            ->hideOnIndex(),
+            ]),
             AssociationField::new('dessert')
             ->setFormTypeOptions( [
                 'multiple'=> true,
                 'by_reference' => false
-                ])
-            ->hideOnIndex(),
+            ]),
             BooleanField::new('isActive', 'Afficher le Menu ?'),
             
         ];
