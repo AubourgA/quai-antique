@@ -9,6 +9,9 @@
 
 
 {% block body %}
+
+  
+
 <div class="grid__form ">
     <header>
         {% include '/partials/_navbar.html.twig' %}
@@ -19,6 +22,14 @@
             <h1 class="regular__text" >Bonjour <span class="">{{ app.user.firstname }}</span>  </h1>
             <p class="item__text--light">Date d'inscription : {{ app.user.createdAt| date("d/m/Y")}}</p>
         </div>
+
+         {% for message in app.flashes('success') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+
         <section class="block__cards">
             <h2 class="second__title">Mes Réservations</h2>
             <div class="cards__wrapper d-flex--btw">
@@ -31,19 +42,19 @@
                             <thead>
                                 <tr>
                                     <th>Date</th>
-                                    <th>Convive</th>
+                                    <th>Couvert</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {# {% for booking in bookings %}
+                                {% for booking in nextBooking %}
                                     <tr>
                                         <td>{{ booking.date|date('d/m/Y')}}</td>
                                         <td>{{ booking.numberPerson }}</td>
                                         <td> <button>ANNULER</button> </td>
 
                                     </tr>
-                                {% endfor %} #}
+                                {% endfor %}
                             </tbody>
                         </table>
 
@@ -59,7 +70,7 @@
                             <thead>
                                 <tr>
                                     <th>Date</th>
-                                    <th>Convive</th>
+                                    <th>Couvert</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,17 +96,17 @@
                         <h3>Coordonnées</h3>
                     </div>
                     <div class="card__table">
-                       <ul>
+                       <ul class="list__item">
                                 <li class="d-flex--btw">
-                                    <p>Nom</p>   
+                                    <p>Nom :</p>   
                                     <p> {{ app.user.lastname }}<p>
                                 </li>
                                 <li class="d-flex--btw">
-                                    <p>Prenom</p>   
+                                    <p>Prenom :</p>   
                                     <p> {{ app.user.firstname }}<p>
                                 </li>
                                <li class="d-flex--btw">
-                                    <p>Email</p>   
+                                    <p>Email :</p>   
                                     <p> {{ app.user.email }}<p>
                                 </li>
                        </ul>
@@ -105,7 +116,7 @@
                 </article>
                 <article class="card">
                      <div class="card__header">
-                        <h3>Valeur par Défaut</h3>
+                        <h3>Renseignements</h3>
                     </div>
                     <div class="card__table">
                         <form action="/customer/account/modify" method="POST">

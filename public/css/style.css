@@ -9,8 +9,13 @@
     --color-instagram : #e1306c;
     --color-twitter : #1da1f2;
     --color-table : #beaa997e;
+
+    --color-sucess-bg :#d1e7dd;
+    --color-succes-font :#0f5132;
+
     --font-title--regular: "Dosis Regular";
     --font-title--bold : "Dosis Bold";
+
 
     --font-text--light : "Montserrat Light";
     --font-text--regular : "Montserrat Regular";
@@ -102,6 +107,14 @@ a {
     font-style: normal;
     font-weight: 400;
     src: url("/fonts/greatvibes/GreatVibes.ttf")   format("truetype");
+  }
+
+  .flash-notice {
+    color: var(--color-succes-font);
+    background-color: var(--color-sucess-bg);
+    padding:1rem;
+    margin:0.5rem 0;
+    font-size: 16px;
   }
 
 
@@ -638,7 +651,7 @@ border-bottom:2px solid var(--color-dark);
   background:var(--color-secondary);
 }
 
-.card__table tbody tr:nth-child(odd){
+.card__table tbody tr:nth-child(even){
   background-color: var(--color-table);
 }
 
@@ -658,6 +671,13 @@ border-bottom:2px solid var(--color-dark);
 .group__form input {
   display: inline-block;
   width:150px;
+}
+
+.list__item {
+
+  display: flex;
+  flex-direction: column;
+  gap:10px;
 }
 /*****************/
   /* RESPONSIVE*/
