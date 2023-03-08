@@ -8,8 +8,14 @@
                 <li class="list__item"><a href=" {{ path('app_menus') }}">Nos Menus</a></li>
                 <li class="list__item"><a href=" {{ path('app_meals') }}">La Carte</a></li>
                 <li class="list__item"><a href="#">Réserver</a></li>
-                <li class="list__item"><a href="{{ path('app_subscribe' )}}">S'inscricre</a></li>
-                <li class="list__item btn__connect"><a href="{{ path('app_login')}}">Se Connecter</a></li>
+                {% if app.user %}
+
+                    <li class="list__item"><a href="{{ path('app_customer_account' )}}">Mon Espace</a></li>
+                    <li class="list__item"><a href="{{ path('app_logout' )}}">Deconnexion</a></li>
+                {% else %}
+                    <li class="list__item"><a href="{{ path('app_subscribe' )}}">S'inscricre</a></li>
+                    <li class="list__item btn__connect"><a href="{{ path('app_login')}}">Se Connecter</a></li>
+                {% endif %}
             </ul>
 
             <div class="navbar__hamburger">

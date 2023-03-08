@@ -8,7 +8,7 @@
     --color-facebook : #3b5998;
     --color-instagram : #e1306c;
     --color-twitter : #1da1f2;
-    
+    --color-table : #beaa997e;
     --font-title--regular: "Dosis Regular";
     --font-title--bold : "Dosis Bold";
 
@@ -109,6 +109,12 @@ a {
     text-align: center;
   }
 
+  .d-flex--btw{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .main__title{
     font-size:calc(25 * var(--res));
     font-family: var(--font-title--bold);
@@ -150,6 +156,7 @@ a {
 
   .item__text--light{
     font-family: var(--font-text--light);
+    font-size: clamp(12px, 2vmin, 2rem);
   }
 
   .item__text--regular{
@@ -562,6 +569,96 @@ font-family: var(--font-text--light);
   justify-content: center;
   gap:10px;
 }
+
+
+/**
+ ACCOUNT PAGE
+*/
+
+.block__info {
+  background: var(--color-primary);
+  padding: 1rem 2rem;
+}
+
+
+
+
+.block__cards > h2 {
+  padding: 5px;
+}
+.cards__wrapper {
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.block__cards {
+  border:1px solid var(--color-border);
+  margin:2rem auto;
+  padding:1rem;
+  max-width: 750px;
+  margin:10px auto;
+}
+
+.card{
+ min-width:300px;
+ min-height: 150px;
+ margin-bottom:10px;
+ border:1px solid var(--color-dark);
+ border-radius: 5px 5px 0 0;
+}
+
+.card__header {
+  border-bottom:1px solid var(--color-dark);
+  padding:10px 5px;
+  background-color: rgba(0,0,0,0.08);
+  color:var(--color-secondary);
+}
+
+
+/* table*/
+.card__table {
+  padding:0.5rem;
+}
+.card__table table {
+margin:1rem auto;
+}
+
+.card__table thead th {
+color:var(--color-light);
+border-bottom:2px solid var(--color-dark);
+}
+
+.card__table table th,
+.card__table table td {
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+.card__table thead {
+  background:var(--color-secondary);
+}
+
+.card__table tbody tr:nth-child(odd){
+  background-color: var(--color-table);
+}
+
+.group__form {
+  margin:10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.group__form label{
+  display: inline-block;
+  width: 100px;
+
+}
+
+.group__form textarea,
+.group__form input {
+  display: inline-block;
+  width:150px;
+}
 /*****************/
   /* RESPONSIVE*/
 /*****************/
@@ -647,6 +744,10 @@ font-family: var(--font-text--light);
         gap:5px;
       }
      
+      .cards__wrapper {
+        justify-content: center;
+        gap:15px;
+      }
   }
 
   @media screen and (max-width:650px){

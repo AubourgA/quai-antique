@@ -1,20 +1,135 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CustomerAccountController!{% endblock %}
+{% block title %}Compte Utilisateur{% endblock %}
+
+{% block stylesheets %}          
+    <link rel="stylesheet" href="/css/form.css">
+
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="grid__form ">
+    <header>
+        {% include '/partials/_navbar.html.twig' %}
+    </header>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <main class="container">
+        <div class="block__info d-flex--btw">
+            <h1 class="regular__text" >Bonjour <span class="">{{ app.user.firstname }}</span>  </h1>
+            <p class="item__text--light">Date d'inscription : {{ app.user.createdAt| date("d/m/Y")}}</p>
+        </div>
+        <section class="block__cards">
+            <h2 class="second__title">Mes Réservations</h2>
+            <div class="cards__wrapper d-flex--btw">
+                <article class="card">
+                    <div class="card__header">
+                        <h3>Prochaine Réservation</h3>
+                    </div>
+                    <div class="card__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Convive</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {# {% for booking in bookings %}
+                                    <tr>
+                                        <td>{{ booking.date|date('d/m/Y')}}</td>
+                                        <td>{{ booking.numberPerson }}</td>
+                                        <td> <button>ANNULER</button> </td>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/FormationWeb/Training/Training_Php/symfony-project/LeQuaiAntique/src/Controller/CustomerAccountController.php'|file_link(0) }}">src/Controller/CustomerAccountController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/FormationWeb/Training/Training_Php/symfony-project/LeQuaiAntique/templates/customer_account/index.html.twig'|file_link(0) }}">templates/customer_account/index.html.twig</a></code></li>
-    </ul>
+                                    </tr>
+                                {% endfor %} #}
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </article>
+                <article class="card">
+                     <div class="card__header">
+                        <h3>Historique</h3>
+                    </div>
+                    <div class="card__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Convive</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for booking in bookings %}
+                                    <tr>
+                                        <td>{{ booking.date|date('d/m/Y')}}</td>
+                                        <td>{{ booking.numberPerson }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </article>
+            
+            </div>
+        </section>
+         <section class="block__cards">
+            <h2 class="second__title">Mes Informations</h2>
+            <div class="cards__wrapper d-flex--btw">
+                <article class="card">
+                    <div class="card__header">
+                        <h3>Coordonnées</h3>
+                    </div>
+                    <div class="card__table">
+                       <ul>
+                                <li class="d-flex--btw">
+                                    <p>Nom</p>   
+                                    <p> {{ app.user.lastname }}<p>
+                                </li>
+                                <li class="d-flex--btw">
+                                    <p>Prenom</p>   
+                                    <p> {{ app.user.firstname }}<p>
+                                </li>
+                               <li class="d-flex--btw">
+                                    <p>Email</p>   
+                                    <p> {{ app.user.email }}<p>
+                                </li>
+                       </ul>
+
+                    </div>
+
+                </article>
+                <article class="card">
+                     <div class="card__header">
+                        <h3>Valeur par Défaut</h3>
+                    </div>
+                    <div class="card__table">
+                        <form action="/customer/account/modify" method="POST">
+                            <div class="group__form">
+                                <label for="allergy">Allergies</label>
+                                <textarea type="text" id="allergy" name="allergy">{{app.user.allergy}}</textarea>
+                            </div>
+                            <div class="group__form">
+                                <label for="person">Nb Personne</label>
+                                <input type="integer" id="person" name="person" value="{{app.user.defaultPerson}}">  
+                            </div>
+                            <button type="submit" class="btn">MODIFIER</button>
+                        </form>
+
+                    </div>
+                </article>
+            
+            </div>
+        </section>
+    </main>
+
+    <footer>
+         {% include '/partials/_footer.html.twig' %}
+    </footer>
 </div>
+
 {% endblock %}
