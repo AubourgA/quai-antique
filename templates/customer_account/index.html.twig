@@ -119,17 +119,18 @@
                         <h3>Renseignements</h3>
                     </div>
                     <div class="card__table">
-                        <form action="/customer/account/modify" method="POST">
-                            <div class="group__form">
-                                <label for="allergy">Allergies</label>
-                                <textarea type="text" id="allergy" name="allergy">{{app.user.allergy}}</textarea>
-                            </div>
-                            <div class="group__form">
-                                <label for="person">Nb Personne</label>
-                                <input type="integer" id="person" name="person" value="{{app.user.defaultPerson}}">  
-                            </div>
+                     
+                        {{form_start(form, {'action': path('app_customer_modify')})}}
+                                <div class="group__form">
+                                {{ form_row(form.Allergy) }}
+                                </div>
+                                <div class="group__form">
+                                {{ form_row(form.DefaultPerson) }}
+                                </div>
+                          
+                        {{form_rest(form)}}
                             <button type="submit" class="btn btn--edit">MODIFIER</button>
-                        </form>
+                        {{form_end(form)}}
 
                     </div>
                 </article>

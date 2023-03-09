@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CustomerRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
 class Customer extends User
@@ -27,6 +28,11 @@ class Customer extends User
     private ?string $Allergy = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\Regex(
+        pattern :' /[0-9]/i' ,
+        match:true,
+        message :'Uniquement un nombre',
+    )]
     private ?int $DefaultPerson = null;
 
     #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Booking::class, orphanRemoval: true)]
