@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Customer;
-use App\Form\SubscribeType;
+
 use App\Repository\BookingRepository;
 use App\Repository\CustomerRepository;
 use Doctrine\ORM\EntityManagerInterface;

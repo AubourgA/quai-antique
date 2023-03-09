@@ -12,7 +12,8 @@
 
     --color-sucess-bg :#d1e7dd;
     --color-succes-font :#0f5132;
-
+    --color-danger-bg : #dc3545;
+    --color-warning-bg : #ffc107;
     --font-title--regular: "Dosis Regular";
     --font-title--bold : "Dosis Bold";
 
@@ -194,6 +195,23 @@ a {
 
   /* BTN */
 
+  .btn {
+    outline:none;
+    border:none;
+    padding:4px 8px;
+    cursor:pointer;
+    font-family: var(--font-title--bold);
+    color:var(--color-light);
+    letter-spacing: 2px;
+  }
+
+  .btn--edit {
+    background: var(--color-warning-bg);
+  }
+
+  .btn--danger {
+    background-color: var(--color-danger-bg);
+  }
 
   .btn__link{
     font-family: var(--font-text--light);
@@ -236,7 +254,7 @@ a {
     position:absolute;
     width:0%;
     height:3px;
-    bottom:-5px;
+    bottom:6px;
     background-color: var(--color-primary);
     transition: width 0.2s ease;
 }

@@ -51,7 +51,7 @@
                                     <tr>
                                         <td>{{ booking.date|date('d/m/Y')}}</td>
                                         <td>{{ booking.numberPerson }}</td>
-                                        <td> <button>ANNULER</button> </td>
+                                        <td> <button class="btn btn--danger">ANNULER</button> </td>
 
                                     </tr>
                                 {% endfor %}
@@ -128,7 +128,7 @@
                                 <label for="person">Nb Personne</label>
                                 <input type="integer" id="person" name="person" value="{{app.user.defaultPerson}}">  
                             </div>
-                            <button type="submit" class="btn">MODIFIER</button>
+                            <button type="submit" class="btn btn--edit">MODIFIER</button>
                         </form>
 
                     </div>
