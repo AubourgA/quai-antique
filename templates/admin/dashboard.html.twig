@@ -1,14 +1,14 @@
 {% extends '@!EasyAdmin/layout.html.twig' %}
 
  {% block content %}
-     <article class="content">
+     <article class="content admin-content">
             {% block content_header_wrapper %}
                 {% set has_help_message = (ea.crud.helpMessage ?? '') is not empty %}
                 <section class="content-header">
                     {% block content_header %}
                         <div class="content-header-title">
                             <h1 class="title">
-                                {% block content_title %}Bienvenue Administrateur : {{app.user.alias}}{% endblock %}         
+                                {% block content_title %}Bienvenue Administrateur : <span class="title--effect"> {{app.user.alias}}</span>{% endblock %}         
                             </h1>
                         </div>
 
@@ -21,39 +21,86 @@
 
             <section id="main" class="content-body">
             {% block main %}
-                <div class="row">
-                    <h2>Les Reservations</h2>
-                    <article class="col-6" >
-                        <h4>Aujourd hui</h4>
-                        <div class="content row">
-                            <article class="content__left col-6">
-                                <h4 class="midi">Midi</h4>
-                                <p></p>
-                            </article>
-                            <article class="content__right col-6">
-                                <h4 class="midi">Soir</h4>
-                                <p></p>
-                            </article>
-
+                <div class="main__admin">
+                  
+                  <section class="cards__block">
+                        <div class="cards__header">
+                            <h2 class="title__h2">Reservations</h2>
                         </div>
-                    </article>
-                    <article class="col-6" >
-                        <h4>A venir</h4>
-                    </article>
-                
-                </div>
+                        <div class="cards__content">
+                            <article class="item-card">
+                                <div class="item-card__header">
+                                    <h3 class="title__h3">Aujourd'hui</h3>
+                                    <img src="{{ asset('img/icones/calendar1.png') }}" alt="table restaurant">
+                                </div>
+                                <div class="item-card__content grid__item">
+                                     <p class="text">Service Midi</p>
+                                     <p class="text text--bold">5</p>
+                                     <p class="text">Service Soir</p> 
+                                     <p class="text text--bold">10</p>  
+                                </div>
+                                
+                            </article>
+                            <article class="item-card">
+                                <div class="item-card__header">
+                                    <h3 class="title__h3">Demain</h3>
+                                    <img src="{{ asset('img/icones/calendar2.png') }}" alt="">
+                                </div>
+                                <div class="item-card__content grid__item">
+                                    <p class="text">Service Midi</p>
+                                     <p class="text text--bold">5</p>
+                                     <p class="text">Service Soir</p> 
+                                     <p class="text text--bold">10</p>  
 
-                 <div class="row">
-                    <h2>Evolution des reservations sur les 30 derniers jours</h2>
-                    
+                                </div>
+                            </article>
+                            <article class="item-card">
+                                <div class="item-card__header">
+                                    <h3 class="title__h3">7 jours</h3>
+                                    <img src="{{ asset('img/icones/calendar7.png') }}" alt="calendrier">
+                                </div>
+                               <div class="item-card__content grid__item">
+                                    <p class="text">Service Midi</p>
+                                     <p class="text text--bold">5</p>
+                                     <p class="text">Service Soir</p> 
+                                     <p class="text text--bold">10</p>  
+
+                                </div>
+                            </article>
+                        </div>
+                  
+                  </section>
                 
+                <section class="cards__block">
+                         <div class="cards__header">
+                            <h2 class="title__h2">Evolution sur 30 jours</h2>
+                        </div>
+                        <div class="cards__content">
+                           <div class="js-tab-lunch" data-abs="{{ dataLunch }}"> </div>
+                           <div class="js-tab-dinner" data-abs="{{ dataDinner }}"> </div>
+                           <div class="js-tab-date" data-abs="{{ dataDate }}"> </div>
+                            <canvas id="booking__graph" height="50"></canvas>
+                        </div>
+                
+                </section>
+                
+                    
+
                 </div>
                    
                 
              {% endblock %}
             </section>
 
-         
+         <div class="links">
+           Source Icon <a target="_blank" href="https://icons8.com">Icons8</a>
+         </div>
         </article>
      
 {% endblock content %}
+
+{% block body_javascript %}
+   <script src="/js/admin.js"></script>
+ {# <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script> #}
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock body_javascript %}

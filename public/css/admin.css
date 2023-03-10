@@ -1,0 +1,129 @@
+:root{
+    --color-second1: rgb(168, 214, 168);
+    --color-second2: rgb(224, 141, 131);
+    --color-second3: rgb(113, 142, 175);
+
+    --color-outside--bg:rgba(83,155,189,0.7);
+    --color-inside-bg :#faf9f9cb;
+
+    --font--regular : "Montserrat Regular";
+}
+
+*, h1,h2,h3{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Montserrat Regular";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/fonts/montserrat/Montserrat-Regular.ttf")   format("truetype");
+  }
+
+
+.main__admin{
+    background:var(--color-outside--bg);
+    border-radius:15px;
+    padding:15px;
+}
+
+/* TEXT */
+.title--effect{
+  color:salmon;
+}
+
+.title__h2 {
+ letter-spacing:3px;
+ font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(15px, 3vmin, 1.5rem);
+}
+.text--bold {
+    font-weight: bold;
+}
+
+.title__h3 {
+    font-family: var(--font--regular);
+}
+
+/* MAIN */
+.cards__block {
+    background-color: var(--color-inside-bg);
+    margin-top:15px;
+    border-radius: 10px;
+}
+
+.cards__content {
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    padding:15px;
+   
+}
+
+/* SECTION */
+.item-card{ 
+    flex:1 1 calc(100% / 3 - 10px);
+}
+
+.cards__header{
+    background-color: rgba(223, 219, 219, 0.493);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    padding:10px;
+
+}
+.item-card__header{
+    border-radius: 5px 5px 0 0;
+    padding:5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.item-card:nth-child(1) .item-card__header {
+    background: var(--color-second1);
+}
+
+.item-card:nth-child(2) .item-card__header {
+    background: var(--color-second2);
+}
+
+.item-card:nth-child(3) .item-card__header {
+    background: var(--color-second3);
+}
+
+.item-card__content{
+    background-color: white;
+    padding:5px; 
+}
+
+/* INSIDE CARD CONTENT */
+.grid__item{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap:10px;
+
+}
+
+.grid__item p {
+    padding:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+@media screen and (max-width : 560px) {
+    .item-card{ 
+        flex:100%;
+        
+    }
+}
