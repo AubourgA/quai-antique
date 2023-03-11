@@ -76,12 +76,16 @@
                             <h2 class="title__h2">Evolution sur 30 jours</h2>
                         </div>
                         <div class="cards__content">
-                           <div class="js-tab-lunch" data-abs="{{ dataLunch }}"> </div>
-                           <div class="js-tab-dinner" data-abs="{{ dataDinner }}"> </div>
-                           <div class="js-tab-date" data-abs="{{ dataDate }}"> </div>
-                            <canvas id="booking__graph" height="50"></canvas>
+                            <div class="cards__graph-data">
+                                <div class="js-tab-lunch" data-abs="{{ dataLunch }}"> </div>
+                                <div class="js-tab-dinner" data-abs="{{ dataDinner }}"> </div>
+                                <div class="js-tab-date" data-abs="{{ dataDate }}"> </div>
+                            </div>
+                            <div class="canvas">
+                                <canvas id="booking__graph" height="200" with="1000"></canvas>
+                            </div>
+
                         </div>
-                
                 </section>
                 
                     

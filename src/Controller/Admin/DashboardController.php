@@ -25,9 +25,10 @@ class DashboardController extends AbstractDashboardController
     {
         
         //graph
-        $dataLunch = [65,59,80,81,55,40];
-        $dataDinner = [30,25,25,25,25,25];
-        $dataDate = ['30/2/2023','29/2/2023','28/02/2023','27/02/2023','26/02/2023','27/2023'];
+        $dataLunch = [5,12,5,8,7,5,7,8,4,5,4,5,6,7,8,9,8,7,5,2,2,0,0,4,5,6,2,4,8,5];
+        $dataDinner = [5,8,10,5,5,7,2,7,8,9,5,2,4,2,6,8,7,5,4,5,4,8,5,8,5,4,5,6,5,4];
+        $dataDate = ['27/2/2023','28/2/2023','01/03/2023','02/03/2023','03/02/2023','04/03/2023','05/03/2023','06','07','08',
+    '09','10','11','14','15','27'];
 
          return $this->render('admin/dashboard.html.twig', [
             'dataLunch' => json_encode($dataLunch),
@@ -70,7 +71,5 @@ class DashboardController extends AbstractDashboardController
     {
         return Assets::new()
                     ->addCssFile('css/admin.css');
-                    // ->addJsFile('js/admin.js');
-                 
     }
 }

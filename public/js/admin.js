@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){
 
     const graphBooking = document.querySelector('#booking__graph');
-    let days = [];
+    
     let tabLunch = document.querySelector('.js-tab-lunch');
     let tabDinner = document.querySelector('.js-tab-dinner');
     let tabDate = document.querySelector('.js-tab-date');
@@ -10,18 +10,11 @@ document.addEventListener('DOMContentLoaded', function(){
     let dataLunch = JSON.parse(tabLunch.dataset.abs, true);
     let dataDinner = JSON.parse(tabDinner.dataset.abs, true);
     let dataDate= JSON.parse(tabDate.dataset.abs, true);
-    // let dataDinner = [25,40,30,45,85,12];
     
   
 
-   
-
-
-
-
     const data = {
-    //   labels: ['Janvier','fev','mar','avr','mai','juin'],
-        labels: dataDate,
+      labels: dataDate,
       datasets: [
         {
         data: dataLunch,
@@ -64,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function(){
             }
           },
           responsive:true,
+          maintainAspectRatio:false
         },
       })
     
