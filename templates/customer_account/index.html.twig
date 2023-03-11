@@ -13,6 +13,21 @@
   
 
 <div class="grid__form ">
+
+    <!-- MODAL -->
+    <div class="modal__wrapper">
+        <div class="overlay"></div>
+        <div class="modal">
+            <h2 class="text--bold">Confirmation :</h2>
+            <p class="regular__text">Voulez vous annuler votre réservation ?</p>
+            <div class="modal__action">
+                <button class="btn btn--valid" id="btn__valid">OUI</button>
+                <button class="btn btn--danger" id="btn__cancel">NON</button>
+            </div>
+        </div>
+    
+    </div>
+
     <header>
         {% include '/partials/_navbar.html.twig' %}
     </header>
@@ -51,8 +66,13 @@
                                     <tr>
                                         <td>{{ booking.date|date('d/m/Y')}}</td>
                                         <td>{{ booking.numberPerson }}</td>
-                                        <td> <button class="btn btn--danger">ANNULER</button> </td>
-
+                                        <td> 
+                                            <button class="btn btn--danger" 
+                                                    id="modalCancel" 
+                                                    data-id={{ booking.id }} 
+                                                    data-path = "/customer/account/delete">
+                                                    ANNULER</button> 
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

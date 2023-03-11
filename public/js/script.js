@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
   
+
     
     // MENU TOGGLE
     const hamburger = document.querySelector('.navbar__hamburger');
@@ -19,10 +20,13 @@ window.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener("click", openMenu);
 
 
-
-    
     // Gestion Carrousel
     const carrousel = document.querySelector('.carrousel__wrapper');
+    if(carrousel) {
+
+
+    
+    
 
     const slides = Array.from(document.querySelectorAll('.carrousel__pics'));
     
@@ -89,5 +93,36 @@ window.addEventListener('DOMContentLoaded', () => {
     //slider manual
     next.addEventListener("click", nextSlide);
     previous.addEventListener('click', prevSlide);
+    }
+
+    //display modal cancel action (customer page)
+    const btnDispalyModal = document.querySelector('#modalCancel');
+
+    if(btnDispalyModal) {
+        let idBooking;
+        let path;
+
+        const modal = document.querySelector('.modal__wrapper');
+        const btnCancel = document.querySelector('#btn__cancel');
+        const btnValid = document.querySelector('#btn__valid');
+        
+        
+        btnDispalyModal.addEventListener('click', (e) => {
+            modal.classList.add('active');
+            idBooking = e.target.dataset.id;
+            path = e.target.dataset.path;
+            
+
+        })
+        
+        btnCancel.addEventListener('click', ()=> {
+            modal.classList.remove('active');
+       })
+
+       btnValid.addEventListener('click', ()=> {
+        location.href = `${path}/${idBooking}`;
+       })
+
+    }
 })
 

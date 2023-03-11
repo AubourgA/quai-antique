@@ -9,7 +9,7 @@
     --color-instagram : #e1306c;
     --color-twitter : #1da1f2;
     --color-table : #beaa997e;
-
+    --overlay:#4b4a4a94;
     --color-sucess-bg :#d1e7dd;
     --color-succes-font :#0f5132;
     --color-danger-bg : #dc3545;
@@ -213,6 +213,9 @@ a {
     background-color: var(--color-danger-bg);
   }
 
+  .btn--valid {
+    background-color: var(--color-succes-font);
+  }
   .btn__link{
     font-family: var(--font-text--light);
     border:1px solid var(--color-light);
@@ -697,6 +700,72 @@ border-bottom:2px solid var(--color-dark);
   flex-direction: column;
   gap:10px;
 }
+
+/* modal */
+.modal__wrapper {
+  visibility: hidden;
+  position:fixed;
+  top:0;
+  width:100vw;
+  height:100vh;
+  transition: visibility 0.4s;
+}
+
+.modal__wrapper.active {
+  visibility:visible;
+
+}
+
+.overlay {
+  opacity:0;
+  position:absolute;
+  height:100%;
+  width:100%;
+  background-color: var(--overlay);
+  transition: opacity 0.4s 0.2s ease-out;
+}
+
+.modal__wrapper.active .overlay {
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
+}
+.modal {
+  position:absolute;
+  opacity:0;
+  top:40%;
+  left:50%;
+  transform: translate(-50%, calc(-50% - 50px ));
+  min-width: 250px;
+  width:70%;
+  max-width:450px;
+  background: var(--color-light);
+  padding:20px;
+  border-radius: 5px;
+  transition: opacity 0.4s 0.2s ease-out,
+              transform 0.4s ease-out;
+
+
+}
+
+.modal__wrapper.active .modal {
+ opacity:1;
+ transform: translate(-50%, -50%);
+ transition: opacity 0.4s 0.2s ease-out,
+            transform 0.6s ease-out;
+}
+
+.modal p {
+  padding:5px 0;
+}
+.modal__action {
+  display: flex;
+  justify-content: flex-end;
+  gap:15px;
+  margin-top:1rem;
+
+}
+
+
 /*****************/
   /* RESPONSIVE*/
 /*****************/

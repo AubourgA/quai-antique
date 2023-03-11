@@ -46,10 +46,21 @@ class BookingRepository extends ServiceEntityRepository
                             ->andWhere('b.customer = :val')
                             ->andWhere('b.Date >= :val2')
                             ->setParameter('val', $value)
-                            ->setParameter('val2', new \DateTimeImmutable('now'))
+                            ->setParameter('val2', Date('Y-m-d'))
                             ->getQuery()
                             ->getResult();
     }
+
+    public function CountBookingByDate($date)
+    {
+        return $this->createQueryBuilder('b')
+                        ->select('count(b.Date)')
+                        ->andWhere('b.Date =:val1')
+                        ->setParameter('val1', $date)
+                        ->getQuery()
+                        ->getSingleScalarResult();
+    }
+
 //    /**
 //     * @return Booking[] Returns an array of Booking objects
 //     */

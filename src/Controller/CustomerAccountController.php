@@ -3,13 +3,11 @@
 namespace App\Controller;
 
 
+use App\Entity\Booking;
 use App\Entity\Customer;
 use App\Form\CustomerInfoType;
 use App\Repository\BookingRepository;
-use App\Repository\CustomerRepository;
-use App\Services\UpdateCustomerService;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +17,7 @@ class CustomerAccountController extends AbstractController
 {
     #[Route('/customer/account', name: 'app_customer_account')]
     public function index(BookingRepository $bookingRepository, 
-                            Request $request, EntityManagerInterface $em,
+                           EntityManagerInterface $em,
                             ): Response
     {
 
@@ -57,5 +55,19 @@ class CustomerAccountController extends AbstractController
 
         return  $this->redirectToRoute('app_customer_account');
         
+    }
+    /* A TRANSFERET DANS BOOKING EN CHANGENT LE LIEN ET A CHANGER DANS CUSTOMER INDEX LIGNE 73*/
+    #[Route('/customer/account/delete/{id}', name: 'app_delete_booking')]
+    public function delete(EntityManagerInterface $em, Booking $booking):Response
+    {
+          //protect if user want to delete booking of other customer
+          if($booking->getCustomer() != $this->getUser()) {
+            throw $this->createAccessDeniedException();
+        }
+
+        $em->remove($booking);
+        $em->flush();
+
+        return $this->redirectToRoute('app_customer_account');   
     }
 }
