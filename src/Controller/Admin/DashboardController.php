@@ -37,24 +37,34 @@ class DashboardController extends AbstractDashboardController
     {
         
         //Get all value needed out of booking 
-        $countTodayLunch = $this->bookingRepository->CountBookingByDate(date("Y-m-d"));
-
+      
+        $countToday = $this->bookingRepository->countBooking('16:00', date('Y-m-d'), date('Y-m-d'));
+        $count1     = $this->bookingRepository->countBooking('16:00', date('Y-m-d',strtotime('+ 1 day')), date('Y-m-d',strtotime('+ 1 day')));
+        $count7     = $this->bookingRepository->countBooking('16:00',date('Y-m-d'), date('Y-m-d',strtotime('+ 7 day')));
+  
+        //get data for graphic
+        $graphData = $this->bookingRepository->countGroupBooking('16:00',date("Y-m-d"),date('Y-m-d',strtotime('- 30 day')));
         
+        // get lunch
         
-        //graph
-        $dataLunch = [5,12,5,8,7,5,7,8,4,5,4,5,6,7,8,9,8,7,5,2,2,0,0,4,5,6,2,4,8,5];
-        $dataDinner = [5,8,10,5,5,7,2,7,8,9,5,2,4,2,6,8,7,5,4,5,4,8,5,8,5,4,5,6,5,4];
-        $dataDate = ['27/2/2023','28/2/2023','01/03/2023','02/03/2023','03/02/2023','04/03/2023','05/03/2023','06','07','08',
-    '09','10','11','14','15','27'];
+        $dataLunch = [];
+        $dataDinner = [];
+        $dataDate = [];
+        for($i=0; $i< count($graphData); $i++) {
+                $dataLunch[] = $graphData[$i]['LUNCH'];
+                $dataDinner[] = $graphData[$i]['DINNER'];
+               $dataDate[] = $graphData[$i]['Date'];
+        }
 
-
-       
+     
 
          return $this->render('admin/dashboard.html.twig', [
-            'countTodayLunch' => $countTodayLunch,
-            'dataLunch' => json_encode($dataLunch),
-            'dataDinner' =>json_encode($dataDinner),
-            'dataDate' => json_encode($dataDate)
+             'dataLunch' => json_encode($dataLunch),
+             'dataDinner' =>json_encode($dataDinner),
+             'dataDate' => json_encode($dataDate),
+            'countToday' => $countToday,
+            'count1'     => $count1,
+            'count7'     => $count7,
          ]
          );
     }

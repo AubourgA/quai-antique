@@ -11,26 +11,30 @@ document.addEventListener('DOMContentLoaded', function(){
     let dataDinner = JSON.parse(tabDinner.dataset.abs, true);
     let dataDate= JSON.parse(tabDate.dataset.abs, true);
     
-  
+  /* transform data for matching date*/
+    let DataTransformDate = [];
+    for(let i=0; i<dataDate.length;i++) {
+      DataTransformDate.push(dataDate[i].date.slice(0,10))
+    }
 
     const data = {
-      labels: dataDate,
+      labels: DataTransformDate,
       datasets: [
         {
-        data: dataLunch,
-        label: "Midi",
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)'
-        ]
-      },
-      {
-        data: dataDinner,
-        label: "Soir",
-        backgroundColor: [
-          'rgba(155, 79, 432, 0.7)'
-        ]
-      }
-    ]
+          data: dataLunch,
+          label: "Midi",
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)'
+          ]
+        },
+        {
+          data: dataDinner,
+          label: "Soir",
+          backgroundColor: [
+            'rgba(155, 79, 432, 0.7)'
+          ]
+       }
+      ]
     };
 
     const config = new Chart( graphBooking, {

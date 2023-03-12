@@ -25,7 +25,7 @@
                   
                   <section class="cards__block">
                         <div class="cards__header">
-                            <h2 class="title__h2">Reservations</h2>
+                            <h2 class="title__h2">Reservations (Couverts)</h2>
                         </div>
                         <div class="cards__content">
                             <article class="item-card">
@@ -35,9 +35,9 @@
                                 </div>
                                 <div class="item-card__content grid__item">
                                      <p class="text">Service Midi</p>
-                                     <p class="text text--bold">{{countTodayLunch}}</p>
+                                     <p class="text text--bold">{{countToday[0].LUNCH|default(0)}}</p>
                                      <p class="text">Service Soir</p> 
-                                     <p class="text text--bold">10</p>  
+                                     <p class="text text--bold">{{countToday[0].DINNER|default(0)}}</p>  
                                 </div>
                                 
                             </article>
@@ -48,9 +48,9 @@
                                 </div>
                                 <div class="item-card__content grid__item">
                                     <p class="text">Service Midi</p>
-                                     <p class="text text--bold">5</p>
+                                     <p class="text text--bold">{{ count1[0].LUNCH|default(0) }}</p>
                                      <p class="text">Service Soir</p> 
-                                     <p class="text text--bold">10</p>  
+                                     <p class="text text--bold">{{ count1[0].DINNER|default(0) }}</p>  
 
                                 </div>
                             </article>
@@ -61,9 +61,9 @@
                                 </div>
                                <div class="item-card__content grid__item">
                                     <p class="text">Service Midi</p>
-                                     <p class="text text--bold">5</p>
+                                     <p class="text text--bold">{{ count7[0].LUNCH|default(0)}}</p>
                                      <p class="text">Service Soir</p> 
-                                     <p class="text text--bold">10</p>  
+                                     <p class="text text--bold">{{ count7[0].DINNER|default(0)}}</p>  
 
                                 </div>
                             </article>

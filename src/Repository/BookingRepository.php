@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Booking;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Booking>
@@ -40,6 +40,12 @@ class BookingRepository extends ServiceEntityRepository
     }
 
 
+    /**
+     * Get next booking by customer
+     *
+     * @param [type] $value
+     * @return array
+     */
     public function findNextBookingOneBy($value) : array
     {
         return $this->createQueryBuilder('b')
@@ -51,38 +57,52 @@ class BookingRepository extends ServiceEntityRepository
                             ->getResult();
     }
 
-    public function CountBookingByDate($date)
-    {
+
+
+/**
+ * Sum of booking in lunch and dinner 
+ *
+ * @param [type] $time (for lunch or dinner)
+ * @param [type] $now   (day reference)
+ * @param [type] $interval  (period for getting booking)
+ * @return array
+ */
+    public function countBooking($time, $dateref, $interval):array
+    {     
         return $this->createQueryBuilder('b')
-                        ->select('count(b.Date)')
-                        ->andWhere('b.Date =:val1')
-                        ->setParameter('val1', $date)
+                        ->select('SUM( CASE WHEN b.time < :val1 THEN b.numberPerson ELSE 0 END) AS LUNCH')
+                        ->addSelect('SUM( CASE WHEN b.time > :val1 THEN b.numberPerson ELSE 0 END) AS DINNER')
+                        ->Where('b.Date >= :val2')
+                        ->andWhere('b.Date <= :val3')
+                        ->setParameter('val1', $time)
+                        ->setParameter('val2', $dateref)
+                        ->setParameter('val3', $interval)
                         ->getQuery()
-                        ->getSingleScalarResult();
+                        ->getResult();          
     }
 
-//    /**
-//     * @return Booking[] Returns an array of Booking objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * Sum of booking in lunch and dinner group by Date
+     *
+     * @param [type] $time
+     * @param [type] $now
+     * @param [type] $interval
+     * @return array
+     */
+    public function countGroupBooking($time, $dateref, $interval):array
+    {     
+        return $this->createQueryBuilder('b')
+                        ->select('SUM( CASE WHEN b.time < :val1 THEN b.numberPerson ELSE 0 END) AS LUNCH')
+                        ->addSelect('SUM( CASE WHEN b.time > :val1 THEN b.numberPerson ELSE 0 END) AS DINNER')
+                        ->addSelect('b.Date')
+                        ->andWhere('b.Date < :val2 ')
+                        ->andWhere('b.Date >= :val3')
+                        ->setParameter('val1', $time)
+                        ->setParameter('val2', $dateref)
+                        ->setParameter('val3', $interval)
+                        ->groupBy('b.Date')
+                        ->getQuery()
+                        ->getResult();          
+    }
 
-//    public function findOneBySomeField($value): ?Booking
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }
