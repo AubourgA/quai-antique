@@ -26,7 +26,7 @@ class CustomerAccountController extends AbstractController
        $form = $this->createForm(CustomerInfoType::class, $customer);
 
         return $this->render('customer_account/index.html.twig', [
-           'bookings' => $bookingRepository->findBy(['customer' => $this->getUser()]),
+           'bookings' => $bookingRepository->findBy(['customer' => $this->getUser()], ['Date' => 'DESC'],5,null),
            'nextBooking' =>$bookingRepository->findNextBookingOneBy($this->getUser()),
            'form' => $form->createView()
         ]);
@@ -43,6 +43,12 @@ class CustomerAccountController extends AbstractController
     public function modify(Request $request, EntityManagerInterface $em):Response
     {
        $customer = $em->getRepository(Customer::class)->find($this->getUser());
+
+       if(!$customer) {
+        throw $this->createNotFoundException(
+            'Pas de client trouvé'
+        );
+       }
 
        $form = $this->createForm(CustomerInfoType::class, $customer);
        $form->handleRequest($request);

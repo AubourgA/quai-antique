@@ -34,7 +34,7 @@
 
     <main class="container">
         <div class="block__info d-flex--btw">
-            <h1 class="regular__text" >Bonjour <span class="">{{ app.user.firstname }}</span>  </h1>
+            <h1 class="regular__text" >Bonjour <span class="text--effect">{{ app.user.firstname }}</span>  </h1>
             <p class="item__text--light">Date d'inscription : {{ app.user.createdAt| date("d/m/Y")}}</p>
         </div>
 
@@ -46,7 +46,7 @@
 
 
         <section class="block__cards">
-            <h2 class="second__title">Mes Réservations</h2>
+            <h2 class="second__title bg--info">Mes Réservations</h2>
             <div class="cards__wrapper d-flex--btw">
                 <article class="card">
                     <div class="card__header">
@@ -62,6 +62,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            {% if nextBooking != null %}
                                 {% for booking in nextBooking %}
                                     <tr>
                                         <td>{{ booking.date|date('d/m/Y')}}</td>
@@ -75,6 +76,11 @@
                                         </td>
                                     </tr>
                                 {% endfor %}
+                            {% else %}
+                                    <tr>
+                                        <td class="item__text--regular">Pas de reservation </td>
+                                    </tr>
+                            {% endif %}
                             </tbody>
                         </table>
 
@@ -83,7 +89,9 @@
                 </article>
                 <article class="card">
                      <div class="card__header">
-                        <h3>Historique</h3>
+                        <h3>Historique </h3>
+                        <p>Mes 5 dernières réservations</p>
+                        
                     </div>
                     <div class="card__table">
                         <table>
@@ -95,7 +103,7 @@
                             </thead>
                             <tbody>
                                 {% for booking in bookings %}
-                                    <tr>
+                                    <tr class="item__text--regular">
                                         <td>{{ booking.date|date('d/m/Y')}}</td>
                                         <td>{{ booking.numberPerson }}</td>
                                     </tr>
@@ -109,14 +117,14 @@
             </div>
         </section>
          <section class="block__cards">
-            <h2 class="second__title">Mes Informations</h2>
+            <h2 class="second__title bg--info">Mes Informations</h2>
             <div class="cards__wrapper d-flex--btw">
                 <article class="card">
                     <div class="card__header">
                         <h3>Coordonnées</h3>
                     </div>
                     <div class="card__table">
-                       <ul class="list__item">
+                       <ul class="list__item item__text--regular">
                                 <li class="d-flex--btw">
                                     <p>Nom :</p>   
                                     <p> {{ app.user.lastname }}<p>
@@ -141,10 +149,10 @@
                     <div class="card__table">
                      
                         {{form_start(form, {'action': path('app_customer_modify')})}}
-                                <div class="group__form">
+                                <div class="group__form item__text--regular">
                                 {{ form_row(form.Allergy) }}
                                 </div>
-                                <div class="group__form">
+                                <div class="group__form item__text--regular">
                                 {{ form_row(form.DefaultPerson) }}
                                 </div>
                           

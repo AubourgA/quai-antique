@@ -14,14 +14,13 @@
     --color-succes-font :#0f5132;
     --color-danger-bg : #dc3545;
     --color-warning-bg : #ffc107;
+    --color-info-bg : #dbcc9b;
+
     --font-title--regular: "Dosis Regular";
     --font-title--bold : "Dosis Bold";
-
-
     --font-text--light : "Montserrat Light";
     --font-text--regular : "Montserrat Regular";
     --font-text--bold : "Montserrat Bold";
-
     --font-menu--regular : "GreatVibes";
     
 }
@@ -129,6 +128,11 @@ a {
     align-items: center;
   }
 
+  .bg--info {
+    background: var(--color-info-bg);
+  }
+
+
   .main__title{
     font-size:calc(25 * var(--res));
     font-family: var(--font-title--bold);
@@ -150,6 +154,7 @@ a {
     font-family: var(--font-text--regular);
     font-size: clamp(15px, 2vmin, 2rem);
   }
+
 
   .title__menu {
     font-family: var(--font-text--bold);
@@ -609,6 +614,7 @@ font-family: var(--font-text--light);
  ACCOUNT PAGE
 */
 
+
 .block__info {
   background: var(--color-primary);
   padding: 1rem 2rem;
@@ -630,21 +636,25 @@ font-family: var(--font-text--light);
   margin:2rem auto;
   padding:1rem;
   max-width: 750px;
-  margin:10px auto;
+  margin:50px auto;
 }
 
 .card{
- min-width:300px;
+ min-width:250px;
+ width:calc(50% - 10px);
  min-height: 150px;
  margin-bottom:10px;
  border:1px solid var(--color-dark);
  border-radius: 5px 5px 0 0;
+ overflow: hidden;
 }
 
 .card__header {
-  border-bottom:1px solid var(--color-dark);
+  /* border-bottom:1px solid var(--color-dark); */
+  box-shadow: 0 2px 8px 2px rgba(0,0,0,0.5);
+
   padding:10px 5px;
-  background-color: rgba(0,0,0,0.08);
+  background-color: rgba(0,0,0,0.04);
   color:var(--color-secondary);
 }
 
@@ -856,11 +866,21 @@ border-bottom:2px solid var(--color-dark);
         gap:15px;
       }
   }
+  @media screen and (max-width:810px){
 
+      .card__table table th,
+      .card__table table td {
+          padding: 0.5rem 10px;
+  }
+  .item__text--regular{
+    font-size: 0.8rem;
+  }
+
+  }
   @media screen and (max-width:650px){
 
       footer{
-        font-size: 12px;
+        font-size: 0.8rem;
       }
 
       .legal .legal__list{
