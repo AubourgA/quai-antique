@@ -53,8 +53,12 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_admin'));
         }
-        if (in_array('ROLE_CUSTOMER', $user->getRoles(), true)) {
-            return new RedirectResponse($this->urlGenerator->generate('app_customer_account'));
+        // if (in_array('ROLE_CUSTOMER', $user->getRoles(), true) ) {
+        //     return new RedirectResponse($this->urlGenerator->generate('app_customer_account'));
+        // }
+
+        if($request->request->get('tunel_booking') && in_array('ROLE_CUSTOMER', $user->getRoles(), true)) {
+            return new RedirectResponse($this->urlGenerator->generate('app_booking_step2'));
         }
 
         
@@ -63,6 +67,11 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
 
     protected function getLoginUrl(Request $request): string
     {
+        if($request->request->get('tunel_booking')) {
+          
+            return $this->urlGenerator->generate('app_booking');
+        }
+
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }

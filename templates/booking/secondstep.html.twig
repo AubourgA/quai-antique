@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+
+<header>
+            {% include '/partials/_navbar.html.twig' %}
+
+            <section class="header__content">
+                <h1 class="main__title">Réservation</h1>
+            </section>
+</header>
+
+<main class="container">
+
+    <section class="progress-bar__wrapper">
+
+        <ul class="progress-bar">
+            <li class="step previous">
+                <p class="step__number">1</p>
+                <p class="step__title">Identification</p>
+            </li>
+            <li class="step ">
+                <p class="step__number current">2</p>
+                <p  class="step__title">Reservation</p>
+            </li>
+              <li class="step ">
+                <p class="step__number">3</p>
+                <p  class="step__title">Confirmation</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="form__block">
+       <h2 class="step__form">Réserver une table au restaurant</h2>
+
+       <div class="block__wrapper">
+
+            <div class="calendar">
+            
+            </div>
+
+
+           {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
+                {{ form_row(form.date)}}
+                {{ form_label(form.numberPerson, 'Nombre')}}
+                {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group'}}) }}
+                {{ form_label(form.Allergy, 'Allergy')}}
+                {{ form_widget(form.Allergy, {'attr': {'class': 'form__group'}}) }}
+
+                <button type="submit">Reserver</button>
+           {{form_end(form)}}
+       </div>
+      
+    </section>
+
+</main>
+
+<footer>
+     {% include '/partials/_footer.html.twig' %}
+</footer>
+
+{% endblock %}

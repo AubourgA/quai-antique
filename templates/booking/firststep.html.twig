@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+
+<header>
+            {% include '/partials/_navbar.html.twig' %}
+
+            <section class="header__content">
+                <h1 class="main__title">Réservation</h1>
+            </section>
+</header>
+
+<main class="container">
+
+    <section class="progress-bar__wrapper">
+
+        <ul class="progress-bar">
+            <li class="step current">
+                <p class="step__number">1</p>
+                <p class="step__title">Identification</p>
+            </li>
+            <li class="step ">
+                <p class="step__number">2</p>
+                <p  class="step__title">Reservation</p>
+            </li>
+              <li class="step ">
+                <p class="step__number">3</p>
+                <p  class="step__title">Confirmation</p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="form__block">
+        <h2 class="step__form">Déja client?</h2>
+       {{ render(controller('App\\Controller\\SecurityController::step1'))}}
+    </section>
+
+</main>
+
+<footer>
+     {% include '/partials/_footer.html.twig' %}
+</footer>
+
+{% endblock %}

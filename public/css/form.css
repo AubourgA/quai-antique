@@ -62,6 +62,14 @@
     color:var(--color-primary);
   }
 
+/* page etape 1 */
+.form__step1 {
+    min-width: 350px;
+    width:30%;
+    margin:0 auto;
+}
+
+
 
   @media screen and (max-width:930px) {
 

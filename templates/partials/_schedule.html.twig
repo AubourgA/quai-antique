@@ -23,8 +23,8 @@
                     <td>Fermé</td>
 
                 {% else %}
-                    <td>{{open.dinnerstart|format_datetime('none', 'short', locale='fr')}} à 
-                        {{open.dinnerend|format_datetime('none', 'short', locale='fr')}}
+                    <td>{{open.lunchstart|format_datetime('none', 'short', locale='fr')}} à 
+                        {{open.lunchend|format_datetime('none', 'short', locale='fr')}}
                     </td>
                     <td>{{open.dinnerstart|format_datetime('none', 'short', locale='fr')}} à 
                         {{open.dinnerend|format_datetime('none', 'short', locale='fr')}}
