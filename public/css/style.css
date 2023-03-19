@@ -553,6 +553,8 @@ footer {
   display: block;
   margin: 15px auto;
   padding: 10px;
+  max-width: 250px;
+  width:100%;
   outline: none;
   border: none;
 }
@@ -565,7 +567,9 @@ form input::placeholder,
   display: block;
   margin: 15px auto;
   padding: 10px;
-  width: 189px;
+  /* width: 189px; */
+  width:100%;
+  max-width: 250px;
   border: none;
   outline: none;
   background-color: var(--color-primary);
@@ -820,6 +824,51 @@ form input::placeholder,
 
 /* step 2*/
 
+.block__wrapper {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin:1rem 0;
+}
+
+.block__wraper:nth-child(2) {
+  min-width:200px;
+}
+
+.grid__calendar {
+  display:grid;
+  grid-template-columns: repeat(7,40px);
+  grid-template-rows: repeat(7,40px);
+  gap:3px;
+}
+
+.item__month{
+  grid-column: span 7;
+  text-align: center;
+}
+
+.box {
+  background: rgba(128, 128, 128, 0.473);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-month {
+  padding:0 25px;
+  cursor:pointer
+}
+
+.user__info {
+  flex:0 1 33%;
+}
+.form__step2{
+  display: flex;
+  flex-direction: column;
+ gap:10px;
+ width:50%;
+ margin:0 auto;
+}
 
 /*****************/
 /* RESPONSIVE*/

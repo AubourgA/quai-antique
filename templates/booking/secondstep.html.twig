@@ -37,20 +37,45 @@
 
        <div class="block__wrapper">
 
-            <div class="calendar">
+            <div class="calendar__date">
+                <h2>Selectionner une date</h2>
+                <div class="grid__calendar">
+                    <div class="box item__month">
+                      <i class="icon-month fa-solid fa-chevron-left"></i> 
+                        {{ currentMonth }}
+                      <i class="icon-month fa-solid fa-chevron-right"></i>
+                    </div>
+                    <div class=" box days">Lun</div>
+                    <div class="box days">Mar</div>
+                    <div class=" box days">Mer</div>
+                    <div class=" box days">Jeu</div>
+                    <div class=" box days">Ven</div>
+                    <div class=" box days">Sam</div>
+                    <div class=" box days">Dim</div>
+                    {% for show in showCalendar %} 
+                        <div class=" box days">{{ show }}</div>
+                    {% endfor %}
+                </div>
             
+            </div>
+            <div class="calendar__time">
+            <h2>Selectionner un horaire</h2>
             </div>
 
 
-           {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
-                {{ form_row(form.date)}}
-                {{ form_label(form.numberPerson, 'Nombre')}}
-                {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group'}}) }}
-                {{ form_label(form.Allergy, 'Allergy')}}
-                {{ form_widget(form.Allergy, {'attr': {'class': 'form__group'}}) }}
+            <div class="user__info">
+            
+            {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
+               
+                    {{ form_label(form.numberPerson, 'Nombre')}}
+                    {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group'}}) }}
+                    {{ form_label(form.Allergy, 'Allergy')}}
+                    {{ form_widget(form.Allergy, {'attr': {'class': 'form__group'}}) }}
 
-                <button type="submit">Reserver</button>
-           {{form_end(form)}}
+                    <button type="submit" class="btn btn__form">Reserver</button>
+            {{form_end(form)}}
+            </div>
+
        </div>
       
     </section>
@@ -61,4 +86,8 @@
      {% include '/partials/_footer.html.twig' %}
 </footer>
 
+{% endblock %}
+
+{% block javascripts %}
+     <script src="/js/calendar.js"></script>
 {% endblock %}
