@@ -41,9 +41,13 @@
                 <h2>Selectionner une date</h2>
                 <div class="grid__calendar">
                     <div class="box item__month">
-                      <i class="icon-month fa-solid fa-chevron-left"></i> 
-                        {{ currentMonth }}
-                      <i class="icon-month fa-solid fa-chevron-right"></i>
+                        <div class="arrow__left">
+                           <i class="icon fa-solid fa-chevron-left"></i> 
+                        </div>
+                        <span class="current__month"> {{ currentMonth }}</span>
+                       <div class="arrow__right">
+                           <i class="icon fa-solid fa-chevron-right"></i>
+                       </div>
                     </div>
                     <div class=" box days">Lun</div>
                     <div class="box days">Mar</div>
@@ -52,9 +56,12 @@
                     <div class=" box days">Ven</div>
                     <div class=" box days">Sam</div>
                     <div class=" box days">Dim</div>
-                    {% for show in showCalendar %} 
-                        <div class=" box days">{{ show }}</div>
-                    {% endfor %}
+                    <div class="grid__calendar item__days">
+                        {% for show in showCalendar %} 
+                            <div class=" box days">{{ show }}</div>
+                        {% endfor %}
+       
+                    </div>
                 </div>
             
             </div>

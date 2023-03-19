@@ -31,26 +31,34 @@ class BookingController extends AbstractController
 
         $user = $this->getUser();
         
-        $currentMonth = $calendar->toString();
-        // $firstTab = $calendar->getFirstDay()->modify('last monday')->format('d');
-
-        
         if($user) {
             $booking->setNumberPerson($user->getDefaultPerson());
             $booking->setAllergy($user->getAllergy());
         }
-
-       
-
-     
+        
         $form = $this->createForm(BookingType::class, $booking);
         
+       
+        
+        $currentMonth = $calendar->toString();
+
         return $this->render('booking/secondstep.html.twig', [
             'form' => $form->createView(),
             'currentMonth' => $currentMonth,
             'showCalendar' => $calendar->show(),
            
             
+        ]);
+    }
+
+    #[Route('/booking/{month}-{year}', name: 'app_calendar')]
+    public function getMonth( $month,  $year):Response
+    {
+        $calendar = new \App\Services\CalendarUtils($month, $year);
+        
+        
+        return $this->render('booking/calendar.html.twig', [
+            'calendar' => $calendar->show()
         ]);
     }
 }

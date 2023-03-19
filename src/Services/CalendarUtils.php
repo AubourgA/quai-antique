@@ -12,10 +12,15 @@ class CalendarUtils
 
     private $months = ['Janvier', 'Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre'];
   
-    public function __construct()
+    public function __construct(?int $month = null, ?int $year = null)
     {
-       $month = intval(date('m'));
-       $year = intval(date('Y'));
+        if($month === null) {
+            $month = intval(date('m'));
+        }
+
+        if($year === null) {
+            $year = intval(date('Y'));
+        }
 
        $this->month = $month;
        $this->year = $year;
@@ -46,14 +51,23 @@ class CalendarUtils
     }
 
 
+    /**
+     * return diff between 
+     *
+     * @return integer
+     */
     public function getLastMonthDays():int
     {
-        $firstMonday = intval($this->getFirstDay()->modify(' last monday')->format('d'));
-        if($firstMonday != 1) {
 
+        $firstMonday = intval($this->getFirstDay()->modify(' last monday')->format('d'));
+       
+       
+        if($firstMonday > 24) {
             $nbDaysLastMonth  = intval($this->getFirstDay()->modify('- 1 day')->format('d'));
             return  $nbDaysLastMonth - $firstMonday + 1;
         }
+
+        return 0;
 
     }
 
@@ -70,10 +84,16 @@ class CalendarUtils
     public function show():array
     {
         $item = [];
-        $start = $this->getFirstDay()->modify('last monday');
-
-        for( $i = 0; $i< $this->getIteration(); $i++) {
-            $item[] = (clone $start)->modify("+$i days")->format('d');
+        $start =  $this->getFirstDay()->modify('last monday');
+        
+       
+        for( $i = 0; $i < $this->getIteration(); $i++) {
+            //starting at least 1 day in first week
+            if( $start->format('d') > 24  ) {
+                $item[] = (clone $start)->modify("+$i days")->format('d');
+            } else {
+                $item[] = $this->getFirstDay()->modify(" +$i days")->format('d'); 
+            }
         }
 
         return $item;
