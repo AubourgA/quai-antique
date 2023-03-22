@@ -124,6 +124,13 @@ a {
   align-items: center;
 }
 
+.d-flex--wrap{
+  display:flex;
+  flex-wrap:wrap;
+  align-items: flex-start;
+  gap:5px;
+}
+
 .bg--info {
   background: var(--color-info-bg);
 }
@@ -827,7 +834,7 @@ form input::placeholder,
 .block__wrapper {
   display:flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   margin:1rem 0;
 }
 
@@ -842,8 +849,10 @@ form input::placeholder,
   gap:3px;
 }
 
-
-
+.grid__title {
+  padding:1rem 0;
+  text-align: center;
+}
 .item__month{
   grid-column: span 7;
   text-align: center;
@@ -857,11 +866,28 @@ form input::placeholder,
   border-radius:2px;
 }
 
+.item__day {
+  cursor:pointer;
+}
+
 .icon {
   padding:0 25px;
   cursor:pointer;
   padding:0.7rem;
 
+}
+
+.time__zone {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-auto-rows: minmax(50px auto);
+  gap:5px;
+  max-width:300px;
+}
+.list__time{
+  background: red;
+  padding:10px;
+  cursor:pointer;
 }
 
 .user__info {
@@ -873,6 +899,15 @@ form input::placeholder,
  gap:10px;
  width:50%;
  margin:0 auto;
+}
+
+#booking_Date{
+  outline:none;
+  border:none;
+}
+
+#booking_Date {
+  font-size: 1.3rem;
 }
 
 /*****************/

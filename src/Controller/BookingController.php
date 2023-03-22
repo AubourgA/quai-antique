@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Booking;
 use App\Form\BookingType;
+use App\Repository\ScheduleRepository;
 use App\Services\CalendarUtils;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,7 +52,7 @@ class BookingController extends AbstractController
         ]);
     }
 
-    #[Route('/booking/{month}-{year}', name: 'app_calendar')]
+    #[Route('/booking/{month}-{year}', name: 'app_calendar', methods:['GET'])]
     public function getMonth( $month,  $year):Response
     {
         $calendar = new \App\Services\CalendarUtils($month, $year);
@@ -61,4 +62,19 @@ class BookingController extends AbstractController
             'calendar' => $calendar->show()
         ]);
     }
+
+    #[Route('/booking/time/{day}', name: 'app_boking_time', methods:['GET'])]
+    public function display( string $day, ScheduleRepository $scheduleRepository):Response
+    {
+      
+        $creneaux = $scheduleRepository->findOneBy(['Day' => $day]);
+        
+       
+        $test = $creneaux->getLunchStart();
+        return $this->render('booking/calendarTime.html.twig', [
+          'test' => $test
+        ]);
+    }
+
+
 }

@@ -38,7 +38,7 @@
        <div class="block__wrapper">
 
             <div class="calendar__date">
-                <h2>Selectionner une date</h2>
+                <h2 class="grid__title" >Selectionner une date</h2>
                 <div class="grid__calendar">
                     <div class="box item__month">
                         <div class="arrow__left">
@@ -58,22 +58,29 @@
                     <div class=" box days">Dim</div>
                     <div class="grid__calendar item__days">
                         {% for show in showCalendar %} 
-                            <div class=" box days">{{ show }}</div>
+                            <div class=" box item__day">{{ show }}</div>
                         {% endfor %}
        
                     </div>
                 </div>
             
             </div>
+
             <div class="calendar__time">
-            <h2>Selectionner un horaire</h2>
+                 <h2 class="grid__title">Selectionner un horaire</h2>
+                <div class="time__zone">
+                   
+                </div>
             </div>
 
 
             <div class="user__info">
-            
+                <h2 class="grid__title">Votre Réservation</h2>
             {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
-               
+                    {{ form_label(form.Date, 'Le')}} 
+                    {{ form_widget(form.Date)}}
+                    {{ form_label(form.time, 'à')}}
+                    {{ form_widget(form.time)}}
                     {{ form_label(form.numberPerson, 'Nombre')}}
                     {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group'}}) }}
                     {{ form_label(form.Allergy, 'Allergy')}}
