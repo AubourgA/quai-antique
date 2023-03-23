@@ -10,7 +10,7 @@ class CalendarUtils
     private int $month;
     private int $year;
 
-    private $months = ['Janvier', 'Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre'];
+    private $months = ['janvier', 'février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
   
     public function __construct(?int $month = null, ?int $year = null)
     {
