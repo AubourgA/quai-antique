@@ -105,4 +105,17 @@ class BookingRepository extends ServiceEntityRepository
                         ->getResult();          
     }
 
+
+    public function countByLunchDay($day, $ref):?int
+    {
+        return $this->createQueryBuilder('b')
+                ->select('count(b.id)')
+                ->where('b.Date = :val1')
+                ->andWhere('b.time < :val2')
+                ->setParameter('val1', $day)
+                ->setParameter('val2', $ref)
+                ->getQuery()
+                ->getSingleScalarResult();
+    }
+
 }

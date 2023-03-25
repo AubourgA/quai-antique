@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 class BookingType extends AbstractType
@@ -15,13 +16,18 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+     
             ->add('Date', DateType::class, [
                 'widget'=>'single_text',
-                'disabled' => true
+                'attr' => [
+                    'readonly' => true
+                ]
             ])
             ->add('time', TimeType::class, [
                 'widget' => 'single_text',
-                'disabled'=>true
+                'attr' => [
+                    'readonly' => true
+                ]
             ])
             ->add('numberPerson')
             ->add('Allergy')

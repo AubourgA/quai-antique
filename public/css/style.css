@@ -885,7 +885,7 @@ form input::placeholder,
   max-width:300px;
 }
 .list__time{
-  background: red;
+  background: rgb(125, 170, 230);
   padding:10px;
   cursor:pointer;
 }

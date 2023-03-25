@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Booking;
 use App\Form\BookingType;
-use App\Repository\ScheduleRepository;
 use App\Services\CalendarUtils;
+use App\Repository\BookingRepository;
+use App\Repository\CapacityRepository;
+use App\Repository\ScheduleRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,7 +31,10 @@ class BookingController extends AbstractController
     }
 
     #[Route('/booking/reserve', name: 'app_booking_step2')]
-    public function step2(CalendarUtils $calendar):Response
+    public function step2(CalendarUtils $calendar, 
+                            Request $request,
+                            EntityManagerInterface $em
+                            ):Response
     {
         $booking = new Booking;
 
@@ -38,6 +46,18 @@ class BookingController extends AbstractController
         }
         
         $form = $this->createForm(BookingType::class, $booking);
+        $form->handleRequest($request);
+       
+        if($form->isSubmitted() && $form->isValid()) {
+            $booking->setCustomer($user);
+            $data = $form->getData();
+            $em->persist($data);
+            $em->flush();
+
+            return $this->redirectToRoute('app_booking_step3');
+            
+        }
+
         
        
         
@@ -51,10 +71,17 @@ class BookingController extends AbstractController
             
         ]);
     }
+
+
+    #[Route('/booking/confirm', name: 'app_booking_step3')]
+    public function step3(): Response
+    {
+        return $this->render('booking/finalstep.html.twig', []);
+    }
     /**
      * create calendar and return via AJAX
      */
-    #[Route('/booking/{month}-{year}', name: 'app_calendar', methods:['GET'])]
+    #[Route('/booking/{month}-{year}', name: 'app_calendar', methods:['POST'])]
     public function getMonth( $month,  $year):Response
     {
         $calendar = new \App\Services\CalendarUtils($month, $year);
@@ -68,7 +95,7 @@ class BookingController extends AbstractController
     /**
      * get opening time and return via ajax period for booking
      */
-    #[Route('/booking/time/{day}', name: 'app_boking_time', methods:['GET'])]
+    #[Route('/booking/time/{day}', name: 'app_boking_time', methods:['POST'])]
     public function display( string $day, ScheduleRepository $scheduleRepository, CalendarUtils $calendar):Response
     {
       
@@ -86,5 +113,38 @@ class BookingController extends AbstractController
         ]);
     }
 
+    #[Route('/booking/check/{date}/{hour}', name: 'app_booking_hour', methods:['POST'])]
+    public function checkDate($date, 
+                              $hour, 
+                              BookingRepository $bookingRepository, 
+                              CapacityRepository $capacityRepository): Response
+    {
+        //define time to determine time period
+       $hour_ref = date("H:i", strtotime("16:00"));
+       $hourtime = date("H:i", strtotime("$hour"));
+
+       //get limit capacity
+        $limit = $capacityRepository->findOneBy(['id' => 1]);
+       
+        
+
+       if($hourtime < $hour_ref) {
+           $nbbooks = $bookingRepository->countByLunchDay("$date",'16:00');
+           if ($nbbooks >= $limit->getLunchLimit()) {
+                return $this->json( ['isAvailable' => false], 200);
+           } else {
+            return $this->json(['isAvailable' => true],200);
+           }
+
+       }
+
+       if($hourtime > $hour_ref) {
+        return $this->json( ['message' => 'en attente de la fonction'], 200);
+       }
+
+        
+      
+        return $this->json(['message' => 'place disponible']);
+    }
 
 }
