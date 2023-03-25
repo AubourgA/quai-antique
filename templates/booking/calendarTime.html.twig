@@ -1,23 +1,25 @@
 <div>Midi</div>
 
 <ul class="d-flex--wrap">
-         <li class="list__time" >{{ test|date('H:m') }}</li> 
-         <li class="list__time" >{{ test|date('H:m') }}</li> 
-         <li class="list__time" >{{ test|date('H:m') }}</li> 
-          <li class="list__time" >{{ test|date('H:m') }}</li> 
-           <li class="list__time" >{{ test|date('H:m') }}</li> 
-            <li class="list__time" >{{ test|date('H:m') }}</li> 
-             <li class="list__time" >{{ test|date('H:m') }}</li> 
-               <li class="list__time" >{{ test|date('H:m') }}</li> 
-         <li class="list__time" >{{ test|date('H:m') }}</li> 
-         <li class="list__time" >{{ test|date('H:m') }}</li> 
-          <li class="list__time" >{{ test|date('H:m') }}</li> 
-           <li class="list__time" >{{ test|date('H:m') }}</li> 
-            <li class="list__time" >{{ test|date('H:m') }}</li> 
-             <li class="list__time" >{{ test|date('H:m') }}</li>
+  {% if lunch[0] != '00:00' %}
+    {% for key, value in lunch %}
+         <li class="list__time" >{{ value|date('H:i') }}</li> 
+    {% endfor %}
+  {% else %}
+      <p>Aucun creneau disponible</p>
+
+  {% endif %}
+  
 </ul>
 
 <div>Soir</div>
-<div class="d-flex-wrap">
 
-</div>
+<ul class="d-flex--wrap">
+  {% if dinner[0] != '00:00' %}
+    {% for key, value in dinner %}
+         <li class="list__time" >{{ value|date('H:i') }}</li> 
+    {% endfor %}
+   {% else %}
+    <p>Aucun creneau disponible</p>
+   {% endif %}
+</ul>

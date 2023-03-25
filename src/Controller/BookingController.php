@@ -51,7 +51,9 @@ class BookingController extends AbstractController
             
         ]);
     }
-
+    /**
+     * create calendar and return via AJAX
+     */
     #[Route('/booking/{month}-{year}', name: 'app_calendar', methods:['GET'])]
     public function getMonth( $month,  $year):Response
     {
@@ -63,16 +65,24 @@ class BookingController extends AbstractController
         ]);
     }
 
+    /**
+     * get opening time and return via ajax period for booking
+     */
     #[Route('/booking/time/{day}', name: 'app_boking_time', methods:['GET'])]
-    public function display( string $day, ScheduleRepository $scheduleRepository):Response
+    public function display( string $day, ScheduleRepository $scheduleRepository, CalendarUtils $calendar):Response
     {
       
         $creneaux = $scheduleRepository->findOneBy(['Day' => $day]);
         
+        
+
+        $lunch = $calendar->getPeriodTime(date_format($creneaux->getLunchStart(), 'H:i'),date_format($creneaux->getLunchEnd(), 'H:i'),15);
+        $dinner = $calendar->getPeriodTime(date_format($creneaux->getDinnerStart(), 'H:i'),date_format($creneaux->getDinnerEnd(), 'H:i'),15);
        
-        $test = $creneaux->getLunchStart();
+       
         return $this->render('booking/calendarTime.html.twig', [
-          'test' => $test
+          'lunch' => $lunch,
+          'dinner' =>$dinner
         ]);
     }
 

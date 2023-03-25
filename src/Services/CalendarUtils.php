@@ -105,5 +105,52 @@ class CalendarUtils
         return $this->months[$this->month - 1].' '.$this->year;
     }
 
+
+    /**
+     * return severial time for booking
+     *
+     * @param [type] $openingTime : start service
+     * @param [type] $closedTime : end service
+     * @param [type] $min : period for each service
+     * @return array
+     */
+    public function getPeriodTime($openingTime, $closedTime,$min):array
+    {
+        
+        $from_time = strtotime("$openingTime"); 
+        $to_time = strtotime("$closedTime");
+        $retrait_heur = strtotime("-1 hour", $to_time);
+ 
+        //calcul minute
+        $diff_minutes = round(abs(  ($from_time - $retrait_heur )  / 60));
+        
+        
+        
+        //calcul quart dh'eure
+        $nbPlage = $diff_minutes / $min;
+        
+        $tab = [];
+        //display plage
+        for($i=0; $i<=$nbPlage; $i++) {
+            $taux = $i * $min;
+            $tab[] = $this->addMinutes("$openingTime", "$taux");
+           
+        }
+        return $tab;
+   }
+
+   /**
+    * increase opening hour with period betweening start and end service
+    *
+    * @param [type] $hour
+    * @param [type] $period
+    * @return void
+    */
+    private function addMinutes($hour, $period)
+    {
+        $timestamp = strtotime("$hour");
+        $schedule = strtotime("+$period minutes", $timestamp);
+        return $schedule = date('H:i', $schedule);
+    }
     
 }
