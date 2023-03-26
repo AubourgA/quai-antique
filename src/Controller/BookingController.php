@@ -6,15 +6,17 @@ namespace App\Controller;
 use App\Entity\Booking;
 use App\Form\BookingType;
 use App\Services\CalendarUtils;
+use Symfony\Component\Mime\Email;
 use App\Repository\BookingRepository;
 use App\Repository\CapacityRepository;
 use App\Repository\ScheduleRepository;
+use App\Services\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Mailer\MailerInterface;
 
 class BookingController extends AbstractController
 {
@@ -35,7 +37,7 @@ class BookingController extends AbstractController
     public function step2(CalendarUtils $calendar, 
                             Request $request,
                             EntityManagerInterface $em,
-                            
+                            MailerService $mailerService
                             ):Response
     {
         $booking = new Booking;
@@ -56,7 +58,8 @@ class BookingController extends AbstractController
             $em->persist($data);
             $em->flush();
 
-
+            // $mailerService->sendEmail($booking->getCustomer()->getEmail(),'Resesrvation','Votre reservation a été réalisé');
+            $mailerService->sendEmail('adrien.aubourg@hotmail.fr','Resesrvation','Votre reservation a été réalisé');
 
             return $this->redirectToRoute('app_booking_step3');
             
