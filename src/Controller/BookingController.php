@@ -6,14 +6,12 @@ namespace App\Controller;
 use App\Entity\Booking;
 use App\Form\BookingType;
 use App\Services\CalendarUtils;
-use Symfony\Component\Mime\Email;
 use App\Repository\BookingRepository;
 use App\Repository\CapacityRepository;
 use App\Repository\ScheduleRepository;
 use App\Services\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -66,8 +64,6 @@ class BookingController extends AbstractController
         }
 
         
-       
-        
         $currentMonth = $calendar->toString();
 
         return $this->render('booking/secondstep.html.twig', [
@@ -81,10 +77,20 @@ class BookingController extends AbstractController
 
 
     #[Route('/booking/confirm', name: 'app_booking_step3')]
-    public function step3(): Response
+    public function step3(BookingRepository $bookingRepository): Response
     {
-        return $this->render('booking/finalstep.html.twig', []);
+        
+        if($this->getUser()) {
+            $lastBooking = $bookingRepository->findOneBy(['customer' => $this->getUser()],['Date' => 'DESC']);
+         
+        }
+
+        return $this->render('booking/finalstep.html.twig', ['lastbooking' => $lastBooking]);
     }
+
+
+
+
     /**
      * create calendar and return via AJAX
      */
