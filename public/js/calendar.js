@@ -22,9 +22,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let currentDate = new Date();
 
+    
     //get parameter for fetch API
     let month = currentDate.getMonth() + click;
     let year = currentDate.getFullYear();
+    
+  
 
     let displayMonth = add_months(new Date(currentDate), click - 1);
     let displayMonthFormat = displayMonth.toLocaleDateString("fr-fr", {
@@ -42,6 +45,13 @@ window.addEventListener("DOMContentLoaded", () => {
           addEvent(days, displayTime);
         });
     }
+    if(click> 4) {
+      document.querySelector('.arrow__right').style.visibility = "hidden";
+    }
+    if(click <0) {
+      document.querySelector('.arrow__left').style.visibility = "hidden";
+    }
+  
   }
 
   /* A FINIR */
@@ -50,9 +60,9 @@ window.addEventListener("DOMContentLoaded", () => {
     //reset alert message
     document.getElementById('message').innerText = "";
 
-    if (click > 2) {
-      console.log(click);
-      arrowRight.style.display = "block";
+    if (click > 3) {
+    
+      arrowRight.style.visibility = "visible";
     }
   }
 
@@ -103,6 +113,7 @@ function getNameDay(day) {
 function displayTime(e) {
   //reset message alert
   document.getElementById('message').innerText = "";
+  document.getElementById('message').classList.remove('active');
   
   //get day of the week
   let day = getNameDay(e);
@@ -113,6 +124,7 @@ function displayTime(e) {
       .then((response) => response.text())
       .then((datas) => {
         responseAjax.innerHTML = datas;
+        document.getElementById('booking_time').value = null;
         checkHour();
       });
   }
@@ -133,19 +145,24 @@ function displayTime(e) {
 function checkHour() {
   const periodsTime = document.querySelectorAll('.list__time');
   let formDate = document.getElementById("booking_Date").value;
- 
   if(periodsTime != null) {
-
+    
     periodsTime.forEach( item => {
       item.addEventListener('click', function(e) {
-       let  hour = e.target.innerText;
-       fetch("/booking/check/" + formDate + "/" + hour, { method: "POST" })
-           .then( reponse => reponse.json())
-           .then( datas => {
-            if(datas.isAvailable === true) {
+        let  hour = e.target.innerText;
+        fetch("/booking/check/" + formDate + "/" + hour, { method: "POST" })
+        .then( reponse => reponse.json())
+        .then( datas => {
+          console.log(datas);
+          
+          if(datas.isAvailable === true) {
+              document.getElementById('message').innerText = "";
+              document.getElementById('message').classList.remove('active');
               document.getElementById('booking_time').value = hour;
             }
-            else {
+            if(datas.isAvailable === false) {
+              document.getElementById('booking_time').value = null;
+              document.getElementById('message').classList.add('active');
               document.getElementById('message').innerText = 'Plus de place disponible. Veuillez choisir une autre date'
             }
            });

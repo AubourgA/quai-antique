@@ -37,7 +37,8 @@
     <section class="form__block">
        <h2 class="step__form">Réserver une table au restaurant</h2>
 
-        <div id="message" class="message-alert"></div>
+        <div id="message" class="flash--alert"></div>
+        
 
        <div class="block__wrapper">
 
@@ -82,13 +83,15 @@
             <div class="user__info">
                 <h2 class="grid__title">Votre Réservation</h2>
             {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
+                <div class="group__date">
                     {{ form_label(form.Date, 'Le')}} 
                     {{ form_widget(form.Date)}}
                     {{ form_label(form.time, 'à')}}
                     {{ form_widget(form.time)}}
-                    {{ form_label(form.numberPerson, 'Nombre')}}
+                </div>
+                    {{ form_label(form.numberPerson, 'Nombre de Couvert')}}
                     {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group'}}) }}
-                    {{ form_label(form.Allergy, 'Allergy')}}
+                    {{ form_label(form.Allergy, 'Allergie')}}
                     {{ form_widget(form.Allergy, {'attr': {'class': 'form__group'}}) }}
 
                     <button type="submit" class="btn btn__form">Reserver</button>

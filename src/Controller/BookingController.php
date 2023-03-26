@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\MailerInterface;
 
 class BookingController extends AbstractController
 {
@@ -33,7 +34,8 @@ class BookingController extends AbstractController
     #[Route('/booking/reserve', name: 'app_booking_step2')]
     public function step2(CalendarUtils $calendar, 
                             Request $request,
-                            EntityManagerInterface $em
+                            EntityManagerInterface $em,
+                            
                             ):Response
     {
         $booking = new Booking;
@@ -53,6 +55,8 @@ class BookingController extends AbstractController
             $data = $form->getData();
             $em->persist($data);
             $em->flush();
+
+
 
             return $this->redirectToRoute('app_booking_step3');
             
@@ -125,26 +129,24 @@ class BookingController extends AbstractController
 
        //get limit capacity
         $limit = $capacityRepository->findOneBy(['id' => 1]);
-       
+        $nbbooks = 0;
         
-
+      //condition in fonction lunch or dinner
        if($hourtime < $hour_ref) {
            $nbbooks = $bookingRepository->countByLunchDay("$date",'16:00');
            if ($nbbooks >= $limit->getLunchLimit()) {
                 return $this->json( ['isAvailable' => false], 200);
-           } else {
-            return $this->json(['isAvailable' => true],200);
-           }
-
-       }
+           } 
+        }
 
        if($hourtime > $hour_ref) {
-        return $this->json( ['message' => 'en attente de la fonction'], 200);
-       }
+            $nbbooks = $bookingRepository->countByDinnerDay("$date",'16:00');
+            if( $nbbooks >= $limit->getDinnerLimit()) {
+            
+                return $this->json(['isAvailable' => false, 'nb'=> $nbbooks], 200);
+            }     
+         }
 
-        
-      
-        return $this->json(['message' => 'place disponible']);
+    return $this->json(['isAvailable' => true],200);
     }
-
 }
