@@ -11,6 +11,7 @@ use App\Repository\CapacityRepository;
 use App\Repository\ScheduleRepository;
 use App\Services\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -57,7 +58,8 @@ class BookingController extends AbstractController
             $em->flush();
 
             // $mailerService->sendEmail($booking->getCustomer()->getEmail(),'Resesrvation','Votre reservation a été réalisé');
-            $mailerService->sendEmail('adrien.aubourg@hotmail.fr','Resesrvation','Votre reservation a été réalisé');
+          
+              $mailerService->sendEmail('adrien.aubourg@hotmail.fr','Le Quai Antique : Demande de réservation','votre demande a été confirmé');
 
             return $this->redirectToRoute('app_booking_step3');
             
@@ -70,8 +72,6 @@ class BookingController extends AbstractController
             'form' => $form->createView(),
             'currentMonth' => $currentMonth,
             'showCalendar' => $calendar->show(),
-           
-            
         ]);
     }
 
@@ -81,8 +81,8 @@ class BookingController extends AbstractController
     {
         
         if($this->getUser()) {
-            $lastBooking = $bookingRepository->findOneBy(['customer' => $this->getUser()],['Date' => 'DESC']);
-         
+            $lastBooking = $bookingRepository->findOneBy(['customer' => $this->getUser()],['id' => 'DESC']);
+  
         }
 
         return $this->render('booking/finalstep.html.twig', ['lastbooking' => $lastBooking]);

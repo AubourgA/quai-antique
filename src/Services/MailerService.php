@@ -5,6 +5,7 @@ namespace App\Services;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
 
+
 class MailerService
 {
   
@@ -18,6 +19,7 @@ class MailerService
     public function sendEmail( string $to, string $subject, string $text ): void                 
     {
         $email = (new Email())
+            ->from('lequaiantique@hotmail.com')
             ->to($to)
             ->subject($subject)
             ->text($text);

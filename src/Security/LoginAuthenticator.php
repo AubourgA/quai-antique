@@ -53,15 +53,15 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         if (in_array('ROLE_ADMIN', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_admin'));
         }
-        // if (in_array('ROLE_CUSTOMER', $user->getRoles(), true) ) {
-        //     return new RedirectResponse($this->urlGenerator->generate('app_customer_account'));
-        // }
+        
 
+        //redirect customer if account route or booking route
         if($request->request->get('tunel_booking') && in_array('ROLE_CUSTOMER', $user->getRoles(), true)) {
             return new RedirectResponse($this->urlGenerator->generate('app_booking_step2'));
+        } else if(in_array('ROLE_CUSTOMER', $user->getRoles(), true)) {
+            return new RedirectResponse($this->urlGenerator->generate('app_customer_account'));
         }
 
-        
         return new RedirectResponse($this->urlGenerator->generate('app_home'));
     }
 
