@@ -41,25 +41,27 @@ class BookingController extends AbstractController
     {
         $booking = new Booking;
 
-        $user = $this->getUser();
-        
-        if($user) {
-            $booking->setNumberPerson($user->getDefaultPerson());
-            $booking->setAllergy($user->getAllergy());
+        //if user exist
+        if($this->getUser()) {
+            $booking->setNumberPerson($this->getUser()->getDefaultPerson());
+            $booking->setAllergy($this->getUser()->getAllergy());
         }
         
         $form = $this->createForm(BookingType::class, $booking);
-        $form->handleRequest($request);
        
+        
+        $form->handleRequest($request);       
         if($form->isSubmitted() && $form->isValid()) {
-            $booking->setCustomer($user);
+            $booking->setCustomer($this->getUser());
             $data = $form->getData();
             $em->persist($data);
             $em->flush();
 
-            // $mailerService->sendEmail($booking->getCustomer()->getEmail(),'Resesrvation','Votre reservation a été réalisé');
-          
-              $mailerService->sendEmail('adrien.aubourg@hotmail.fr','Le Quai Antique : Demande de réservation','votre demande a été confirmé');
+         
+            $mailerService->sendEmail($booking->getCustomer()->getEmail(),
+                                        'Le Quai Antique : Demande de réservation',
+                                        $data
+                                     );
 
             return $this->redirectToRoute('app_booking_step3');
             
@@ -99,7 +101,7 @@ class BookingController extends AbstractController
     {
         $calendar = new \App\Services\CalendarUtils($month, $year);
         
-        
+       
         return $this->render('booking/calendar.html.twig', [
             'calendar' => $calendar->show()
         ]);

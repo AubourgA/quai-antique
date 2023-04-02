@@ -139,7 +139,7 @@ a {
 
 .title__menu {
   font-family: var(--font-text--bold);
-  font-size: calc(10 * var(--res));
+  font-size: clamp(25px, 3vmin, 3rem);
   color: var(--color-dark);
 }
 
@@ -195,8 +195,23 @@ a {
   border: 1px solid var(--color-succes-font);
   margin:20px 0;
   padding:10px;
+}
+
+.form--error {
+  color:var(--color-danger-bg);
 
 }
+.form--error li::before{
+  content: 'ERROR';
+  background-color: var(--color-danger-bg);
+  color:var(--color-light);
+  padding:5px;
+  margin-right:5px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
 
 /* POSITION */
 .center {
@@ -351,10 +366,10 @@ a {
 }
 
 .home_bg {
-  background-image: url("/img/header.jpg");
+  background-image: url("/img/header.webp");
 }
 .menus_bg {
-  background-image: url("/img/page_menu.jpg");
+  background-image: url("/img/pagemenu.webp");
 }
 
 .header__content {
@@ -650,13 +665,12 @@ form input::placeholder,
   border: 1px solid var(--color-border);
   margin: 2rem auto;
   padding: 1rem;
-  max-width: 750px;
+  max-width: 850px;
   margin: 50px auto;
 }
 
 .card {
-  min-width: 250px;
-  width: calc(50% - 10px);
+  flex-shrink: 0;
   min-height: 150px;
   margin-bottom: 10px;
   border: 1px solid var(--color-dark);
@@ -674,6 +688,8 @@ form input::placeholder,
 /* table*/
 .card__table {
   padding: 0.5rem;
+  min-width: 250px;
+  width: auto;
 }
 .card__table table {
   margin: 1rem auto;
@@ -694,7 +710,7 @@ form input::placeholder,
   background: var(--color-secondary);
 }
 
-.card__table tbody tr:nth-child(even) {
+.color--line tr:nth-child(even) {
   background-color: var(--color-table);
 }
 
@@ -899,7 +915,7 @@ min-height: 400px;
   background: rgba(128, 128, 128, 0.473);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   border-radius:2px;
 }
 
@@ -1092,6 +1108,11 @@ list-style:disc;
   .item__text--regular {
     font-size: 0.8rem;
   }
+
+  .card {
+    min-width: 100%;
+      }
+
 }
 @media screen and (max-width: 650px) {
   footer {
@@ -1102,4 +1123,6 @@ list-style:disc;
     font-size: 10px;
     gap: 5px;
   }
+
+ 
 }

@@ -1,0 +1,29 @@
+<h1>Votre demande a bien été enregistrée ✔️</h1>
+
+<p>Vous venez de passer une réservation au <strong>QUAI ANTIQUE</strong> et nous en remercions</p>
+
+<table>
+
+    <tr>
+        <th>Date</th>
+        <td> {{date|date('d-m-Y')}}</td>
+    </tr>
+     <tr>
+        <th>Heure</th>
+        <td> {{time|date('H:i')}}</td>
+    </tr>
+     <tr>
+        <th>Nombre de personnes</th>
+        <td>{{nb}}</td>
+    </tr>
+</table>
+
+
+<p>Vous pouvez annuler votre réservation selon les modalités suivantes : </p>
+ <ul class="cancel-list item__text--light">
+                    <li>dans votre espace client</li>
+                    <li>par téléphone</li>
+                    <li>par email</li>
+ </ul>
+                
+<p class="item__text--regular"> ***  Nous vous remercions pour votre réservation ***</p>

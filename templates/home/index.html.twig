@@ -3,7 +3,7 @@
 {% block title %}Le Quai Antique{% endblock %}
 
 {% block body %}
-<header>
+    <header>
         {% include '/partials/_navbar.html.twig' %}
 
         <section class="header__img home_bg">
@@ -21,7 +21,7 @@
 
         <section class="box__wrapper">
             <article class="box__img img__border img__border--left">
-                <img src="/img/pres_section.jpg" alt="chef etoilé">
+                <img src="/img/pres_section.webp" alt="chef etoilé">
             </article>
             <article class="box__content">
                 <div class="box__desc">
@@ -38,7 +38,7 @@
 
         <section class="box__wrapper">
             <article class="box__img img__border img__border--right">
-                <img src="/img/resto.jpg" alt="interieur restaurant">
+                <img src="/img/resto.webp" alt="interieur restaurant">
             </article>
             <article class="box__content">
                 <div class="box__desc">
@@ -59,27 +59,7 @@
             <div class="carousel">
 
                 <div class="carrousel__wrapper">
-                        {# <div class="carrousel__pics">
-                            <div class="pic">
-                                <img src="/img/slideshow/burger.jpg" alt="image2">
-                               
-                            </div>
-                            <p class="regular__text">burger en folie</p>
-                        </div>
-
-                        <div class="carrousel__pics">
-                            <div class="pic">
-                                <img src="/img/slideshow/roule.jpg" alt="image2">
-                            </div>
-                            <p class="regular__text">roule avec sa puree</p>
-                        </div> 
-
-                        <div class="carrousel__pics">
-                            <div class="pic">
-                                <img src="/img/slideshow/salad.jpg" alt="image2">
-                            </div>
-                            <p class="regular__text">salde vege</p>
-                        </div>  #}
+                 
                         {% for slider in sliders %}
 
                          <div class="carrousel__pics">
@@ -105,8 +85,7 @@
     </main>
 
 
-    <footer class="container">
-   
+    <footer>
         {% include '/partials/_footer.html.twig' %}
     </footer>
 

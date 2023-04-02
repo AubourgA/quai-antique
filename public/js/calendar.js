@@ -9,17 +9,25 @@ window.addEventListener("DOMContentLoaded", () => {
   let currentMonth = document.querySelector(".current__month");
   let days = document.querySelectorAll(".item__day");
 
-  let click = 1;
+  //init
+ arrowLeft.style.visibility = "hidden";
+ let click = 1;
 
   /**
    * Generate next month in calendar
    * @returns void
    */
   function getNextMonth() {
+
     click++;
     //reset alert message
     document.getElementById('message').innerText = "";
 
+    if( click > 1) {
+      setTimeout( ()=> {
+        arrowLeft.style.visibility = "visible";
+      },500)
+    }
     let currentDate = new Date();
 
     
@@ -46,24 +54,57 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
     if(click> 4) {
-      document.querySelector('.arrow__right').style.visibility = "hidden";
+      setTimeout( ()=> {
+        document.querySelector('.arrow__right').style.visibility = "hidden";
+
+      },500);
     }
-    if(click <0) {
-      document.querySelector('.arrow__left').style.visibility = "hidden";
-    }
+
   
   }
 
-  /* A FINIR */
+
+  
   function getPreviousMonth() {
     click--;
     //reset alert message
     document.getElementById('message').innerText = "";
 
-    if (click > 3) {
-    
-      arrowRight.style.visibility = "visible";
+    let currentDate = new Date();
+
+    //get parameter for fetch API
+    let month = currentDate.getMonth() + click;
+    let year = currentDate.getFullYear();
+
+    let displayMonth = add_months(new Date(currentDate), click - 1);
+    let displayMonthFormat = displayMonth.toLocaleDateString("fr-fr", {
+      month: "long",
+      year: "numeric",
+    });
+
+    if(currentMonth != null) {
+      fetch("/booking/" + month + "-" + year, { method: "POST" })
+        .then((response) => response.text())
+        .then((datas) => {
+          currentMonth.innerText = ` ${displayMonthFormat}`;
+          blockDays.innerHTML = datas;
+          days = document.querySelectorAll(".item__day");
+          addEvent(days, displayTime);
+        });
     }
+
+    //display arrow in function month
+    if (click > 3) {
+      setTimeout( ()=> {
+        arrowRight.style.visibility = "visible";
+      },500)
+    }
+    if(click <= 1) {
+      setTimeout( ()=> {
+        document.querySelector('.arrow__left').style.visibility = "hidden";
+      },500)
+    }
+   
   }
 
   /* MAIN FUNCTION*/

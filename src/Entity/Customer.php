@@ -19,15 +19,18 @@ class Customer extends User
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
     private ?string $Firstname = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
     private ?string $Lastname = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $Allergy = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\NotBlank()]
     #[Assert\Regex(
         pattern :' /[0-9]/i' ,
         match:true,

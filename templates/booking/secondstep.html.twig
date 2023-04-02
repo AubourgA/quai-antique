@@ -83,6 +83,9 @@
             <div class="user__info">
                 <h2 class="grid__title">Votre Réservation</h2>
             {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
+                <div class="form--error">
+                    {{ form_errors(form.Date) }}
+                </div>
                 <div class="group__date">
                     {{ form_label(form.Date, 'Le')}} 
                     {{ form_widget(form.Date)}}

@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,15 +26,24 @@ class SubscribeType extends AbstractType
                 'attr' => ['class' => 'form-control' ],
                 'label' => 'Nom'
             ])
-            ->add('email', EmailType::class, [
-                'attr' => ['class' => 'form-control' ]
+            // ->add('email', EmailType::class, [
+            //     'attr' => ['class' => 'form-control' ]
+            // ])
+            ->add('email', RepeatedType::class, [
+                'type' => EmailType::class,
+                'invalid_message' => 'Le champ Email doit correspondre',
+                'required' => true,
+                'first_options' => ['label' => 'Email', 'attr'=> ['class' => 'form-control']],
+                'second_options' => ['label' => 'Répéter votre Email', 'attr'=> ['class' => 'form-control']],
+                'attr' => ['class' => 'form-control']
             ])
             ->add('plainpassword', PasswordType::class, [
                 'attr' => ['class' => 'form-control' ],
                 'label' =>'Mot de Passe'
             ])
             ->add('Allergy', TextType::class, [
-                'attr' => ['class' => 'form-control' ]
+                'attr' => ['class' => 'form-control' ],
+                'required' => false
             ])
             ->add('DefaultPerson', NumberType::class , [
                 'attr' => ['class' => 'form-control' ]

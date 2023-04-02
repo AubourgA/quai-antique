@@ -46,13 +46,14 @@ class BookingRepository extends ServiceEntityRepository
      * @param [type] $value
      * @return array
      */
-    public function findNextBookingOneBy($value) : array
+    public function findNextBookingBy($value) : array
     {
         return $this->createQueryBuilder('b')
                             ->andWhere('b.customer = :val')
                             ->andWhere('b.Date >= :val2')
                             ->setParameter('val', $value)
                             ->setParameter('val2', Date('Y-m-d'))
+                            ->orderBy('b.Date', 'ASC')
                             ->getQuery()
                             ->getResult();
     }

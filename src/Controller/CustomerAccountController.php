@@ -27,7 +27,7 @@ class CustomerAccountController extends AbstractController
 
         return $this->render('customer_account/index.html.twig', [
            'bookings' => $bookingRepository->findBy(['customer' => $this->getUser()], ['Date' => 'DESC'],5,null),
-           'nextBooking' =>$bookingRepository->findNextBookingOneBy($this->getUser()),
+           'nextBooking' =>$bookingRepository->findNextBookingBy($this->getUser()),
            'form' => $form->createView()
         ]);
     }

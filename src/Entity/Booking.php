@@ -6,6 +6,8 @@ use App\Repository\BookingRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
 class Booking
 {
@@ -15,6 +17,8 @@ class Booking
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\GreaterThanOrEqual('today',
+     message : 'votre reservation ne doit pas etre a une date inférieur a aujourd hui')]
     private ?\DateTimeInterface $Date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
