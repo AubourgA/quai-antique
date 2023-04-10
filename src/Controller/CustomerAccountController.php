@@ -21,6 +21,8 @@ class CustomerAccountController extends AbstractController
                             ): Response
     {
 
+      $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
        //creation du form partiel
        $customer = $em->getRepository(Customer::class)->find($this->getUser());
        $form = $this->createForm(CustomerInfoType::class, $customer);

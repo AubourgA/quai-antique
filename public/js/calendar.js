@@ -164,6 +164,7 @@ function displayTime(e) {
     fetch("/booking/time/" + day, { method: "POST" })
       .then((response) => response.text())
       .then((datas) => {
+        console.log(datas);
         responseAjax.innerHTML = datas;
         document.getElementById('booking_time').value = null;
         checkHour();
@@ -194,7 +195,7 @@ function checkHour() {
         fetch("/booking/check/" + formDate + "/" + hour, { method: "POST" })
         .then( reponse => reponse.json())
         .then( datas => {
-          console.log(datas);
+         
           
           if(datas.isAvailable === true) {
               document.getElementById('message').innerText = "";
@@ -215,7 +216,7 @@ function checkHour() {
   
   }
   else {
-    alert("pas de valuer");
+    alert("pas de valeur");
   }
 
 }

@@ -10,6 +10,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class BookingType extends AbstractType
 {
@@ -29,8 +31,13 @@ class BookingType extends AbstractType
                     'readonly' => true
                 ]
             ])
-            ->add('numberPerson')
-            ->add('Allergy')
+            ->add('numberPerson', IntegerType::class, [
+                'attr' => [
+                    'min' => 1,
+                    'max' => 10
+                ]
+            ])
+            ->add('Allergy', TextType::class)
         ;
     }
 

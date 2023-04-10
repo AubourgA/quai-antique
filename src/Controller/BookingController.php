@@ -9,9 +9,9 @@ use App\Services\CalendarUtils;
 use App\Repository\BookingRepository;
 use App\Repository\CapacityRepository;
 use App\Repository\ScheduleRepository;
+use App\Services\CheckPlaceUtils;
 use App\Services\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,9 +36,14 @@ class BookingController extends AbstractController
     public function step2(CalendarUtils $calendar, 
                             Request $request,
                             EntityManagerInterface $em,
-                            MailerService $mailerService
+                            MailerService $mailerService,
+                            CheckPlaceUtils $checkPlaceUtils
                             ):Response
     {
+
+      
+        
+
         $booking = new Booking;
 
         //if user exist
@@ -52,6 +57,13 @@ class BookingController extends AbstractController
         
         $form->handleRequest($request);       
         if($form->isSubmitted() && $form->isValid()) {
+           
+            //check place is available
+            if(!$checkPlaceUtils->isAvailable($form->get('Date')->getData(),$form->get('time')->getData(), $form->get('numberPerson')->getData() - 1)) {
+              $this->addFlash('alert', 'Place indisponible. Choisir autre date');
+             return $this->redirectToRoute('app_booking_step2');
+            }
+
             $booking->setCustomer($this->getUser());
             $data = $form->getData();
             $em->persist($data);
@@ -135,33 +147,19 @@ class BookingController extends AbstractController
     #[Route('/booking/check/{date}/{hour}', name: 'app_booking_hour', methods:['POST'])]
     public function checkDate($date, 
                               $hour, 
-                              BookingRepository $bookingRepository, 
-                              CapacityRepository $capacityRepository): Response
+                              CheckPlaceUtils $checkPlace
+                              ): Response
     {
-        //define time to determine time period
-       $hour_ref = date("H:i", strtotime("16:00"));
-       $hourtime = date("H:i", strtotime("$hour"));
 
-       //get limit capacity
-        $limit = $capacityRepository->findOneBy(['id' => 1]);
-        $nbbooks = 0;
-        
-      //condition in fonction lunch or dinner
-       if($hourtime < $hour_ref) {
-           $nbbooks = $bookingRepository->countByLunchDay("$date",'16:00');
-           if ($nbbooks >= $limit->getLunchLimit()) {
-                return $this->json( ['isAvailable' => false], 200);
-           } 
+        if(!$checkPlace->isAvailable($date,$hour)) {
+            return $this->json( ['isAvailable' => false], 200);
         }
 
-       if($hourtime > $hour_ref) {
-            $nbbooks = $bookingRepository->countByDinnerDay("$date",'16:00');
-            if( $nbbooks >= $limit->getDinnerLimit()) {
-            
-                return $this->json(['isAvailable' => false, 'nb'=> $nbbooks], 200);
-            }     
-         }
-
-    return $this->json(['isAvailable' => true],200);
+        
+        return $this->json(['isAvailable' => true],200);
     }
+
+
+
+
 }

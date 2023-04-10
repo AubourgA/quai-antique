@@ -116,7 +116,7 @@ class BookingRepository extends ServiceEntityRepository
     public function countByLunchDay($day, $ref):?int
     {
         return $this->createQueryBuilder('b')
-                ->select('count(b.id)')
+                ->select('SUM(b.numberPerson)')
                 ->where('b.Date = :val1')
                 ->andWhere('b.time < :val2')
                 ->setParameter('val1', $day)
@@ -135,7 +135,7 @@ class BookingRepository extends ServiceEntityRepository
     public function countByDinnerDay($day, $ref):?int
     {
         return $this->createQueryBuilder('b')
-                ->select('count(b.id)')
+                ->select('SUM(b.numberPerson)')
                 ->where('b.Date = :val1')
                 ->andWhere('b.time > :val2')
                 ->setParameter('val1', $day)

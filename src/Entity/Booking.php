@@ -17,14 +17,22 @@ class Booking
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotBlank()]
     #[Assert\GreaterThanOrEqual('today',
      message : 'votre reservation ne doit pas etre a une date inférieur a aujourd hui')]
     private ?\DateTimeInterface $Date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
+    #[Assert\NotBlank()]
     private ?\DateTimeInterface $time = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank()]
+    #[Assert\Range(
+        min: 1,
+        max: 10,
+        notInRangeMessage: 'Couvert entre {{ min }} et {{ max }} personne(s)'
+    )]
     private ?int $numberPerson = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -35,6 +43,7 @@ class Booking
     private ?Customer $customer = null;
 
     #[ORM\Column(type: 'datetime_immutable')]
+    #[Assert\NotBlank()]
     private ?\DateTimeImmutable $CreatedAt = null;
 
 

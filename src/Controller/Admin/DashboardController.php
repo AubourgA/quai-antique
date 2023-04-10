@@ -35,7 +35,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
-        
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         //Get all value needed out of booking 
       
         $countToday = $this->bookingRepository->countBooking('16:00', date('Y-m-d'), date('Y-m-d'));

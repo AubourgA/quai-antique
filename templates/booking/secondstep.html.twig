@@ -82,23 +82,33 @@
 
             <div class="user__info">
                 <h2 class="grid__title">Votre Réservation</h2>
-            {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
-                <div class="form--error">
-                    {{ form_errors(form.Date) }}
-                </div>
-                <div class="group__date">
-                    {{ form_label(form.Date, 'Le')}} 
-                    {{ form_widget(form.Date)}}
-                    {{ form_label(form.time, 'à')}}
-                    {{ form_widget(form.time)}}
-                </div>
-                    {{ form_label(form.numberPerson, 'Nombre de Couvert')}}
-                    {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group'}}) }}
-                    {{ form_label(form.Allergy, 'Allergie')}}
-                    {{ form_widget(form.Allergy, {'attr': {'class': 'form__group'}}) }}
+               
 
-                    <button type="submit" class="btn btn__form">Reserver</button>
-            {{form_end(form)}}
+                {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
+                 {% for message in app.flashes('alert') %}
+                        <div class="flash--alert active">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <div class="form--error">
+                        {{ form_errors(form.Date) }}
+                    </div>
+                    <div class="group__date">
+                        {{ form_label(form.Date, 'Le')}} 
+                        {{ form_widget(form.Date)}}
+                        {{ form_label(form.time, 'à')}}
+                        {{ form_widget(form.time)}}
+                    </div>
+                        {{ form_label(form.numberPerson, 'Nombre de Couvert')}}
+                        {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group'}}) }}
+                        <div class="form--error">
+                           {{ form_errors(form.numberPerson) }}
+                        </div>
+                        {{ form_label(form.Allergy, 'Allergie')}}
+                        {{ form_widget(form.Allergy, {'attr': {'class': 'form__group'}}) }}
+
+                        <button type="submit" class="btn btn__form">Reserver</button>
+                {{form_end(form)}}
             </div>
 
        </div>
