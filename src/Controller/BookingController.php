@@ -57,10 +57,14 @@ class BookingController extends AbstractController
             $em->persist($data);
             $em->flush();
 
-         
-            $mailerService->sendEmail($booking->getCustomer()->getEmail(),
+            
+            $mailerService->sendEmail('lequaiantique@hotmail.com',
+                                        $booking->getCustomer()->getEmail(),
                                         'Le Quai Antique : Demande de réservation',
-                                        $data
+                                        'email/confirm.html.twig',
+                                        ['date' => $data->getDate(),
+                                        'time' => $data->getTime(),
+                                        'nb'=> $data->getNumberPerson() ]
                                      );
 
             return $this->redirectToRoute('app_booking_step3');

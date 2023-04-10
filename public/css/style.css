@@ -62,6 +62,9 @@ a {
   color: inherit;
 }
 
+.underline {
+  text-decoration: underline;
+}
 /**********/
 /* GLOBAL */
 /*********/
@@ -197,6 +200,7 @@ a {
   padding:10px;
 }
 
+
 .form--error {
   color:var(--color-danger-bg);
 
@@ -240,6 +244,10 @@ a {
 
 .pad-top--middle {
   padding-top: 30px;
+}
+
+.pad-top--small {
+  padding-top:5px;
 }
 
 /* BTN */
@@ -400,7 +408,7 @@ a {
 
 .container {
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 /* gestion bordure img*/

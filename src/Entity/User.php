@@ -47,6 +47,9 @@ Abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $token = null;
+
 
     public function __construct()
     {
@@ -154,5 +157,17 @@ Abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->email;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
+
+        return $this;
     }
 }

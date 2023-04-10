@@ -12,6 +12,12 @@
 
     <header>
         {% include '/partials/_navbar.html.twig' %}
+        
+          {% for message in app.flashes('success') %}
+            <div class="flash-notice container">
+                {{ message }}
+            </div>
+        {% endfor %}
     </header>
 
     <main class="form__container">
@@ -41,9 +47,10 @@
                     <input type="hidden" name="_csrf_token"
                         value="{{ csrf_token('authenticate') }}"
                     >
-                    <button class="form__btn btn__connect item__text--regular " type="submit">
+                    <button class="form__btn btn__connect item__text--regular" type="submit">
                         Se Connecter
                     </button>
+                    <p class="size--xs item__text--regular pad-top--small underline"><a href="{{ path('app_askpassword') }}">Mot de passe oublie ?</a></p>
                     <p class="size--xs item__text--light pad-y--small">Pas de compte ? <a href="{{ path('app_subscribe')}}" class="text--underline"> S'inscrire </a> </p>
                 </form>
             </div>

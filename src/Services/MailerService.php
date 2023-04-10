@@ -2,11 +2,8 @@
 
 namespace App\Services;
 
-use DateTime;
-use Symfony\Component\Mime\Email;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
-
 
 
 class MailerService
@@ -19,20 +16,20 @@ class MailerService
         $this->mailer = $mailer;
     }
 
-    public function sendEmail( string $to, string $subject, $info ): void                 
+    public function sendEmail( string $from, 
+                                string $to, 
+                                string $subject, 
+                                string $template, 
+                                array $info ): void                 
     {
      
 
             $email = (new TemplatedEmail())
-                ->from('lequaiantique@hotmail.com')
+                ->from($from)
                 ->to($to)
                 ->subject($subject)
-                ->htmlTemplate('email/confirm.html.twig')
-                ->context( [
-                    'date' => $info->getDate(),
-                    'time' => $info->getTime(),
-                    'nb' => $info->getNumberPerson()
-                 ]);
+                ->htmlTemplate($template)
+                ->context($info);
           
        $this->mailer->send($email);
     }
