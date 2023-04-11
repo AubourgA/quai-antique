@@ -156,8 +156,12 @@
                                 {{ form_row(form.Allergy) }}
                                 </div>
                                 <div class="group__form item__text--regular">
-                                {{ form_row(form.DefaultPerson) }}
+                                {# {{ form_row(form.DefaultPerson) }} #}
+                                {{ form_label(form.DefaultPerson) }}
+                                {{ form_errors(form.DefaultPerson) }}
+                                {{ form_widget(form.DefaultPerson) }}
                                 </div>
+                               
                           
                         {{form_rest(form)}}
                             <button type="submit" class="btn btn--edit">MODIFIER</button>

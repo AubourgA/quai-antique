@@ -26,9 +26,6 @@ class SubscribeType extends AbstractType
                 'attr' => ['class' => 'form-control' ],
                 'label' => 'Nom'
             ])
-            // ->add('email', EmailType::class, [
-            //     'attr' => ['class' => 'form-control' ]
-            // ])
             ->add('email', RepeatedType::class, [
                 'type' => EmailType::class,
                 'invalid_message' => 'Le champ Email doit correspondre',
@@ -43,10 +40,12 @@ class SubscribeType extends AbstractType
             ])
             ->add('Allergy', TextType::class, [
                 'attr' => ['class' => 'form-control' ],
+                'label' => 'Allergies',
                 'required' => false
             ])
             ->add('DefaultPerson', NumberType::class , [
-                'attr' => ['class' => 'form-control' ]
+                'attr' => ['class' => 'form-control' ],
+                'label' => 'Nombre de personnes par défaut'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => ['class' => 'form__btn btn__connect item__text--regular' ],
