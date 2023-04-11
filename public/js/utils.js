@@ -77,6 +77,20 @@ function addEvent(el, callback) {
 }
 
 
+function desactiveDay(item, fn) {
+  let i=0;
+  while( parseInt(item[i].innerText) > 1) {
+    item[i].removeEventListener('click', fn);
+    item[i].classList.remove('item__day');
+    item[i].classList.add('item__day--desactive')
+  
+    i++;
+  }
+ 
+
+  
+
+}
 
 
-export { convertMonthFrtoEn, convertDateFormat, addEvent };
+export { convertMonthFrtoEn, convertDateFormat, addEvent, desactiveDay };

@@ -287,6 +287,33 @@ a {
   width: 0;
 }
 
+.chev{
+  animation: fade-in 1.5s infinite;
+}
+
+.chev-1 {
+  animation-delay: 0.1;
+}
+
+.chev-2 {
+  animation-delay: 0.2s;
+}
+.chev-3 {
+  animation-delay: 0.3s;
+}
+
+@keyframes fade-in {
+  0% {
+    color : var(--color-border);
+  }
+  80% {
+    color:var(--color-light);
+  }
+  100% {
+    color:var(--color-light);
+  }
+}
+
 /***********/
 /* HEADER*/
 /**********/
@@ -326,10 +353,38 @@ a {
 
 .btn__connect {
   background-color: var(--color-primary);
-  padding: 0 4px;
+  padding: 0 10px;
   color: var(--color-light);
   cursor: pointer;
+  overflow: hidden;
+  position:relative;
+  transition: box-shadow 0.2s;
 }
+
+.btn__connect::after {
+  content:'\f090';
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position:absolute;
+  font-size: 1.7rem;
+  top:50%;
+  left:150%;
+  transform:translate(-50%,-50%);
+  transition:left 1s, color 1s 1s;
+  pointer-events:none;
+ 
+}
+.btn__connect:hover{
+ box-shadow: 2px 2px 4px rgba(17, 17, 17, 0.8),
+              4px 4px 4px rgba(17,17,17,0.9);
+color: rgba(17,17,17,0.9);
+}
+
+
+
+
+
+
 
 /* GESTION MENU */
 .navbar__hamburger {
@@ -530,6 +585,8 @@ a {
 .slide-left {
   left: 5%;
 }
+
+
 
 /***********/
 /* FOOTER */
@@ -931,11 +988,15 @@ min-height: 400px;
   cursor:pointer;
 }
 
+.item__day--desactive {
+  background: rgba(128, 128, 128, 0.873);
+  color: rgb(190, 188, 188)
+}
+
 .icon {
   padding:0 25px;
   cursor:pointer;
   padding:0.7rem;
-
 }
 
 .time__zone {

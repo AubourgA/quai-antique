@@ -1,4 +1,4 @@
-import { convertDateFormat, convertMonthFrtoEn, addEvent } from "./utils.js";
+import { convertDateFormat, convertMonthFrtoEn, addEvent, desactiveDay } from "./utils.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   /* VAR */
@@ -22,6 +22,8 @@ window.addEventListener("DOMContentLoaded", () => {
     click++;
     //reset alert message
     document.getElementById('message').innerText = "";
+
+   
 
     if( click > 1) {
       setTimeout( ()=> {
@@ -51,6 +53,8 @@ window.addEventListener("DOMContentLoaded", () => {
           blockDays.innerHTML = datas;
           days = document.querySelectorAll(".item__day");
           addEvent(days, displayTime);
+           //remove event on day which is not in current month
+           desactiveDay(days,displayTime);
         });
     }
     if(click> 4) {
@@ -90,6 +94,8 @@ window.addEventListener("DOMContentLoaded", () => {
           blockDays.innerHTML = datas;
           days = document.querySelectorAll(".item__day");
           addEvent(days, displayTime);
+            //remove event on day which is not in current month
+            desactiveDay(days,displayTime);
         });
     }
 
@@ -108,15 +114,17 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   /* MAIN FUNCTION*/
+  
   arrowRight.addEventListener("click", () => {
     getNextMonth();
   });
-
+  
   arrowLeft.addEventListener("click", () => {
     getPreviousMonth();
   });
-
+  
   addEvent(days, displayTime);
+  desactiveDay(days,displayTime);
 
 });
 
