@@ -1,0 +1,19 @@
+.page {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:80%;
+    margin:0 auto;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    height:100vh;
+    background-color: var(--color-secondary);
+    padding:10px 8rem;
+}
+
+.block__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height:40%;
+}
+

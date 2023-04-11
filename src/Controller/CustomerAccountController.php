@@ -45,11 +45,9 @@ class CustomerAccountController extends AbstractController
     public function modify(Request $request, EntityManagerInterface $em):Response
     {
        $customer = $em->getRepository(Customer::class)->find($this->getUser());
-
+      
        if(!$customer) {
-        throw $this->createNotFoundException(
-            'Pas de client trouvé'
-        );
+        throw $this->createNotFoundException( 'route n\'existe pas');     
        }
 
        $form = $this->createForm(CustomerInfoType::class, $customer);
