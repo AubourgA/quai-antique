@@ -25,8 +25,8 @@
                 <p class="step__number">2</p>
                 <p  class="step__title">Reservation</p>
             </li>
-              <li class="step ">
-                <p class="step__number current">3</p>
+              <li class="step current ">
+                <p class="step__number">3</p>
                 <p  class="step__title">Confirmation</p>
             </li>
         </ul>
@@ -38,33 +38,33 @@
         <p class="flash--confirm">Votre demande a bien été enregistrée ✔️</p>
        
         <div class="content">
-            <h3>Détail de votre réservation :</h3>
+            <h3 class="text--bold">Détail de votre réservation :</h3>
         
             <table class="table--valid">
                     <tr>
-                        <th>Date :</th>
-                        <td>{{lastbooking.Date|date('d/m/Y')}}</td>
+                        <th class="text--bold">Date :</th>
+                        <td class="text--regular">{{lastbooking.Date|date('d/m/Y')}}</td>
                     </tr>
                     <tr>
-                        <th>A :</th>
-                        <td>{{lastbooking.time|date('H:i')}}</td>
+                        <th class="text--bold">A :</th>
+                        <td class="text--regular">{{lastbooking.time|date('H:i')}}</td>
                     </tr>
                     <tr>
-                        <th>Pour :</th>
-                        <td>{{ lastbooking.numberPerson }} personne(s)</td>
+                        <th class="text--bold">Pour :</th>
+                        <td class="text--regular">{{ lastbooking.numberPerson }} personne(s)</td>
                     </tr>
             
             </table>
-                <p class="item__text--light">Vous allez recevoir un mail de confirmation suite à votre réservation</p>
+                <p class="text--light">Vous allez recevoir un mail de confirmation suite à votre réservation</p>
             
-                <p class="cancel-booking item__text--light">Vous pouvez annuler votre réservation simplement : </p>
-                <ul class="cancel-list item__text--light">
+                <p class="cancel-booking text--light">Vous pouvez annuler votre réservation simplement : </p>
+                <ul class="cancel-list text--light">
                     <li>dans votre espace client</li>
                     <li>par téléphone</li>
                     <li>par email</li>
                 </ul>
                 
-                <p class="item__text--regular"> ***  Nous vous remercions pour votre réservation ***</p>
+                <p class="text--regular"> ***  Nous vous remercions pour votre réservation ***</p>
 
           
         </div>

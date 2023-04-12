@@ -47,10 +47,10 @@ class BookingCrudController extends AbstractCrudController
             IdField::new('id'),
             DateTimeField::new('CreatedAt', 'Généré le')
                     ->setFormat('dd/MM/yyyy à HH:mm'),
-            DateField::new('date','Jour')
+            DateField::new('date','Date')
                     ->setFormat('dd/MM/yyyy'),
             DateField::new('time', 'Heure')
-                    ->setFormat('HH:mm'),
+                    ->setFormat('H:mm'),
             NumberField::new('NumberPerson', 'Nombre Couverts'),
             TextField::new('Customer.firstname', 'Prenom')
                     ->onlyOnDetail(),

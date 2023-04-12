@@ -9,7 +9,7 @@
 
             <section class="header__content">
                 <h1 class="main__title">Notre Carte du restaurant</h1>
-                <p class="regular__text pad-top--middle">Notre carte est renouvellée à chaque saison pour vous offrir de nouvelles saveurs</p>
+                <p class="text--regular pad-top--middle">Notre carte est renouvellée à chaque saison pour vous offrir de nouvelles saveurs</p>
             </section>
 </header>
 
@@ -20,17 +20,17 @@
             </article>
             <article class="box__content">
                 <div class="box__desc">
-                    <h2 class="second__title ">LES ENTREES</h2>
+                    <h2 class="second__title">LES ENTREES</h2>
     
                     <ul class="pad-y--small">
 
                        {% for entree in entrees %}
                             <li class="item__wrapper pad-y--small">
                                 <div class="item__content">
-                                    <p class="txt__menu">{{entree.title}}</p>
-                                    <p class="item__text--italic">{{entree.description}}</p>
+                                    <p class="text__menu--regular">{{entree.title}}</p>
+                                    <p class="text--light style--italic">{{entree.description}}</p>
                                 </div>
-                                <p class="item__price">{{entree.price}} €</p>
+                                <p class="text--bold">{{entree.price}} €</p>
                         </li>
                        {% endfor %} 
 
@@ -52,10 +52,10 @@
                       {% for meal in meals %}
                             <li class="item__wrapper pad-y--small">
                                 <div class="item__content">
-                                    <p class="txt__menu">{{meal.title}}</p>
-                                    <p class="item__text--italic">{{meal.description}}</p>
+                                    <p class="text__menu--regular">{{meal.title}}</p>
+                                    <p class="text--light style--italic">{{meal.description}}</p>
                                 </div>
-                                <p class="item__price">{{meal.price}} €</p>
+                                <p class="text--bold">{{meal.price}} €</p>
                         </li>
                        {% endfor %} 
                     </ul>
@@ -73,10 +73,10 @@
                     <ul class="pad-y--small">
                         {% for dessert in desserts %}
                             <li class="item__wrapper pad-y--small">
-                                  <p class="txt__menu">{{dessert.title}}</p>
+                                  <p class="text__menu--regular">{{dessert.title}}</p>
             
                            
-                                 <p class="item__price">{{dessert.price}}</p>
+                                 <p class="text--bold">{{dessert.price}} €</p>
                              </li>
                        {% endfor %} 
                     </ul>

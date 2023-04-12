@@ -39,19 +39,19 @@
                     {% endif %}
 
                     <h1 class="title__menu pad-y--small center">S'identifier</h1>
-                    <label for="inputEmail" class="item__text--regular">Email</label>
+                    <label for="inputEmail" class="text--regular">Email</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder='votreemail@mail.fr'required autofocus>
-                    <label for="inputPassword" class="item__text--regular">Password</label>
+                    <label for="inputPassword" class="text--regular">Password</label>
                     <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="password" required>
 
                     <input type="hidden" name="_csrf_token"
                         value="{{ csrf_token('authenticate') }}"
                     >
-                    <button class="form__btn btn__connect item__text--regular" type="submit">
+                    <button class="form__btn btn__connect text--regular" type="submit">
                         Se Connecter
                     </button>
-                    <p class="size--xs item__text--regular pad-top--small underline"><a href="{{ path('app_askpassword') }}">Mot de passe oublie ?</a></p>
-                    <p class="size--xs item__text--light pad-y--small">Pas de compte ? <a href="{{ path('app_subscribe')}}" class="text--underline"> S'inscrire </a> </p>
+                    <p class="size--xs text--regular pad-top--small underline"><a href="{{ path('app_askpassword') }}">Mot de passe oublie ?</a></p>
+                    <p class="size--xs text--light pad-y--small">Pas de compte ? <a href="{{ path('app_subscribe')}}" class="text--underline"> S'inscrire </a> </p>
                 </form>
             </div>
         </section>

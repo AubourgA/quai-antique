@@ -23,8 +23,8 @@
                 <p class="step__number">1</p>
                 <p class="step__title">Identification</p>
             </li>
-            <li class="step ">
-                <p class="step__number current">2</p>
+            <li class="step current">
+                <p class="step__number">2</p>
                 <p  class="step__title">Reservation</p>
             </li>
               <li class="step ">
@@ -43,7 +43,7 @@
        <div class="block__wrapper">
 
             <div class="calendar__date">
-                <h2 class="grid__title" >Selectionner une date</h2>
+                <h2 class="grid__title text--bold" >Selectionner une date</h2>
                 <div class="grid__calendar">
                     <div class="box item__month">
                         <div class="arrow__left">
@@ -72,7 +72,7 @@
             </div>
 
             <div class="calendar__time">
-                 <h2 class="grid__title">Selectionner un horaire</h2>
+                 <h2 class="grid__title text--bold">Selectionner un horaire</h2>
                  
                 <div class="time__zone">
                    
@@ -81,7 +81,7 @@
 
 
             <div class="user__info">
-                <h2 class="grid__title">Votre Réservation</h2>
+                <h2 class="grid__title text--bold">Votre Réservation</h2>
                
 
                 {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
@@ -94,20 +94,20 @@
                         {{ form_errors(form.Date) }}
                     </div>
                     <div class="group__date">
-                        {{ form_label(form.Date, 'Le')}} 
+                        {{ form_label(form.Date, 'Le' , {'attr' : {'class' : 'text--bold'} })}} 
                         {{ form_widget(form.Date)}}
                         {{ form_label(form.time, 'à')}}
                         {{ form_widget(form.time)}}
                     </div>
                         {{ form_label(form.numberPerson, 'Nombre de Couvert')}}
-                        {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group'}}) }}
+                        {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group text--regular'}}) }}
                         <div class="form--error">
                            {{ form_errors(form.numberPerson) }}
                         </div>
                         {{ form_label(form.Allergy, 'Allergie')}}
-                        {{ form_widget(form.Allergy, {'attr': {'class': 'form__group'}}) }}
+                        {{ form_widget(form.Allergy, {'attr': {'class': 'form__group text--regular'}}) }}
 
-                        <button type="submit" class="btn btn__form">Reserver</button>
+                        <button type="submit" class="btn btn__connect btn__form">Reserver</button>
                 {{form_end(form)}}
             </div>
 

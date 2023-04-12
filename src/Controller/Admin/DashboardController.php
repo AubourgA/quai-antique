@@ -84,7 +84,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Les Desserts', 'fa-solid fa-ice-cream', Dessert::class);
         yield MenuItem::linkToCrud('Les Menus', 'fa-solid fa-list-ul', Menu::class);
         yield MenuItem::section('Reservations');
-        yield MenuItem::linkToCrud('Liste', 'fa-solid fa-utensils', Booking::class);
+        yield MenuItem::linkToCrud('Liste', 'fa-solid fa-utensils', Booking::class)
+                            ->setDefaultSort(['Date' => 'DESC']);
         yield MenuItem::section('Presentation Plats');
         yield MenuItem::linkToCrud('Carrousel', 'fa-regular fa-image', Gallery::class);
         yield MenuItem::section('Parametres');

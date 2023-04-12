@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&family=Montserrat:wght@300;400;700&display=swap');
+
+
 /* VAR */
 :root {
   --color-primary: #908051;
@@ -13,15 +16,16 @@
   --color-sucess-bg: #d1e7dd;
   --color-succes-font: #0f5132;
   --color-danger-bg: #dc3545;
-  --color-warning-bg: #ffc107;
+  --color-warning-bg: #c7980dd8;
   --color-info-bg: #dbcc9b;
 
-  --font-title--regular: "Dosis Regular";
-  --font-title--bold: "Dosis Bold";
-  --font-text--light: "Montserrat Light";
-  --font-text--regular: "Montserrat Regular";
-  --font-text--bold: "Montserrat Bold";
-  --font-menu--regular: "GreatVibes";
+  --font-title: 'Lobster';
+  --font-text:  'Montserrat'; 
+  --font-menu: 'Great Vibes';
+
+  --weight--light : 300;
+  --weight--regular: 400;
+  --weight--bold: 700;
 }
 
 /* RESET*/
@@ -31,10 +35,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  --res: calc(0.02 * 10vmin);
 }
 
 ul {
@@ -65,112 +65,60 @@ a {
 .underline {
   text-decoration: underline;
 }
+
 /**********/
 /* GLOBAL */
 /*********/
 
 /*TYPO */
 
-@font-face {
-  font-family: "Dosis Regular";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/dosis/Dosis-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Dosis Bold";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/dosis/Dosis-Bold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Montserrat Light";
-  font-style: normal;
-  font-weight: 300;
-  src: url("/fonts/montserrat/Montserrat-Light.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Montserrat Regular";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/montserrat/Montserrat-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Montserrat Bold";
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/montserrat/Montserrat-Bold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "GreatVibes";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/greatvibes/GreatVibes.ttf") format("truetype");
-}
-
-
-
-.bg--info {
-  background: var(--color-info-bg);
-}
-
 .main__title {
-  font-size: calc(25 * var(--res));
-  font-family: var(--font-title--bold);
+  font-family: var(--font-title);
+  font-weight: var(--weight--bold);
+  font-size: clamp(40px, 3vw, 5rem);
+  letter-spacing: 0.5rem;
 }
 
 .second__title {
-  font-size: calc(20 * var(--res));
-  font-family: var(--font-title--regular);
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(28px, 2vw, 4rem);
   color: var(--color-dark);
+}
+
+.text--light {
+  font-family: var(--font-text);
+  font-weight: var(--weight--light);
+  font-size: clamp(8px, 2vw, 1rem);
+}
+
+.text--regular {
+  font-family: var(--font-text);
+  font-weight: var(--weight--regular);
+  font-size: clamp(12px, 2vw, 1rem);
 }
 
 .text--bold {
-  font-size: calc(15 * var(--res));
-  font-family: var(--font-text--bold);
+  font-family: var(--font-text);
+  font-weight: var(--weight--bold);
+  color:var(--color-dark);
+  font-size: clamp(12px, 2vw, 1rem);
 }
 
-.regular__text {
-  font-family: var(--font-text--regular);
-  font-size: clamp(15px, 2vmin, 2rem);
+.text__menu--regular {
+  font-family: var(--font-menu);
+  font-weight: var(--weight--regular);
+  font-size: clamp(17px, 4vw,2rem);
+  color:var(--color-dark);
 }
 
-.title__menu {
-  font-family: var(--font-text--bold);
-  font-size: clamp(25px, 3vmin, 3rem);
-  color: var(--color-dark);
-}
-
-.txt__menu {
-  font-family: var(--font-menu--regular);
-  font-size: calc(18 * var(--res));
-}
-
-.item__text--italic {
-  font-family: var(--font-text--light);
+.style--italic {
   font-style: italic;
-  font-size: calc(7 * var(--res));
 }
 
-.item__text--light {
-  font-family: var(--font-text--light);
-  font-size: clamp(12px, 2vmin, 2rem);
+.text__color--secondary {
+  color: var(--color-secondary);
 }
-
-.item__text--regular {
-  font-family: var(--font-text--regular);
-}
-
-.item__price {
-  font-family: var(--font-text--regular);
-  font-size: calc(10 * var(--res));
-}
-
 
 /* MESSAGE ALERT*/
 .flash-notice,
@@ -192,19 +140,20 @@ a {
 }
 
 .flash--confirm{
-  font-family: var(--font-text--bold);
+  font-family: var(--font-text);
+  font-weight: var(--weight--bold);
   font-size: 1.3rem;
   background-color: var(--color-sucess-bg);
   border: 1px solid var(--color-succes-font);
+  color: var(--color-dark);
   margin:20px 0;
   padding:10px;
 }
 
-
 .form--error {
   color:var(--color-danger-bg);
-
 }
+
 .form--error li::before{
   content: 'ERROR';
   background-color: var(--color-danger-bg);
@@ -234,7 +183,6 @@ a {
   align-items: flex-start;
   gap:5px;
 }
-
 
 /* SPACE */
 
@@ -274,7 +222,8 @@ a {
   background-color: var(--color-succes-font);
 }
 .btn__link {
-  font-family: var(--font-text--light);
+  font-family: var(--font-text);
+  font-weight: var(--weight--light);
   border: 1px solid var(--color-light);
   padding: 8px 7px;
   color: var(--color-light);
@@ -323,7 +272,6 @@ a {
   justify-content: space-between;
   align-items: center;
   line-height: 3rem;
-  font-family: var(--font-text--regular);
   padding: 5px;
 }
 
@@ -380,11 +328,9 @@ a {
 color: rgba(17,17,17,0.9);
 }
 
-
-
-
-
-
+.bg--info {
+  background: var(--color-info-bg);
+}
 
 /* GESTION MENU */
 .navbar__hamburger {
@@ -463,7 +409,7 @@ color: rgba(17,17,17,0.9);
 
 .container {
   width: 80%;
-  margin: 0 auto !important;
+  margin: 0 auto;
 }
 
 /* gestion bordure img*/
@@ -593,7 +539,6 @@ color: rgba(17,17,17,0.9);
 /**********/
 
 footer {
-  font-family: var(--font-text--light);
   background-color: var(--color-dark);
   color: var(--color-light);
   padding: 1rem;
@@ -680,13 +625,13 @@ footer {
 
 form input::placeholder,
 .btn__form {
-  font-family: var(--font-text--light);
+  font-family: var(--font-text);
+  font-weight: var(--weight--regular);
 }
 .btn__form {
   display: block;
   margin: 15px auto;
   padding: 10px;
-  /* width: 189px; */
   width:100%;
   max-width: 250px;
   border: none;
@@ -715,7 +660,7 @@ form input::placeholder,
 
 .block__info {
   background: var(--color-primary);
-  padding: 1rem 2rem;
+  padding: 1vw 2vw;
 }
 
 .block__cards > h2 {
@@ -724,6 +669,7 @@ form input::placeholder,
 .cards__wrapper {
   flex-wrap: wrap;
   margin-top: 10px;
+  gap:20px;
 }
 
 .block__cards {
@@ -735,12 +681,12 @@ form input::placeholder,
 }
 
 .card {
-  flex-shrink: 0;
   min-height: 150px;
   margin-bottom: 10px;
   border: 1px solid var(--color-dark);
   border-radius: 5px 5px 0 0;
   overflow: hidden;
+  flex:45%;
 }
 
 .card__header {
@@ -753,11 +699,12 @@ form input::placeholder,
 /* table*/
 .card__table {
   padding: 0.5rem;
-  min-width: 250px;
-  width: auto;
+   width: auto;
 }
 .card__table table {
-  margin: 1rem auto;
+ margin:1rem 0;
+  table-layout: auto;
+  width:100%;
 }
 
 .card__table thead th {
@@ -767,7 +714,7 @@ form input::placeholder,
 
 .card__table table th,
 .card__table table td {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   text-align: center;
 }
 
@@ -779,22 +726,23 @@ form input::placeholder,
   background-color: var(--color-table);
 }
 
+.card__table > form {
+  margin: 0 auto;
+}
 
 .group__form {
-  margin: 10px 0;
+  margin: 5px 0;
   display: flex;
   align-items: center;
 }
 
-.group__form label {
-  display: inline-block;
-  width: 100px;
+.group__form input {
+  padding:2px 5px;
 }
 
-.group__form textarea,
-.group__form input {
+.group__form label {
   display: inline-block;
-  width: 150px;
+  width:150px;
 }
 
 .list__item {
@@ -873,7 +821,7 @@ form input::placeholder,
   padding: 2rem 3rem;
   font-family: var(--font-text--regular);
   font-size: clamp(10px, 2vmin, 2rem);
-  min-width: 250px;
+  min-width: 325px;
 }
 
 .progress-bar {
@@ -1070,12 +1018,9 @@ min-height: 400px;
   padding: 10px 50px;
 }
 
-
 .cancel-booking {
   margin-top:25px;
   text-decoration: underline;
-
-  
 }
 
 .cancel-list li{
@@ -1109,6 +1054,12 @@ list-style:disc;
   .img__border--left::before,
   .img__border--right::before {
     border: 0px solid transparent;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .card{
+    flex:100%;
   }
 }
 
@@ -1174,7 +1125,7 @@ list-style:disc;
   .card__table table td {
     padding: 0.5rem 10px;
   }
-  .item__text--regular {
+  .text--regular {
     font-size: 0.8rem;
   }
 
@@ -1193,5 +1144,17 @@ list-style:disc;
     gap: 5px;
   }
 
+  @media screen and (max-width: 480px) {
+
+    .group__form {
+      display: block;
+    }
+    .group__form > label {
+      display: block;
+      width:100%;
+    }
+  }
  
 }
+
+

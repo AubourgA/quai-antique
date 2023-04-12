@@ -48,7 +48,7 @@ class SubscribeType extends AbstractType
                 'label' => 'Nombre de personnes par défaut'
             ])
             ->add('submit', SubmitType::class, [
-                'attr' => ['class' => 'form__btn btn__connect item__text--regular' ],
+                'attr' => ['class' => 'form__btn btn__connect text--regular' ],
                 'label' => 'S\'inscrire'
             ])
         ;

@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class BookingType extends AbstractType
 {
@@ -22,22 +23,39 @@ class BookingType extends AbstractType
             ->add('Date', DateType::class, [
                 'widget'=>'single_text',
                 'attr' => [
-                    'readonly' => true
+                    'readonly' => true,
+                    'class' => 'text--regular'
                 ]
             ])
             ->add('time', TimeType::class, [
                 'widget' => 'single_text',
                 'attr' => [
-                    'readonly' => true
+                    'readonly' => true,
+                    'class' => 'text--regular'
+                ],
+                'label_attr' => [
+                    'class' => 'text--regular'
                 ]
             ])
             ->add('numberPerson', IntegerType::class, [
                 'attr' => [
                     'min' => 1,
-                    'max' => 10
+                    'max' => 10,
+                    'class' => 'text--regular'
+                ],
+                'constraints' => [
+                    new Assert\Range([
+                        'min' => 1,
+                        'max' => 10,
+                    ])
                 ]
             ])
-            ->add('Allergy', TextType::class)
+            ->add('Allergy', TextType::class, [
+                'attr' => ['class' => 'text--regular' ],
+                'constraints' => [
+                    new Assert\Regex('/^[a-zA-Z ]+$/')
+                ]
+            ])
         ;
     }
 

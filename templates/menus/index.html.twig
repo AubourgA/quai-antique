@@ -12,7 +12,7 @@
 
             <section class="header__content">
                 <h1 class="main__title">Nos Menus</h1>
-                <p class="regular__text pad-top--middle">Le chef vous propose de partager une agréable moment gustative dans un cadre idélique...</p>
+                <p class="text--regular pad-top--middle">Le chef vous propose de partager une agréable moment gustative dans un cadre idélique...</p>
             </section>
     </header>
 
@@ -28,28 +28,28 @@
                 <div class="box__desc">
                     <h2 class="second__title">{{menu.title}}</h2>
     
-                    <h3 class="title__menu pad-y--small">ENTREE</h3>
-                    <ul class="txt__menu">
+                    <h3 class="text--bold pad-y--small text__color--secondary">ENTREE</h3>
+                    <ul class="text__menu--regular">
                         {% for entree in menu.entree %}
                           <li>{{entree.title}}</li>
                         {% endfor %}
                     </ul>
                     
-                    <h3 class="title__menu pad-y--small">PLATS</h3>
-                    <ul class="txt__menu">
+                    <h3 class="text--bold pad-y--small text__color--secondary">PLATS</h3>
+                    <ul class="text__menu--regular">
                         {% for meals in menu.meals %}
                           <li>{{meals.title}}</li>
                         {% endfor %}
                     </ul>
                     
-                    <h3 class="title__menu pad-y--small">DESSERTS</h3>
-                    <ul class="txt__menu">
+                    <h3 class="text--bold pad-y--small text__color--secondary">DESSERTS</h3>
+                    <ul class="text__menu--regular">
                          {% for dessert in menu.dessert %}
                           <li>{{dessert.title}}</li>
                         {% endfor %}
                     </ul>
                  
-                    <p class="regular__text pad-y--small">-- {{ menu.price}} €</p>
+                    <p class="text--bold pad-y--small">-- {{ menu.price}} €</p>
 
                 </div>
             </article>
