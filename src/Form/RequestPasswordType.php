@@ -18,9 +18,9 @@ class RequestPasswordType extends AbstractType
                     'placeholder' => 'exemple@mail.com'
                 ],
                 'label' => 'Entrez votre email',
-                // 'label_attr' => [
-                //     'class' => 'form'
-                // ]
+                'label_attr' => [
+                    'class' => 'text--bold'
+                ]
             ])
         ;
     }

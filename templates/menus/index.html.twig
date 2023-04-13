@@ -7,8 +7,8 @@
     <header>
             {% include '/partials/_navbar.html.twig' %}
 
-            <section class="header__img menus_bg">
-            </section>
+            <div class="header__img menus_bg">
+            </div>
 
             <section class="header__content">
                 <h1 class="main__title">Nos Menus</h1>
@@ -21,9 +21,9 @@
         {% for menu in menus %}
         <section class="box__wrapper center">
 
-            <article class="box__img img__border img__border--left">
+            <div class="box__img img__border img__border--left">
                 <img src="{{ asset('img/menus/'~ menu.urlimage) }}" alt="chef etoilé">
-            </article>
+            </div>
             <article class="box__content">
                 <div class="box__desc">
                     <h2 class="second__title">{{menu.title}}</h2>
@@ -53,8 +53,6 @@
 
                 </div>
             </article>
-
-
         </section>
         {% endfor %}
 

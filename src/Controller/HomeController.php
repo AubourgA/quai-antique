@@ -20,4 +20,16 @@ class HomeController extends AbstractController
             'sliders' => $sliders,
         ]);
     }
+    #[Route('/information/legal', name: 'app_info_legal')]
+    public function mention(): Response
+    {
+        return $this->render('home/information/legal.html.twig');
+    }
+
+    #[Route('/information/confidentiality-policy', name: 'app_info_policy')]
+    public function confidentiality(): Response
+    {
+        return $this->render('home/information/confidentiality.html.twig');
+    }
+
 }

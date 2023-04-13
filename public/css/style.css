@@ -108,7 +108,7 @@ a {
 .text__menu--regular {
   font-family: var(--font-menu);
   font-weight: var(--weight--regular);
-  font-size: clamp(17px, 4vw,2rem);
+  font-size: clamp(25px, 4vw,2rem);
   color:var(--color-dark);
 }
 
@@ -196,6 +196,14 @@ a {
 
 .pad-top--small {
   padding-top:5px;
+}
+
+.pad-bottom--small {
+  padding-bottom: 5px;
+}
+
+.pad-bottom--large {
+  padding-bottom:25px;
 }
 
 /* BTN */
@@ -476,12 +484,13 @@ color: rgba(17,17,17,0.9);
 }
 
 .box__desc p {
-  line-height: clamp(1rem, 3vmin, 1.8rem);
+  flex-shrink: 0;
 }
 
 .item__wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 /* setion Carrousel */
@@ -499,7 +508,7 @@ color: rgba(17,17,17,0.9);
 .carousel {
   position: relative;
   min-width: 250px;
-  max-width: 500px;
+  max-width: 800px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -526,11 +535,11 @@ color: rgba(17,17,17,0.9);
 }
 
 .slide-right {
-  right: 5%;
+  right: 12%;
 }
 
 .slide-left {
-  left: 5%;
+  left: 12%;
 }
 
 
@@ -542,7 +551,7 @@ color: rgba(17,17,17,0.9);
 footer {
   background-color: var(--color-dark);
   color: var(--color-light);
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .footer__item {
@@ -555,6 +564,7 @@ footer {
 .footer__wrapper {
   display: flex;
   justify-content: space-around;
+  padding:2rem 0;
 }
 
 .footer__info h3 + p {
@@ -649,6 +659,9 @@ form input::placeholder,
   background: var(--color-light);
 }
 
+.legal {
+  padding:0.5rem 0;
+}
 .legal .legal__list {
   display: flex;
   justify-content: center;
@@ -822,7 +835,7 @@ form input::placeholder,
   padding: 2rem 3rem;
   font-family: var(--font-text--regular);
   font-size: clamp(10px, 2vmin, 2rem);
-  min-width: 325px;
+  min-width: 330px;
 }
 
 .progress-bar {
@@ -1038,9 +1051,15 @@ list-style:disc;
   .navbar__list {
     flex: 0 1 50%;
   }
+
   .box__wrapper:nth-child(odd) .box__desc {
     padding-left: 0rem;
   }
+  
+  .box__wrapper:nth-child(even) .box__desc {
+    padding-right: 0rem;
+  }
+  
 
   .box__img {
     width: 100%;
@@ -1133,6 +1152,10 @@ list-style:disc;
   .card {
     min-width: 215px;
       }
+
+  .box__wrapper:nth-child(even) .box__desc {
+    padding-right: 0;
+  }
 
 }
 @media screen and (max-width: 650px) {

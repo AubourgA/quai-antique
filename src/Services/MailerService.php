@@ -16,6 +16,16 @@ class MailerService
         $this->mailer = $mailer;
     }
 
+    /**
+     * Create an mailer service with a custom template
+     *
+     * @param string $from
+     * @param string $to
+     * @param string $subject
+     * @param string $template
+     * @param array $info
+     * @return void
+     */
     public function sendEmail( string $from, 
                                 string $to, 
                                 string $subject, 

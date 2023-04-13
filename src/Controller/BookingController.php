@@ -7,7 +7,6 @@ use App\Entity\Booking;
 use App\Form\BookingType;
 use App\Services\CalendarUtils;
 use App\Repository\BookingRepository;
-use App\Repository\CapacityRepository;
 use App\Repository\ScheduleRepository;
 use App\Services\CheckPlaceUtils;
 use App\Services\MailerService;
@@ -70,7 +69,7 @@ class BookingController extends AbstractController
             $em->flush();
 
             
-            $mailerService->sendEmail('lequaiantique@hotmail.com',
+            $mailerService->sendEmail('quaiantique@hotmail.com',
                                         $booking->getCustomer()->getEmail(),
                                         'Le Quai Antique : Demande de réservation',
                                         'email/confirm.html.twig',
@@ -83,12 +82,9 @@ class BookingController extends AbstractController
             
         }
 
-        
-        $currentMonth = $calendar->toString();
-
         return $this->render('booking/secondstep.html.twig', [
             'form' => $form->createView(),
-            'currentMonth' => $currentMonth,
+            'currentMonth' => $calendar->toString(),
             'showCalendar' => $calendar->show(),
         ]);
     }

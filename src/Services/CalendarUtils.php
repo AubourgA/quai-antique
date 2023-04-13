@@ -124,8 +124,6 @@ class CalendarUtils
         //calcul minute
         $diff_minutes = round(abs(  ($from_time - $retrait_heur )  / 60));
         
-        
-        
         //calcul quart dh'eure
         $nbPlage = $diff_minutes / $min;
         

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 :root{
     --color-second1: rgb(168, 214, 168);
     --color-second2: rgb(224, 141, 131);
@@ -6,7 +8,7 @@
     --color-outside--bg:rgba(83,155,189,0.7);
     --color-inside-bg :#faf9f9cb;
 
-    --font--regular : "Montserrat Regular";
+    --font--regular : 'Montserrat';
 }
 
 *, h1,h2,h3{
@@ -15,12 +17,7 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: "Montserrat Regular";
-    font-style: normal;
-    font-weight: 400;
-    src: url("/fonts/montserrat/Montserrat-Regular.ttf")   format("truetype");
-  }
+
 
 
 .main__admin{
@@ -63,7 +60,6 @@
     flex-wrap:wrap;
     gap:15px;
     padding:15px;
-   
 }
 
 /* SECTION */

@@ -74,7 +74,8 @@
                                                     id="modalCancel" 
                                                     data-id={{ booking.id }} 
                                                     data-path = "/customer/account/delete">
-                                                    <i class="fa-solid fa-trash-can"></i></button> 
+                                                    ANNULER
+                                                    </button> 
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -177,5 +178,9 @@
          {% include '/partials/_footer.html.twig' %}
     </footer>
 </div>
+
+{% block javascripts %}
+        <script src="/js/modal.js"></script>    
+ {% endblock %}
 
 {% endblock %}

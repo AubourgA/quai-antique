@@ -62,6 +62,7 @@ class CustomerAccountController extends AbstractController
         return  $this->redirectToRoute('app_customer_account');
         
     }
+
     /* A TRANSFERET DANS BOOKING EN CHANGENT LE LIEN ET A CHANGER DANS CUSTOMER INDEX LIGNE 73*/
     #[Route('/customer/account/delete/{id}', name: 'app_delete_booking')]
     public function delete(EntityManagerInterface $em, Booking $booking):Response
