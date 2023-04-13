@@ -19,7 +19,7 @@
         <div class="overlay"></div>
         <div class="modal">
             <h2 class="text--bold">Confirmation :</h2>
-            <p class="regular__text">Voulez vous annuler votre réservation ?</p>
+            <p class="text--regular">Voulez vous annuler votre réservation ?</p>
             <div class="modal__action">
                 <button class="btn btn--valid" id="btn__valid">OUI</button>
                 <button class="btn btn--danger" id="btn__cancel">NON</button>
@@ -50,7 +50,7 @@
             <div class="cards__wrapper d-flex--btw">
                 <article class="card">
                     <div class="card__header ">
-                        <h3 >Prochaine Réservation</h3>
+                        <h3 class="text--bold">Prochaine Réservation</h3>
                     </div>
                     <div class="card__table">
                         <table>
@@ -74,7 +74,7 @@
                                                     id="modalCancel" 
                                                     data-id={{ booking.id }} 
                                                     data-path = "/customer/account/delete">
-                                                    ANNULER</button> 
+                                                    <i class="fa-solid fa-trash-can"></i></button> 
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -91,8 +91,8 @@
                 </article>
                 <article class="card">
                      <div class="card__header">
-                        <h3>Historique </h3>
-                        <p>Mes 5 dernières réservations</p>
+                        <h3 class="text--bold">Historique </h3>
+                        <p class="text--regular">Mes 5 dernières réservations</p>
                         
                     </div>
                     <div class="card__table color--line">
@@ -163,7 +163,7 @@
                                
                           
                         {{form_rest(form)}}
-                            <button type="submit" class="btn btn--edit">MODIFIER</button>
+                            <button type="submit" class="btn btn--edit"> MODIFIER </i> </button>
                         {{form_end(form)}}
 
                     </div>
