@@ -660,7 +660,7 @@ form input::placeholder,
 }
 
 .legal {
-  padding:0.5rem 0;
+  margin:0.5rem 0;
 }
 .legal .legal__list {
   display: flex;
@@ -1170,7 +1170,7 @@ list-style:disc;
 
   .legal .legal__list {
     font-size: 10px;
-    gap: 5px;
+   
   }
 
   @media screen and (max-width: 480px) {

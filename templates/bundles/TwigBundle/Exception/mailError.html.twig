@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+ {% block stylesheets %}
+            
+<link rel="stylesheet" href="/css/error.css">
+ {% endblock %}
+
+
+{% block body %}
+
+<div class="page">
+
+    <div class="block__left">
+        <img src="{{ asset('img/icones/404-error.svg') }}" alt="error">
+    </div>
+    <div class="block__right">
+            <h1 class="main__title">Un problème est survenu ! </h1>
+            <p class="second__title"> Le service mail n'est pas disponible. Aucun mail n'a été envoyé
+            </p>
+
+            <p class="regular__text">Retour à l'acceuil : <a href="{{ path('app_home') }}"><i class="fa-solid fa-house"></i></a> </p>
+    </div>
+
+</div>
+{% endblock %}

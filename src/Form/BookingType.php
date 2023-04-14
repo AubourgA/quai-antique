@@ -52,6 +52,7 @@ class BookingType extends AbstractType
             ])
             ->add('Allergy', TextType::class, [
                 'attr' => ['class' => 'text--regular' ],
+                'required' => false,
                 'constraints' => [
                     new Assert\Regex('/^[a-zA-Z ]+$/')
                 ]

@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class BookingController extends AbstractController
 {
@@ -68,15 +69,20 @@ class BookingController extends AbstractController
             $em->persist($data);
             $em->flush();
 
-            
-            $mailerService->sendEmail('quaiantique@hotmail.com',
-                                        $booking->getCustomer()->getEmail(),
-                                        'Le Quai Antique : Demande de réservation',
-                                        'email/confirm.html.twig',
-                                        ['date' => $data->getDate(),
-                                        'time' => $data->getTime(),
-                                        'nb'=> $data->getNumberPerson() ]
-                                     );
+            try {
+
+                $mailerService->sendEmail(
+                    //'lequaiantique@hotmail.com',
+                                            $booking->getCustomer()->getEmail(),
+                                            'Le Quai Antique : Demande de réservation',
+                                            'email/confirm.html.twig',
+                                            ['date' => $data->getDate(),
+                                            'time' => $data->getTime(),
+                                            'nb'=> $data->getNumberPerson() ]
+                                         );
+            } catch(TransportExceptionInterface $e) {
+               return $this->render('bundles/TwigBundle/Exception/mailError.html.twig');
+            }
 
             return $this->redirectToRoute('app_booking_step3');
             
