@@ -2,32 +2,53 @@
 
 git clone https://github.com/AubourgA/quai-antique.git
 
+cd quai-antique
+
 composer install
 
 
 # CONFIGURATION
 creer un fichier .env.local
 
-AJOUTER LIGNE POUR BDD
-DATABASE_URL="mysql://id:mdp@127.0.0.1:3306/basename?serverVersion=8&charset=utf8mb4"
+## CONNEXION BDD
+DATABASE_URL="mysql://id:mdp@127.0.0.1:3306/lequaiantique?serverVersion=8&charset=utf8mb4"
 avec :
  id = votre identifiant
  mdp = votre mot de passe
- basename = nom de la base de donnée
 
-AJOUTER LIGNE POUR SERVICE MAIL
- pour ajouter service mail (exemple pour un service hotmail):
+## SERVICE MAIL
 
-MAILER_DSN=smtp://votremail:mdp@smtp-mail.outlook.com:587?verify_peer=0
+app configurer pour outlook donc pour une utilisation generique, il est conseillé d'utiliser un service d'envoie de mail comme mailtrap
+
+Se connecter à un compte MAILTRAP (par exemple) et recuperer la clef pour symfony et copier la ligne dans le fichier
+
+MAILER_DSN=xxxxxx
+
 
 # CREATION DE LA BDD
-lancer un serveur apache et mysql
+lancer un serveur apache / mysql
 
-taper php bin/console doctrine:database:create
+taper dans le terminal :
+php bin/console doctrine:database:create
 
-taper php bin/console doctrine:migrations:migrate
+## GENERER BDD
 
-# JEU DE DONNEE
-taper php bin/console doctrine:fixtures:load
+un fichier SQL se trouve dans le dossier SQL
+Ce fichier comporte toutes les reqettes pour générer les tables et pour ajouter l'ensemble des donnée
+
+pour se faire dans l'invite de commande taper :
+
+mysql -u [user] -p
+puis taper votre mot de passe
+
+puis taper : mysql> use LEQUAIANTIQUE;
+             mysql> source path/bdd.sql;
+
+
+La base de donnée a été importé
+
+# DEMMARER un server local avec symfony
+taper : > symfony serve
+
 
 
