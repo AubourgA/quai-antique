@@ -14,21 +14,26 @@ composer install
 ````
 
 # CONFIGURATION
-creer un fichier à la racine du projet: .env.local
+creer un fichier à la racine du projet:
+
+ .env.local
 
 ## CONNEXION BDD
 DATABASE_URL="mysql://id:mdp@127.0.0.1:3306/lequaiantique?serverVersion=8&charset=utf8mb4"
 avec :
+
  id = votre identifiant
+
  mdp = votre mot de passe
 
 ## SERVICE MAIL
 
-app configurer pour outlook donc pour une utilisation generique, il est conseillé d'utiliser un service d'envoie de mail comme mailtrap
+L'app est configurer pour outlook donc pour une utilisation generique, il est conseillé d'utiliser un service d'envoi de mail comme mailtrap
 
-Se connecter à un compte MAILTRAP (par exemple) et recuperer la clef pour symfony et copier la ligne dans le fichier
+Se connecter à un compte MAILTRAP (par exemple) et recuperer la clef pour symfony et copier la ligne dans le fichier .env.local: 
 
-MAILER_DSN=xxxxxx
+
+code a copier : "MAILER_DSN=VOTRE-CLEF"
 
 
 # CREATION DE LA BDD
@@ -41,28 +46,56 @@ php bin/console doctrine:database:create
 
 ## GENERER BDD
 
-un fichier SQL se trouve dans le dossier SQL
-Ce fichier comporte toutes les reqettes pour générer les tables et pour ajouter l'ensemble des donnée
+un fichier SQL se trouve dans le dossier \SQL
 
-pour se faire dans l'invite de commande taper :
+Ce fichier comporte toutes les reqettes pour générer les tables et pour ajouter l'ensemble des données.
 
+Se  connecter a MySql taper :
+
+````
 mysql -u [user] -p
-puis taper votre mot de passe
+````
 
-puis taper : 
+puis :
+````
+ votre mot de passe
+````
+
+
+Ensuite taper :
+```` 
 mysql> use LEQUAIANTIQUE;
+````
+
+puis :
+````
 mysql> source path/bdd.sql;
+````
 
+Si le fichier bdd.sql ne se charge pas à l'emplacement acutel, déplacer le à la racine du disque exemple : C:\bdd.sql et taper :
 
-La base de donnée a été importé
+````
+mysql> source C:/bdd.sql;
+````
+
+La base de donnée devrait être importé à ce stade
 
 # DEMMARER un server local avec symfony
-taper :
- > symfony serve
+taper  dans le terminal:
+ 
+ ````
+ symfony serve
+ ````
+
 
 ### ACCES MODE ADMIN
 
+Pour acceder à l'espace admin :
+
+
 ID : admin@admin.fr
+
+
 MDP : passwordADMIN
 
 
