@@ -16,13 +16,19 @@ composer install
 # CONFIGURATION
 creer un fichier à la racine du projet:
 
- .env.local
+ ````
+ touch ".env.local"
+ ````
 
 ## CONNEXION BDD
-Dans se fichier ajouter la ligne suivante :
+
+Ouvrir se ficher dans votre editeur de code
 
 
-DATABASE_URL="mysql://id:mdp@127.0.0.1:3306/lequaiantique?serverVersion=8&charset=utf8mb4"
+et copier la ligne suivante  en remplacant id et mdp:
+
+
+`DATABASE_URL="mysql://id:mdp@127.0.0.1:3306/lequaiantique?serverVersion=8&charset=utf8mb4"`
 avec :
 
  id = votre identifiant
@@ -35,21 +41,29 @@ L'app est configurée pour une messagerie outlook.
 
 Donc pour une utilisation génerique, il est conseillé d'utiliser un service d'envoi de mail comme mailtrap.
 
-Se connecter à un compte MAILTRAP (par exemple) et récuperer la clef pour symfony et la copier dans le fichier .env.local: 
+Se connecter à un compte MAILTRAP (par exemple) et récuperer la clef pour symfony. 
 
 
-code a copier : <MAILER_DSN=VOTRE-CLEF>
+copier ce code dans le fichier .env.local :
+
+ `MAILER_DSN=VOTRE-CLEF`
+
+ et remplacer `VOTRE-CLEF` par la clef symfony récupérée précédemment.
 
 
-# CREATION DE LA BDD
+
+
+# BASE DE DONNEES
+
+## INITIALISER LA BDD
 lancer un serveur apache / mysql
 
-taper dans le terminal :
+taper dans le terminal  :
 ````
 php bin/console doctrine:database:create
 ````
 
-## GENERER BDD
+## GENERER LA BDD
 
 un fichier SQL se trouve dans le dossier \SQL
 
