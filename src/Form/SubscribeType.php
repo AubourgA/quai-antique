@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class SubscribeType extends AbstractType
 {
@@ -36,7 +37,11 @@ class SubscribeType extends AbstractType
             ])
             ->add('plainpassword', PasswordType::class, [
                 'attr' => ['class' => 'form-control' ],
-                'label' =>'Mot de Passe'
+                'label' =>'Mot de Passe',
+                'constraints' => [
+                    new Assert\Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
+                    'le mot de passe doit contenir au moins 14 caracteres avec 1 minuscule, 1 majuscule, 1 chiffre, et 1 caractere special')
+                ]
             ])
             ->add('Allergy', TextType::class, [
                 'attr' => ['class' => 'form-control' ],

@@ -31,11 +31,7 @@ Abstract class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
-    #[Assert\Length(
-        min: 8,
-        max: 4096,
-        minMessage: 'votre mot de passe doit avoir au moins {{ limit }} characters'
-    )]
+
     private ?string  $plainPassword = null;
 
     /**

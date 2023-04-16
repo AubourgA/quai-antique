@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 
 class DessertCrudController extends AbstractCrudController
 {
@@ -21,9 +22,9 @@ class DessertCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
-            TextField::new('Title'),
-            TextField::new('Price'),
+            IdField::new('id', '#')->hideOnForm(),
+            TextField::new('Title', 'Titre'),
+            NumberField::new('Price', 'Prix €'),
             DateTimeField::new('createdAt')
                 ->hideOnForm(),
             BooleanField::new('isActive', 'Afficher le Dessert ?'),

@@ -1,14 +1,20 @@
 # INITIALISATION
-
+taper dans le terminal
+````
 git clone https://github.com/AubourgA/quai-antique.git
-
+````
+puis :
+````
 cd quai-antique
+````
 
+Installer le dossier vendor :
+````
 composer install
-
+````
 
 # CONFIGURATION
-creer un fichier .env.local
+creer un fichier à la racine du projet: .env.local
 
 ## CONNEXION BDD
 DATABASE_URL="mysql://id:mdp@127.0.0.1:3306/lequaiantique?serverVersion=8&charset=utf8mb4"
@@ -29,7 +35,9 @@ MAILER_DSN=xxxxxx
 lancer un serveur apache / mysql
 
 taper dans le terminal :
+````
 php bin/console doctrine:database:create
+````
 
 ## GENERER BDD
 
@@ -41,14 +49,21 @@ pour se faire dans l'invite de commande taper :
 mysql -u [user] -p
 puis taper votre mot de passe
 
-puis taper : mysql> use LEQUAIANTIQUE;
-             mysql> source path/bdd.sql;
+puis taper : 
+mysql> use LEQUAIANTIQUE;
+mysql> source path/bdd.sql;
 
 
 La base de donnée a été importé
 
 # DEMMARER un server local avec symfony
-taper : > symfony serve
+taper :
+ > symfony serve
+
+### ACCES MODE ADMIN
+
+ID : admin@admin.fr
+MDP : passwordADMIN
 
 
 

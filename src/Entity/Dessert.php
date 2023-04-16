@@ -20,8 +20,8 @@ class Dessert
     #[ORM\Column(length: 255)]
     private ?string $Title = null;
     
-    // #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 2)]
-    #[ORM\Column(type: "float")]
+    //#[ORM\Column(type: "float")]
+    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $Price = null;
 
     #[ORM\Column]
