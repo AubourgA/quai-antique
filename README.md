@@ -19,6 +19,9 @@ creer un fichier à la racine du projet:
  .env.local
 
 ## CONNEXION BDD
+Dans se fichier ajouter la ligne suivante :
+
+
 DATABASE_URL="mysql://id:mdp@127.0.0.1:3306/lequaiantique?serverVersion=8&charset=utf8mb4"
 avec :
 
@@ -28,12 +31,14 @@ avec :
 
 ## SERVICE MAIL
 
-L'app est configurer pour outlook donc pour une utilisation generique, il est conseillé d'utiliser un service d'envoi de mail comme mailtrap
+L'app est configurée pour une messagerie outlook. 
 
-Se connecter à un compte MAILTRAP (par exemple) et recuperer la clef pour symfony et copier la ligne dans le fichier .env.local: 
+Donc pour une utilisation génerique, il est conseillé d'utiliser un service d'envoi de mail comme mailtrap.
+
+Se connecter à un compte MAILTRAP (par exemple) et récuperer la clef pour symfony et la copier dans le fichier .env.local: 
 
 
-code a copier : "MAILER_DSN=VOTRE-CLEF"
+code a copier : <MAILER_DSN=VOTRE-CLEF>
 
 
 # CREATION DE LA BDD
@@ -62,23 +67,28 @@ puis :
 ````
 
 
-Ensuite taper :
+Ensuite taper sous l'invite mysql> :
 ```` 
-mysql> use LEQUAIANTIQUE;
+use LEQUAIANTIQUE;
 ````
 
 puis :
 ````
-mysql> source path/bdd.sql;
+source path/bdd.sql;
 ````
 
 Si le fichier bdd.sql ne se charge pas à l'emplacement acutel, déplacer le à la racine du disque exemple : C:\bdd.sql et taper :
 
 ````
-mysql> source C:/bdd.sql;
+source C:/bdd.sql;
 ````
 
-La base de donnée devrait être importé à ce stade
+La base de donnée devrait être importé à ce stade. Vous pouvez vous deconnecter de mysql en tapant :
+
+````
+exit
+````
+
 
 # DEMMARER un server local avec symfony
 taper  dans le terminal:
