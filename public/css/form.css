@@ -21,7 +21,6 @@
     align-items: center;
     height:auto;
     box-shadow: 5px 5px 5px 7px var(--color-border);
-    padding:2rem 0;
 }
 
 .block__text {
@@ -30,6 +29,11 @@
     padding:0 4rem;
     border-right:2px solid var(--color-border);
     align-self: stretch;
+    background:var(--color-primary);
+}
+
+.block__form{
+    padding:2rem 0;
 }
 
 .form__content{

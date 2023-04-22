@@ -120,6 +120,9 @@ a {
   color: var(--color-secondary);
 }
 
+.text__color--light {
+  color:#252A74;
+}
 /* MESSAGE ALERT*/
 .flash-notice,
 .flash--alert.active {
@@ -182,6 +185,13 @@ a {
   flex-wrap:wrap;
   align-items: flex-start;
   gap:5px;
+}
+
+.d-flex--col {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  gap:15px;
 }
 
 /* SPACE */

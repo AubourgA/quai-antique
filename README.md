@@ -88,10 +88,10 @@ use LEQUAIANTIQUE;
 
 puis :
 ````
-source path/bdd.sql;
+source [path]/bdd.sql;
 ````
 
-Si le fichier bdd.sql ne se charge pas à l'emplacement acutel, déplacer le à la racine du disque exemple : C:\bdd.sql et taper :
+Si le fichier bdd.sql ne se charge pas à l'emplacement actuel, déplacer le à la racine du disque exemple : C:\bdd.sql et taper :
 
 ````
 source C:/bdd.sql;

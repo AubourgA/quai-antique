@@ -23,8 +23,9 @@
     <main class="form__container">
     
         <section class="form__wrapper">
-            <div class="block__text">
-                <p>Le Quai Antique</p>
+            <div class="block__text d-flex--col">
+                <p class="text--bold">Espace Utilisateur</p>
+                <p class="text--regular">Bienvenue</p>
             </div>
             <div class="block__form">
                 <form method="post" class="form__content">
@@ -38,7 +39,7 @@
                         </div>
                     {% endif %}
 
-                    <h1 class="title__menu pad-y--small center">S'identifier</h1>
+                    <h1 class="text--bold pad-y--small center">S'identifier</h1>
                     <label for="inputEmail" class="text--regular">Email</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder='votreemail@mail.fr'required autofocus>
                     <label for="inputPassword" class="text--regular">Password</label>
