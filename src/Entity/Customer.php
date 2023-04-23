@@ -29,7 +29,7 @@ class Customer extends User
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $Allergy = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(nullable: false)]
     #[Assert\NotBlank()]
     #[Assert\Regex(
         pattern :' /[0-9]/i' ,

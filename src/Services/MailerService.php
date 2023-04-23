@@ -18,7 +18,6 @@ class MailerService
     /**
      * Create an mailer service with a custom template
      *
-     * @param string $from
      * @param string $to
      * @param string $subject
      * @param string $template
@@ -26,16 +25,12 @@ class MailerService
      * @return void
      */
     public function sendEmail(
-        // string $from, 
                                 string $to, 
                                 string $subject, 
                                 string $template, 
                                 array $info ): void                 
     {
-     
-
             $email = (new TemplatedEmail())
-                // ->from($from)
                 ->to($to)
                 ->subject($subject)
                 ->htmlTemplate($template)

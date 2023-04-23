@@ -15,10 +15,11 @@
     </div>
     <div class="block__right">
             <h1 class="main__title">Un problème est survenu ! </h1>
-            <p class="second__title"> Le service mail n'est pas disponible. Aucun mail n'a été envoyé
-            </p>
+            <p class="second__title"> Le service mail n'est pas disponible. <p>
+            <p class="text--regular"> Cause : {{ error }} </p>
+            
 
-            <p class="regular__text">Retour à l'acceuil : <a href="{{ path('app_home') }}"><i class="fa-solid fa-house"></i></a> </p>
+            <p class="text--regular">Retour à l'acceuil : <a href="{{ path('app_home') }}"><i class="fa-solid fa-house"></i></a> </p>
     </div>
 
 </div>

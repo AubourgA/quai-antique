@@ -54,7 +54,7 @@ class BookingType extends AbstractType
                 'attr' => ['class' => 'text--regular' ],
                 'required' => false,
                 'constraints' => [
-                    new Assert\Regex('/^[a-zA-Z ]+$/')
+                    new Assert\Regex('/^[a-zA-Z ]+$|^$/')
                 ]
             ])
         ;

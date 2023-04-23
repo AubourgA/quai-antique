@@ -3,4 +3,4 @@ framework:
         dsn: '%env(MAILER_DSN)%'
         message_bus: false
         envelope:
-            sender: 'quaiantique@hotmail.com'
+            sender: 'quaiantique@outlook.fr'

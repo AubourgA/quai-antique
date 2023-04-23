@@ -72,7 +72,6 @@ class BookingController extends AbstractController
             try {
 
                 $mailerService->sendEmail(
-                    //'lequaiantique@hotmail.com',
                                             $booking->getCustomer()->getEmail(),
                                             'Le Quai Antique : Demande de réservation',
                                             'email/confirm.html.twig',
@@ -81,7 +80,7 @@ class BookingController extends AbstractController
                                             'nb'=> $data->getNumberPerson() ]
                                          );
             } catch(TransportExceptionInterface $e) {
-               return $this->render('bundles/TwigBundle/Exception/mailError.html.twig');
+               return $this->render('bundles/TwigBundle/Exception/mailError.html.twig', ['error' => $e->getMessage()]);
             }
 
             return $this->redirectToRoute('app_booking_step3');
