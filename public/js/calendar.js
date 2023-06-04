@@ -148,6 +148,12 @@ function add_months(date, month) {
 function getNameDay(day) {
   let currentMonthYear = document.querySelector(".current__month").innerText;
   let convertDateFrtoEn = convertMonthFrtoEn(currentMonthYear);
+ 
+  //test if day is 2-digit and return error if not
+  const regex = /^[0-3][0-9]$/;
+  if( !day.target.innerText.match(regex) ) {
+    throw new Error('Erreur sur le jour');
+  }
 
   let fullDate = `${day.target.innerText} ${convertDateFrtoEn}`;
 
@@ -163,9 +169,14 @@ function displayTime(e) {
   //reset message alert
   document.getElementById('message').innerText = "";
   document.getElementById('message').classList.remove('active');
-  
-  //get day of the week
-  let day = getNameDay(e);
+  let day;
+  //get day of the week and catch error 
+  try {
+     day = getNameDay(e);
+  } catch( err) {
+      return alert(err);
+  }
+
   const responseAjax = document.querySelector(".time__zone");
 
   if( responseAjax != null) {
@@ -191,7 +202,9 @@ function displayTime(e) {
 }
 
 
-
+/**
+ * Check if place is avalable in period time
+ */
 function checkHour() {
   const periodsTime = document.querySelectorAll('.list__time');
   let formDate = document.getElementById("booking_Date").value;
@@ -203,8 +216,7 @@ function checkHour() {
         fetch("/booking/check/" + formDate + "/" + hour, { method: "POST" })
         .then( reponse => reponse.json())
         .then( datas => {
-         
-          
+             
           if(datas.isAvailable === true) {
               document.getElementById('message').innerText = "";
               document.getElementById('message').classList.remove('active');

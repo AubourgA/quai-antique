@@ -40,13 +40,9 @@ class BookingController extends AbstractController
                             CheckPlaceUtils $checkPlaceUtils
                             ):Response
     {
-
-      
-        
-
         $booking = new Booking;
 
-        //if user exist
+        //display info user if exist
         if($this->getUser()) {
             $booking->setNumberPerson($this->getUser()->getDefaultPerson());
             $booking->setAllergy($this->getUser()->getAllergy());
@@ -66,6 +62,9 @@ class BookingController extends AbstractController
 
             $booking->setCustomer($this->getUser());
             $data = $form->getData();
+            //check right time enter by user
+
+            // dd(in_array(date_format($data->gettime(),"H:i"),["13:00","20:00","20:15"]));
             $em->persist($data);
             $em->flush();
 
@@ -116,6 +115,7 @@ class BookingController extends AbstractController
     #[Route('/booking/{month}-{year}', name: 'app_calendar', methods:['POST'])]
     public function getMonth( $month,  $year):Response
     {
+
         $calendar = new \App\Services\CalendarUtils($month, $year);
         
        
@@ -130,7 +130,8 @@ class BookingController extends AbstractController
     #[Route('/booking/time/{day}', name: 'app_boking_time', methods:['POST'])]
     public function display( string $day, ScheduleRepository $scheduleRepository, CalendarUtils $calendar):Response
     {
-      
+     
+
         $creneaux = $scheduleRepository->findOneBy(['Day' => $day]);
         
         

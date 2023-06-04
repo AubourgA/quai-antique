@@ -34,7 +34,7 @@ class Customer extends User
     #[Assert\Regex(
         pattern :' /[0-9]/i' ,
         match:true,
-        message :'Uniquement un nombre',
+        message :'Uniquement un chiffre',
     )]
     private ?int $DefaultPerson = null;
 

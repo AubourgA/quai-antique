@@ -47,7 +47,7 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/customer/account, roles: ROLE_CUSTOMER }
         - { path: ^/booking/reserve, roles: ROLE_CUSTOMER }
-        #  - { path: ^/booking/confirm, roles: ROLE_CUSTOMER }
+        - { path: ^/booking/confirm, roles: ROLE_CUSTOMER }
 
 when@test:
     security:

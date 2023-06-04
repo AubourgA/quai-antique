@@ -3,6 +3,9 @@
 
     <div class="block__form">
         <form method="post" class="form__content">
+              {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
             <label for="inputEmail" class="text--regular">Email</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder='votreemail@mail.fr'required autofocus>

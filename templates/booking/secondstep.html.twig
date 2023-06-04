@@ -85,29 +85,30 @@
                
 
                 {{form_start(form, { 'attr' : {'class' : 'form__step2'}})}}
-                 {% for message in app.flashes('alert') %}
-                        <div class="flash--alert active">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
+               
                     <div class="form--error">
-                        {{ form_errors(form.Date) }}
+                            {{ form_errors(form.Date) }}
                     </div>
                     <div class="group__date">
                         {{ form_label(form.Date, 'Le' , {'attr' : {'class' : 'text--bold'} })}} 
                         {{ form_widget(form.Date)}}
+
                         {{ form_label(form.time, 'à')}}
                         {{ form_widget(form.time)}}
-                    </div>
-                        {{ form_label(form.numberPerson, 'Nombre de Couvert')}}
-                        {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group text--regular'}}) }}
-                        <div class="form--error">
-                           {{ form_errors(form.numberPerson) }}
-                        </div>
-                        {{ form_label(form.Allergy, 'Allergie')}}
-                        {{ form_widget(form.Allergy, {'attr': {'class': 'form__group text--regular'}}) }}
 
-                        <button type="submit" class="btn btn__connect btn__form">Reserver</button>
+                    </div>
+                    {{ form_label(form.numberPerson, 'Nombre de Couvert')}}
+                    <div class="form--error">
+                        {{ form_errors(form.numberPerson) }}
+                    </div>
+                    {{ form_widget(form.numberPerson, {'attr': {'class': 'form__group text--regular'}}) }}
+                    {{ form_label(form.Allergy, 'Allergie')}}
+                    <div class="form--error">
+                        {{ form_errors(form.Allergy) }}
+                    </div>
+                    {{ form_widget(form.Allergy, {'attr': {'class': 'form__group text--regular'}}) }}
+
+                    <button type="submit" class="btn btn__connect btn__form">Reserver</button>
                 {{form_end(form)}}
             </div>
 

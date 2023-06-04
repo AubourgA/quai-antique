@@ -150,5 +150,7 @@ class CalendarUtils
         $schedule = strtotime("+$period minutes", $timestamp);
         return $schedule = date('H:i', $schedule);
     }
+
+  
     
 }
